@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ============================================================
+         SERVICE PAGE �?" Dealers / Map / Appointment Form
+         ============================================================ -->
+    <template id="caravan_service" name="Caravan Service Page">
+        <t t-call="website.layout">
+            <t t-set="pageName" t-value="'service'"/>
+            <div id="wrap" class="oe_structure caravan-page">
+
+                <t t-call="caravan_theme.caravan_header"/>
+
+                <!-- Breadcrumb -->
+                <section class="cv-breadcrumb">
+                    <div class="cv-container">
+                        <div class="cv-breadcrumb-nav">
+                            <a href="/">Anasayfa</a>
+                            <span class="separator">�?�</span>
+                            <span>Servis</span>
+                        </div>
+                        <h1 class="cv-animate">Servis &amp; Bayiler</h1>
+                    </div>
+                </section>
+
+                <!-- ==================== MAP + DEALERS ==================== -->
+                <section class="cv-section">
+                    <div class="cv-container">
+                        <div class="cv-animate" style="text-align:center;">
+                            <hr class="cv-gold-line centered"/>
+                            <h2 class="cv-section-title">Bayiler &amp; <span class="cv-accent-text">Servisler</span></h2>
+                            <p class="cv-section-subtitle centered">Türkiye genelindeki yetkili bayi ve servis noktalarımız.</p>
+                        </div>
+
+                        <!-- Google Maps Embed -->
+                        <div class="cv-map-wrapper cv-animate">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d385396.3509929498!2d28.731994199999998!3d41.00495465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caa7040068086b%3A0xe1ccfe98bc01b0d0!2zxLBzdGFuYnVs!5e0!3m2!1str!2str!4v1700000000000!5m2!1str!2str"
+                                allowfullscreen=""
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"
+                                title="Bayi Haritası">
+                            </iframe>
+                        </div>
+
+                        <!-- Dealer Cards -->
+                        <div class="cv-dealer-grid">
+                            <div class="cv-dealer-card cv-animate">
+                                <h4>İstanbul Merkez</h4>
+                                <p>Maslak Mah. Büyükdere Cad. No:123, Sarıyer/İstanbul</p>
+                                <p class="cv-dealer-phone">+90 212 123 45 67</p>
+                                <p style="color:var(--cv-text-dark);font-size:0.85rem;margin-top:8px;">Pzt-Cmt: 09:00 - 18:00</p>
+                            </div>
+                            <div class="cv-dealer-card cv-animate cv-animate-delay-1">
+                                <h4>Ankara Showroom</h4>
+                                <p>�?ankaya Mah. Atatürk Bulvarı No:456, �?ankaya/Ankara</p>
+                                <p class="cv-dealer-phone">+90 312 456 78 90</p>
+                                <p style="color:var(--cv-text-dark);font-size:0.85rem;margin-top:8px;">Pzt-Cmt: 09:00 - 18:00</p>
+                            </div>
+                            <div class="cv-dealer-card cv-animate cv-animate-delay-2">
+                                <h4>İzmir Servis</h4>
+                                <p>Alsancak Mah. Kordon Cad. No:789, Konak/İzmir</p>
+                                <p class="cv-dealer-phone">+90 232 789 01 23</p>
+                                <p style="color:var(--cv-text-dark);font-size:0.85rem;margin-top:8px;">Pzt-Cmt: 09:00 - 18:00</p>
+                            </div>
+                            <div class="cv-dealer-card cv-animate cv-animate-delay-3">
+                                <h4>Antalya Bayi</h4>
+                                <p>Lara Mah. Akdeniz Blv. No:321, Muratpa�Ya/Antalya</p>
+                                <p class="cv-dealer-phone">+90 242 321 65 98</p>
+                                <p style="color:var(--cv-text-dark);font-size:0.85rem;margin-top:8px;">Pzt-Cmt: 09:00 - 18:00</p>
+                            </div>
+                            <div class="cv-dealer-card cv-animate cv-animate-delay-4">
+                                <h4>Bursa Servis</h4>
+                                <p>Nilüfer Mah. Organize San. Bölgesi No:55, Nilüfer/Bursa</p>
+                                <p class="cv-dealer-phone">+90 224 555 12 34</p>
+                                <p style="color:var(--cv-text-dark);font-size:0.85rem;margin-top:8px;">Pzt-Cmt: 09:00 - 18:00</p>
+                            </div>
+                            <div class="cv-dealer-card cv-animate cv-animate-delay-5">
+                                <h4>Trabzon Bayi</h4>
+                                <p>Ortahisar Mah. Sahil Yolu No:12, Ortahisar/Trabzon</p>
+                                <p class="cv-dealer-phone">+90 462 112 34 56</p>
+                                <p style="color:var(--cv-text-dark);font-size:0.85rem;margin-top:8px;">Pzt-Cmt: 09:00 - 18:00</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ==================== APPOINTMENT FORM ==================== -->
+                <section class="cv-section cv-highlight-section">
+                    <div class="cv-container">
+                        <div class="cv-animate" style="text-align:center;">
+                            <hr class="cv-gold-line centered"/>
+                            <h2 class="cv-section-title">Servis <span class="cv-accent-text">Randevusu</span></h2>
+                            <p class="cv-section-subtitle centered">Online randevu olu�Yturun, sizi arayalım.</p>
+                        </div>
+
+                        <div class="cv-form-section cv-animate" style="max-width:720px;margin:0 auto;">
+                            <form action="/website/form/" method="post" class="cv-form-grid">
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                <div class="cv-form-group">
+                                    <label for="srv_name">Ad Soyad</label>
+                                    <input type="text" id="srv_name" name="name" placeholder="Adınız Soyadınız" required="required"/>
+                                </div>
+                                <div class="cv-form-group">
+                                    <label for="srv_phone">Telefon</label>
+                                    <input type="tel" id="srv_phone" name="phone" placeholder="+90 5XX XXX XX XX" required="required"/>
+                                </div>
+                                <div class="cv-form-group">
+                                    <label for="srv_date">Tercih Edilen Tarih</label>
+                                    <input type="date" id="srv_date" name="date" required="required"/>
+                                </div>
+                                <div class="cv-form-group">
+                                    <label for="srv_type">Servis Türü</label>
+                                    <select id="srv_type" name="service_type" required="required">
+                                        <option value="">Seçiniz</option>
+                                        <option value="bakim">Periyodik Bakım</option>
+                                        <option value="onarim">Onarım</option>
+                                        <option value="modifikasyon">Modifikasyon</option>
+                                        <option value="garanti">Garanti İ�Ylemi</option>
+                                        <option value="diger">Di�Yer</option>
+                                    </select>
+                                </div>
+                                <div class="cv-form-group full-width" style="text-align:center;margin-top:12px;">
+                                    <button type="submit" class="cv-btn cv-btn-gold cv-btn-lg">Randevu Olu�Ytur</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+
+                <t t-call="caravan_theme.caravan_footer"/>
+            </div>
+        </t>
+    </template>
+
+    <record id="caravan_service_page" model="website.page">
+        <field name="name">Servis</field>
+        <field name="url">/servis</field>
+        <field name="is_published">True</field>
+        <field name="view_id" ref="caravan_service"/>
+        <field name="website_indexed">True</field>
+    </record>
+
+</odoo>

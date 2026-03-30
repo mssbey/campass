@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="configurator_page" name="Caravan 3D Configurator">
+        <t t-call="website.layout">
+            <div class="cfg-app">
+                <!-- TOP BAR -->
+                <div class="cfg-topbar">
+                    <div class="cfg-topbar-left">
+                        <button class="cfg-back-btn" id="btnBack">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+                            Geri
+                        </button>
+                        <a href="/" class="cfg-logo"><img src="/caravan_theme/static/src/img/camppass-logo.webp" alt="Camppass" style="height:32px;width:auto;"/></a>
+                    </div>
+                    <div class="cfg-topbar-model" id="cfgModelName"></div>
+                    <div class="cfg-topbar-actions">
+                        <button class="cfg-btn-ghost" id="btnPlayback" title="Konfigürasyon Oynat">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                            Oynat
+                        </button>
+                        <button class="cfg-btn-ghost" id="btnExportTimeline" title="Timeline JSON İndir">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            JSON
+                        </button>
+                    </div>
+                </div>
+
+                <!-- SCREEN: MODEL SELECT -->
+                <div id="screenModelSelect" class="cfg-model-select">
+                    <div class="cfg-model-select-header">
+                        <h1>Modelinizi <span class="cfg-gold-accent">Seçin</span></h1>
+                        <p>Konfigüre etmek istedi�Yiniz karavan modelini belirleyin.</p>
+                    </div>
+                    <div class="cfg-model-grid" id="modelSelectGrid"></div>
+                </div>
+
+                <!-- SCREEN: CONFIGURATOR -->
+                <div id="screenConfigurator" class="cfg-configurator">
+                    <!-- Left Panel -->
+                    <div class="cfg-panel" id="optionsPanel"></div>
+
+                    <!-- Right: 3D View + Price -->
+                    <div class="cfg-viewer-area">
+                        <div class="cfg-viewer-container" id="viewer3d">
+                            <div class="cfg-viewer-hint">gY-� Döndür &amp; Yakınla�Ytır</div>
+                            <div class="cfg-playback-status" id="playbackStatus" style="display:none;"></div>
+                        </div>
+                        <div class="cfg-viewer-controls">
+                            <button class="cfg-btn-ghost" id="btnResetCam" title="Kamera Sıfırla">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+                            </button>
+                        </div>
+
+                        <!-- Price Bottom Bar -->
+                        <div class="cfg-price-bar">
+                            <div class="cfg-price-header">
+                                <div><span class="cfg-price-label">Baz Fiyat</span><br/><span class="cfg-price-value" id="priceBase">�,�0</span></div>
+                                <div style="text-align:right;"><span class="cfg-price-label">Opsiyonlar</span><br/><span class="cfg-price-value gold" id="priceOptions">�,�0</span></div>
+                            </div>
+                            <div id="priceBreakdown"></div>
+                            <div class="cfg-price-total">
+                                <span class="cfg-price-total-label">TOPLAM</span>
+                                <span class="cfg-price-total-value" id="priceTotal">�,�0</span>
+                            </div>
+                            <div class="cfg-price-actions">
+                                <button class="cfg-btn cfg-btn-outline" id="btnPDF">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                                    PDF
+                                </button>
+                                <button class="cfg-btn cfg-btn-gold" id="btnOrder">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                                    Sipari�Y Ver
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ORDER MODAL -->
+                <div class="cfg-modal-overlay" id="orderModal">
+                    <div class="cfg-modal">
+                        <button class="cfg-modal-close" id="btnOrderClose">�o.</button>
+                        <h2>Sipari�Y Ver</h2>
+                        <p class="sub">Konfigürasyonunuzu onaylayın ve sipari�Y olu�Yturun.</p>
+                        <div class="cfg-modal-info">
+                            <span id="orderModelName">�?"</span>
+                            <span class="price" id="orderTotalPrice">�,�0</span>
+                        </div>
+                        <div class="cfg-form-group"><label class="cfg-form-required">Ad Soyad</label><input type="text" id="orderName" placeholder="Adınız Soyadınız"/></div>
+                        <div class="cfg-form-group"><label class="cfg-form-required">Telefon</label><input type="tel" id="orderPhone" placeholder="+90 5XX XXX XX XX"/></div>
+                        <div class="cfg-form-group"><label class="cfg-form-required">E-posta</label><input type="email" id="orderEmail" placeholder="ornek@email.com"/></div>
+                        <div class="cfg-form-group"><label>Notlar</label><textarea id="orderNotes" placeholder="Ek notlarınız..."></textarea></div>
+                        <button class="cfg-btn cfg-btn-gold" id="btnOrderSubmit" style="width:100%;margin-top:8px;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                            Sipari�Yi Onayla
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ORDER SUCCESS MODAL -->
+                <div class="cfg-modal-overlay" id="orderSuccess">
+                    <div class="cfg-modal" style="text-align:center;">
+                        <div class="cfg-success-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                        </div>
+                        <h2>Sipari�Y Alındı!</h2>
+                        <p class="sub">Sipari�Yiniz ba�Yarıyla olu�Yturuldu. En kısa sürede sizinle ileti�Yime geçece�Yiz.</p>
+                        <div class="cfg-order-ref" id="orderRefNumber">ORD-00000</div>
+                        <button class="cfg-btn cfg-btn-gold" id="btnOrderSuccessClose" style="width:100%;margin-top:12px;">Tamam</button>
+                    </div>
+                </div>
+
+            </div>
+        </t>
+    </template>
+
+    <record id="configurator_page_view" model="website.page">
+        <field name="name">3D Configurator</field>
+        <field name="url">/configurator</field>
+        <field name="view_id" ref="configurator_page"/>
+        <field name="website_published">True</field>
+    </record>
+</odoo>

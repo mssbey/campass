@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ============================================================
+         SNIPPETS — Reusable Website Builder Snippets
+         ============================================================ -->
+
+    <!-- Hero Snippet -->
+    <template id="camppass_snippet_hero" name="Camppass Hero Banner">
+        <section class="cv-hero">
+            <div class="cv-hero-media">
+                <video autoplay="" muted="" loop="" playsinline="" preload="auto" poster="/theme_camppass/static/src/img/hero-poster.webp">
+                    <source src="/theme_camppass/static/src/video/hero.mp4" type="video/mp4"/>
+                </video>
+                <div class="cv-hero-overlay"/>
+            </div>
+            <div class="cv-hero-content cv-container">
+                <h1 class="cv-hero-title cv-animate">Macera Burada Başlar</h1>
+                <p class="cv-hero-desc cv-animate cv-animate-delay-1">Premium off-road karavan deneyimi.</p>
+                <div class="cv-hero-btns cv-animate cv-animate-delay-2">
+                    <a href="/models" class="cv-btn cv-btn-gold cv-btn-lg">Modelleri Keşfet</a>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <!-- Model Card Snippet -->
+    <template id="camppass_snippet_model_card" name="Camppass Model Card">
+        <div class="cv-model-card">
+            <div class="cv-model-card-img">
+                <img src="/theme_camppass/static/src/img/ws1-hero.webp" alt="Model" loading="lazy"/>
+                <span class="cv-badge cv-badge-gold">Yeni</span>
+            </div>
+            <div class="cv-model-card-body">
+                <h3>Model Adı</h3>
+                <p class="cv-model-card-price">₺000.000'den başlayan</p>
+                <div class="cv-model-card-specs">
+                    <span>0 Kişi</span>
+                    <span>0 kg</span>
+                    <span>0W Güneş</span>
+                </div>
+            </div>
+            <div class="cv-model-card-footer">
+                <a href="/models" class="cv-btn cv-btn-outline">Detay</a>
+                <a href="/contact" class="cv-btn cv-btn-gold">Teklif Al</a>
+            </div>
+        </div>
+    </template>
+
+</odoo>

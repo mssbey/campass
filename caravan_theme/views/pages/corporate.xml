@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ============================================================
+         CORPORATE PAGE �?" Resources, Timeline, Team, Production, Refs
+         ============================================================ -->
+    <template id="caravan_corporate" name="Caravan Corporate Page">
+        <t t-call="website.layout">
+            <t t-set="pageName" t-value="'corporate'"/>
+            <div id="wrap" class="oe_structure caravan-page">
+
+                <t t-call="caravan_theme.caravan_header"/>
+
+                <!-- Breadcrumb -->
+                <section class="cv-breadcrumb">
+                    <div class="cv-container">
+                        <div class="cv-breadcrumb-nav">
+                            <a href="/">Anasayfa</a>
+                            <span class="separator">�?�</span>
+                            <span>Kurumsal</span>
+                        </div>
+                        <h1 class="cv-animate">Kurumsal</h1>
+                    </div>
+                </section>
+
+                <!-- ==================== KAYNAKLAR ==================== -->
+                <section class="cv-section">
+                    <div class="cv-container">
+                        <div class="cv-animate">
+                            <hr class="cv-gold-line"/>
+                            <h2 class="cv-section-title">Kaynaklar</h2>
+                            <p class="cv-section-subtitle">Marka videoları ve kurumsal dokümanlar.</p>
+                        </div>
+
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;">
+                            <!-- Video placeholder -->
+                            <div class="cv-animate" style="aspect-ratio:16/9;background:var(--cv-bg-card);border:1px solid var(--cv-border);border-radius:var(--cv-radius-lg);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;color:var(--cv-text-muted);">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                                <span>Tanıtım Videosu</span>
+                            </div>
+                            <!-- Documents -->
+                            <div class="cv-animate cv-animate-delay-1" style="display:flex;flex-direction:column;gap:16px;">
+                                <div class="cv-dealer-card">
+                                    <h4>�orün Katalo�Yu 2026</h4>
+                                    <p>Tüm modellerin detaylı teknik özellikleri ve görselleri.</p>
+                                    <a href="#" class="cv-read-more" style="margin-top:8px;">
+                                        İndir (PDF)
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                                    </a>
+                                </div>
+                                <div class="cv-dealer-card">
+                                    <h4>Garanti Ko�Yulları</h4>
+                                    <p>Garanti kapsamı ve servis politikamız hakkında bilgi.</p>
+                                    <a href="#" class="cv-read-more" style="margin-top:8px;">
+                                        İndir (PDF)
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                                    </a>
+                                </div>
+                                <div class="cv-dealer-card">
+                                    <h4>Teknik Şartname</h4>
+                                    <p>Mühendislik detayları ve malzeme bilgileri.</p>
+                                    <a href="#" class="cv-read-more" style="margin-top:8px;">
+                                        İndir (PDF)
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ==================== TARİH�?EMİZ ==================== -->
+                <section class="cv-section cv-highlight-section">
+                    <div class="cv-container">
+                        <div class="cv-animate" style="text-align:center;">
+                            <hr class="cv-gold-line centered"/>
+                            <h2 class="cv-section-title">Tarihçemiz</h2>
+                            <p class="cv-section-subtitle centered">Mühendislik tutkusuyla ba�Ylayan yolculu�Yumuz.</p>
+                        </div>
+
+                        <div class="cv-timeline" style="max-width:700px;margin:0 auto;">
+                            <div class="cv-timeline-item cv-animate">
+                                <div class="cv-timeline-year">2018</div>
+                                <h4>Kurulu�Y</h4>
+                                <p>İstanbul'da bir garajda, off-road karavan hayaliyle Camppass yolculu�Yu ba�Yladı.</p>
+                            </div>
+                            <div class="cv-timeline-item cv-animate cv-animate-delay-1">
+                                <div class="cv-timeline-year">2019</div>
+                                <h4>İlk Prototip</h4>
+                                <p>S1 modelinin ilk prototipini tamamlayarak arazi testlerine ba�Yladık.</p>
+                            </div>
+                            <div class="cv-timeline-item cv-animate cv-animate-delay-2">
+                                <div class="cv-timeline-year">2020</div>
+                                <h4>Seri �oretime Geçi�Y</h4>
+                                <p>Yeni üretim tesisimizde S1 ve TS1 modellerini seri üretime aldık.</p>
+                            </div>
+                            <div class="cv-timeline-item cv-animate cv-animate-delay-3">
+                                <div class="cv-timeline-year">2022</div>
+                                <h4>WS1 Lansmanı</h4>
+                                <p>Amiral gemimiz WS1 modelini büyük bir etkinlikle tanıttık.</p>
+                            </div>
+                            <div class="cv-timeline-item cv-animate cv-animate-delay-4">
+                                <div class="cv-timeline-year">2024</div>
+                                <h4>Uluslararası Geni�Yleme</h4>
+                                <p>Avrupa pazarına giri�Y ve CR serisi ile ürün gamını geni�Ylettik.</p>
+                            </div>
+                            <div class="cv-timeline-item cv-animate cv-animate-delay-5">
+                                <div class="cv-timeline-year">2026</div>
+                                <h4>X1 PRO &amp; Gelecek</h4>
+                                <p>En geli�Ymi�Y modelimiz X1 PRO ile premium segmentte lider konuma ula�Ytık.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ==================== EKİBİMİZ ==================== -->
+                <section class="cv-section">
+                    <div class="cv-container">
+                        <div class="cv-animate" style="text-align:center;">
+                            <hr class="cv-gold-line centered"/>
+                            <h2 class="cv-section-title">Ekibimiz</h2>
+                            <p class="cv-section-subtitle centered">Tutkulu mühendisler ve tasarımcılardan olu�Yan kadromuz.</p>
+                        </div>
+
+                        <div class="cv-team-grid">
+                            <div class="cv-team-card cv-animate">
+                                <div class="cv-team-avatar">
+                                    <img src="/caravan_theme/static/src/img/team-1.jpg" alt="CEO" loading="lazy"/>
+                                </div>
+                                <h4>Ahmet Yılmaz</h4>
+                                <span class="cv-team-role">Kurucu &amp; CEO</span>
+                            </div>
+                            <div class="cv-team-card cv-animate cv-animate-delay-1">
+                                <div class="cv-team-avatar">
+                                    <img src="/caravan_theme/static/src/img/team-2.jpg" alt="CTO" loading="lazy"/>
+                                </div>
+                                <h4>Elif Kaya</h4>
+                                <span class="cv-team-role">CTO</span>
+                            </div>
+                            <div class="cv-team-card cv-animate cv-animate-delay-2">
+                                <div class="cv-team-avatar">
+                                    <img src="/caravan_theme/static/src/img/team-3.jpg" alt="Tasarım Direktörü" loading="lazy"/>
+                                </div>
+                                <h4>Mehmet Demir</h4>
+                                <span class="cv-team-role">Tasarım Direktörü</span>
+                            </div>
+                            <div class="cv-team-card cv-animate cv-animate-delay-3">
+                                <div class="cv-team-avatar">
+                                    <img src="/caravan_theme/static/src/img/team-4.jpg" alt="�oretim Müdürü" loading="lazy"/>
+                                </div>
+                                <h4>Ay�Ye �-ztürk</h4>
+                                <span class="cv-team-role">�oretim Müdürü</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ==================== �oRETİM ANLAYIŞI ==================== -->
+                <section class="cv-section cv-highlight-section">
+                    <div class="cv-container">
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;">
+                            <div class="cv-animate">
+                                <hr class="cv-gold-line"/>
+                                <h2 class="cv-section-title">�oretim <span class="cv-accent-text">Anlayı�Yı</span></h2>
+                                <p style="color:var(--cv-text-muted);font-size:1rem;line-height:1.8;margin-bottom:24px;">
+                                    Her Camppass karavanı, yüzlerce saatlik el eme�Yi ve mühendislik çalı�Ymasının ürünüdür.
+                                    �oretim sürecimizde en kaliteli malzemeleri kullanıyor, her detayı titizlikle kontrol ediyoruz.
+                                </p>
+                                <p style="color:var(--cv-text-muted);font-size:1rem;line-height:1.8;">
+                                    Ba�Yımsız �Yasi tasarımından güne�Y enerjisi sistemlerine, el yapımı ah�Yap iç mekandan
+                                    akıllı kontrol paneline kadar her bile�Yen yüksek standartlarda üretilir.
+                                </p>
+                            </div>
+                            <div class="cv-animate cv-animate-delay-2" style="aspect-ratio:4/3;background:var(--cv-bg-card);border:1px solid var(--cv-border);border-radius:var(--cv-radius-lg);overflow:hidden;">
+                                <img src="/caravan_theme/static/src/img/production.jpg" alt="�oretim" loading="lazy" style="width:100%;height:100%;object-fit:cover;"/>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ==================== REFERANSLAR ==================== -->
+                <section class="cv-section">
+                    <div class="cv-container">
+                        <div class="cv-animate" style="text-align:center;">
+                            <hr class="cv-gold-line centered"/>
+                            <h2 class="cv-section-title">Referanslar</h2>
+                        </div>
+
+                        <div class="cv-references cv-animate">
+                            <div class="cv-references-track">
+                                <!-- Placeholder logos (repeat for seamless scroll) -->
+                                <img src="/caravan_theme/static/src/img/ref-1.png" alt="Referans 1"/>
+                                <img src="/caravan_theme/static/src/img/ref-2.png" alt="Referans 2"/>
+                                <img src="/caravan_theme/static/src/img/ref-3.png" alt="Referans 3"/>
+                                <img src="/caravan_theme/static/src/img/ref-4.png" alt="Referans 4"/>
+                                <img src="/caravan_theme/static/src/img/ref-5.png" alt="Referans 5"/>
+                                <img src="/caravan_theme/static/src/img/ref-6.png" alt="Referans 6"/>
+                                <!-- Duplicate for seamless animation -->
+                                <img src="/caravan_theme/static/src/img/ref-1.png" alt="Referans 1"/>
+                                <img src="/caravan_theme/static/src/img/ref-2.png" alt="Referans 2"/>
+                                <img src="/caravan_theme/static/src/img/ref-3.png" alt="Referans 3"/>
+                                <img src="/caravan_theme/static/src/img/ref-4.png" alt="Referans 4"/>
+                                <img src="/caravan_theme/static/src/img/ref-5.png" alt="Referans 5"/>
+                                <img src="/caravan_theme/static/src/img/ref-6.png" alt="Referans 6"/>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <t t-call="caravan_theme.caravan_footer"/>
+            </div>
+        </t>
+    </template>
+
+    <record id="caravan_corporate_page" model="website.page">
+        <field name="name">Kurumsal</field>
+        <field name="url">/kurumsal</field>
+        <field name="is_published">True</field>
+        <field name="view_id" ref="caravan_corporate"/>
+        <field name="website_indexed">True</field>
+    </record>
+
+</odoo>

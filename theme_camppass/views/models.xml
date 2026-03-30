@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ============================================================
+         MODELS PAGE — All caravan models grid
+         ============================================================ -->
+    <template id="camppass_models" name="Camppass Models Page">
+        <t t-call="website.layout">
+            <t t-set="pageName" t-value="'models'"/>
+            <t t-set="title">Modeller — Camppass Premium Karavan</t>
+            <t t-set="head">
+                <meta name="description" content="Camppass karavan modelleri. WS1, TS1, S1, CR555, CR650, X1 PRO. Her ihtiyaca özel tasarım."/>
+            </t>
+            <div id="wrap" class="oe_structure caravan-page">
+
+                <t t-call="theme_camppass.camppass_header"/>
+
+                <!-- Breadcrumb -->
+                <section class="cv-breadcrumb">
+                    <div class="cv-container">
+                        <div class="cv-breadcrumb-nav">
+                            <a href="/">Anasayfa</a>
+                            <span class="separator">›</span>
+                            <span>Modeller</span>
+                        </div>
+                        <h1 class="cv-animate">Modeller</h1>
+                    </div>
+                </section>
+
+                <!-- Models Grid -->
+                <section class="cv-section">
+                    <div class="cv-container">
+                        <div class="cv-models-grid">
+
+                            <!-- WS1 -->
+                            <a href="/model/ws1" class="cv-model-card cv-animate" style="text-decoration:none;color:inherit;">
+                                <div class="cv-model-card-img">
+                                    <img src="/theme_camppass/static/src/img/model-cr555.webp" alt="WS1" loading="lazy"/>
+                                    <span class="cv-model-card-badge">Yeni</span>
+                                </div>
+                                <div class="cv-model-card-body">
+                                    <h3>WS1</h3>
+                                    <div class="cv-model-card-price">₺1.250.000'den başlayan</div>
+                                    <div class="cv-model-specs">
+                                        <span class="cv-spec-badge">800W</span>
+                                        <span class="cv-spec-badge">Lithium</span>
+                                        <span class="cv-spec-badge">245L</span>
+                                    </div>
+                                </div>
+                                <div class="cv-model-card-footer">
+                                    <span class="cv-btn cv-btn-gold">Detaylar</span>
+                                    <span class="cv-btn cv-btn-outline">Kirala</span>
+                                </div>
+                            </a>
+
+                            <!-- TS1 -->
+                            <a href="/model/ts1" class="cv-model-card cv-animate cv-animate-delay-1" style="text-decoration:none;color:inherit;">
+                                <div class="cv-model-card-img">
+                                    <img src="/theme_camppass/static/src/img/model-cr650.webp" alt="TS1" loading="lazy"/>
+                                    <span class="cv-model-card-badge">Popüler</span>
+                                </div>
+                                <div class="cv-model-card-body">
+                                    <h3>TS1</h3>
+                                    <div class="cv-model-card-price">₺980.000'den başlayan</div>
+                                    <div class="cv-model-specs">
+                                        <span class="cv-spec-badge">600W</span>
+                                        <span class="cv-spec-badge">Lithium</span>
+                                        <span class="cv-spec-badge">200L</span>
+                                    </div>
+                                </div>
+                                <div class="cv-model-card-footer">
+                                    <span class="cv-btn cv-btn-gold">Detaylar</span>
+                                    <span class="cv-btn cv-btn-outline">Kirala</span>
+                                </div>
+                            </a>
+
+                            <!-- S1 -->
+                            <a href="/model/s1" class="cv-model-card cv-animate cv-animate-delay-2" style="text-decoration:none;color:inherit;">
+                                <div class="cv-model-card-img">
+                                    <img src="/theme_camppass/static/src/img/model-cr455.webp" alt="S1" loading="lazy"/>
+                                </div>
+                                <div class="cv-model-card-body">
+                                    <h3>S1</h3>
+                                    <div class="cv-model-card-price">₺750.000'den başlayan</div>
+                                    <div class="cv-model-specs">
+                                        <span class="cv-spec-badge">400W</span>
+                                        <span class="cv-spec-badge">Lithium</span>
+                                        <span class="cv-spec-badge">160L</span>
+                                    </div>
+                                </div>
+                                <div class="cv-model-card-footer">
+                                    <span class="cv-btn cv-btn-gold">Detaylar</span>
+                                    <span class="cv-btn cv-btn-outline">Kirala</span>
+                                </div>
+                            </a>
+
+                            <!-- CR555 -->
+                            <a href="/model/cr555" class="cv-model-card cv-animate cv-animate-delay-3" style="text-decoration:none;color:inherit;">
+                                <div class="cv-model-card-img">
+                                    <img src="/theme_camppass/static/src/img/model-cr555.png" alt="CR555" loading="lazy"/>
+                                    <span class="cv-model-card-badge">Off-Road</span>
+                                </div>
+                                <div class="cv-model-card-body">
+                                    <h3>CR555</h3>
+                                    <div class="cv-model-card-price">₺1.450.000'den başlayan</div>
+                                    <div class="cv-model-specs">
+                                        <span class="cv-spec-badge">1000W</span>
+                                        <span class="cv-spec-badge">Lithium</span>
+                                        <span class="cv-spec-badge">300L</span>
+                                    </div>
+                                </div>
+                                <div class="cv-model-card-footer">
+                                    <span class="cv-btn cv-btn-gold">Detaylar</span>
+                                    <span class="cv-btn cv-btn-outline">Kirala</span>
+                                </div>
+                            </a>
+
+                            <!-- CR650 -->
+                            <a href="/model/cr650" class="cv-model-card cv-animate cv-animate-delay-4" style="text-decoration:none;color:inherit;">
+                                <div class="cv-model-card-img">
+                                    <img src="/theme_camppass/static/src/img/model-cr400.webp" alt="CR650" loading="lazy"/>
+                                    <span class="cv-model-card-badge">Aile</span>
+                                </div>
+                                <div class="cv-model-card-body">
+                                    <h3>CR650</h3>
+                                    <div class="cv-model-card-price">₺1.680.000'den başlayan</div>
+                                    <div class="cv-model-specs">
+                                        <span class="cv-spec-badge">1200W</span>
+                                        <span class="cv-spec-badge">Lithium</span>
+                                        <span class="cv-spec-badge">350L</span>
+                                    </div>
+                                </div>
+                                <div class="cv-model-card-footer">
+                                    <span class="cv-btn cv-btn-gold">Detaylar</span>
+                                    <span class="cv-btn cv-btn-outline">Kirala</span>
+                                </div>
+                            </a>
+
+                            <!-- X1 PRO -->
+                            <a href="/model/x1pro" class="cv-model-card cv-animate cv-animate-delay-5" style="text-decoration:none;color:inherit;">
+                                <div class="cv-model-card-img">
+                                    <img src="/theme_camppass/static/src/img/model-cr550.webp" alt="X1 PRO" loading="lazy"/>
+                                    <span class="cv-model-card-badge">Premium</span>
+                                </div>
+                                <div class="cv-model-card-body">
+                                    <h3>X1 PRO</h3>
+                                    <div class="cv-model-card-price">₺2.100.000'den başlayan</div>
+                                    <div class="cv-model-specs">
+                                        <span class="cv-spec-badge">1500W</span>
+                                        <span class="cv-spec-badge">Lithium</span>
+                                        <span class="cv-spec-badge">400L</span>
+                                    </div>
+                                </div>
+                                <div class="cv-model-card-footer">
+                                    <span class="cv-btn cv-btn-gold">Detaylar</span>
+                                    <span class="cv-btn cv-btn-outline">Kirala</span>
+                                </div>
+                            </a>
+
+                        </div>
+                    </div>
+                </section>
+
+                <!-- CTA Banner -->
+                <section class="cv-cta-banner">
+                    <div class="cv-container cv-animate">
+                        <h2>Hangisi Sizin İçin <span class="cv-accent-text">Doğru?</span></h2>
+                        <p>Uzman ekibimiz size en uygun Camppass karavanı seçmenizde yardımcı olsun.</p>
+                        <div class="cv-cta-buttons">
+                            <a href="/contact" class="cv-btn cv-btn-gold cv-btn-lg">Bize Ulaşın</a>
+                        </div>
+                    </div>
+                </section>
+
+                <t t-call="theme_camppass.camppass_footer"/>
+            </div>
+        </t>
+    </template>
+
+    <record id="camppass_models_page" model="website.page">
+        <field name="name">Modeller — Camppass</field>
+        <field name="url">/models</field>
+        <field name="is_published">True</field>
+        <field name="view_id" ref="camppass_models"/>
+        <field name="website_indexed">True</field>
+    </record>
+
+</odoo>

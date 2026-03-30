@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ============================================================
+         CONTACT / İLETİŞİM PAGE
+         ============================================================ -->
+    <template id="camppass_contact" name="Camppass Contact Page">
+        <t t-call="website.layout">
+            <t t-set="pageName" t-value="'contact'"/>
+            <t t-set="title">İletişim — Camppass</t>
+            <t t-set="head">
+                <meta name="description" content="Camppass iletişim bilgileri. Adres, telefon, e-posta ve iletişim formu."/>
+            </t>
+            <div id="wrap" class="oe_structure caravan-page">
+
+                <t t-call="theme_camppass.camppass_header"/>
+
+                <!-- Breadcrumb -->
+                <section class="cv-breadcrumb">
+                    <div class="cv-container">
+                        <div class="cv-breadcrumb-nav">
+                            <a href="/">Anasayfa</a>
+                            <span class="separator">›</span>
+                            <span>İletişim</span>
+                        </div>
+                        <h1 class="cv-animate">İletişim</h1>
+                    </div>
+                </section>
+
+                <!-- Contact Grid -->
+                <section class="cv-section">
+                    <div class="cv-container">
+                        <div class="cv-contact-grid">
+
+                            <!-- Left: Info Cards -->
+                            <div>
+                                <div class="cv-contact-info-card cv-animate">
+                                    <div class="cv-contact-icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                    </div>
+                                    <div>
+                                        <h4>Adres</h4>
+                                        <p>Maslak Mah. Büyükdere Cad. No:123<br/>Sarıyer / İstanbul, Türkiye</p>
+                                    </div>
+                                </div>
+
+                                <div class="cv-contact-info-card cv-animate cv-animate-delay-1">
+                                    <div class="cv-contact-icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                    </div>
+                                    <div>
+                                        <h4>Telefon</h4>
+                                        <p>+90 212 123 45 67<br/>+90 533 987 65 43</p>
+                                    </div>
+                                </div>
+
+                                <div class="cv-contact-info-card cv-animate cv-animate-delay-2">
+                                    <div class="cv-contact-icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                                    </div>
+                                    <div>
+                                        <h4>E-posta</h4>
+                                        <p>info@camppass.com<br/>destek@camppass.com</p>
+                                    </div>
+                                </div>
+
+                                <div class="cv-contact-info-card cv-animate cv-animate-delay-3">
+                                    <div class="cv-contact-icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                    </div>
+                                    <div>
+                                        <h4>Çalışma Saatleri</h4>
+                                        <p>Pazartesi - Cumartesi: 09:00 - 18:00<br/>Pazar: Kapalı</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Right: Contact Form -->
+                            <div class="cv-form-section cv-animate cv-animate-delay-1">
+                                <h3 style="font-size:1.5rem;margin-bottom:8px;">Bize Yazın</h3>
+                                <p style="color:var(--cv-text-muted);margin-bottom:28px;font-size:0.95rem;">
+                                    Sorularınız, önerileriniz veya talepleriniz için formu doldurun.
+                                </p>
+
+                                <form action="/website/form/" method="post">
+                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                    <div class="cv-form-grid">
+                                        <div class="cv-form-group">
+                                            <label for="ct_name">Ad Soyad</label>
+                                            <input type="text" id="ct_name" name="name" placeholder="Adınız Soyadınız" required="required"/>
+                                        </div>
+                                        <div class="cv-form-group">
+                                            <label for="ct_email">E-posta</label>
+                                            <input type="email" id="ct_email" name="email" placeholder="ornek@email.com" required="required"/>
+                                        </div>
+                                        <div class="cv-form-group">
+                                            <label for="ct_phone">Telefon</label>
+                                            <input type="tel" id="ct_phone" name="phone" placeholder="+90 5XX XXX XX XX"/>
+                                        </div>
+                                        <div class="cv-form-group">
+                                            <label for="ct_subject">Konu</label>
+                                            <select id="ct_subject" name="subject" required="required">
+                                                <option value="">Seçiniz</option>
+                                                <option value="bilgi">Genel Bilgi</option>
+                                                <option value="satis">Satış</option>
+                                                <option value="kiralama">Kiralama</option>
+                                                <option value="servis">Servis</option>
+                                                <option value="diger">Diğer</option>
+                                            </select>
+                                        </div>
+                                        <div class="cv-form-group full-width">
+                                            <label for="ct_message">Mesaj</label>
+                                            <textarea id="ct_message" name="message" placeholder="Mesajınızı yazın..." required="required"></textarea>
+                                        </div>
+                                        <div class="cv-form-group full-width" style="text-align:center;">
+                                            <button type="submit" class="cv-btn cv-btn-gold cv-btn-lg" style="width:100%;">Gönder</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Map -->
+                <section class="cv-section" style="padding-top:0;">
+                    <div class="cv-container">
+                        <div class="cv-map-wrapper cv-animate">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3007.5416447699746!2d29.01839!3d41.10816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab5e3a2d2f04b%3A0x2c5b3e3e3b3b3b3b!2sMaslak%2C+Sar%C4%B1yer%2F%C4%B0stanbul!5e0!3m2!1str!2str!4v1700000000000!5m2!1str!2str"
+                                allowfullscreen=""
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"
+                                title="Konum Haritası">
+                            </iframe>
+                        </div>
+                    </div>
+                </section>
+
+                <t t-call="theme_camppass.camppass_footer"/>
+            </div>
+        </t>
+    </template>
+
+    <record id="camppass_contact_page" model="website.page">
+        <field name="name">İletişim — Camppass</field>
+        <field name="url">/contact</field>
+        <field name="is_published">True</field>
+        <field name="view_id" ref="camppass_contact"/>
+        <field name="website_indexed">True</field>
+    </record>
+
+</odoo>

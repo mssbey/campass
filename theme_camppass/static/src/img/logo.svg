@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 50" fill="none">
+  <!-- Compass Star Icon -->
+  <g transform="translate(4,2)">
+    <!-- Outer rays -->
+    <polygon points="23,0 26,17 23,8 20,17" fill="#D8B15A"/>
+    <polygon points="46,23 29,20 38,23 29,26" fill="#D8B15A"/>
+    <polygon points="23,46 20,29 23,38 26,29" fill="#D8B15A"/>
+    <polygon points="0,23 17,26 8,23 17,20" fill="#D8B15A"/>
+    <!-- Inner star -->
+    <polygon points="23,5 27,19 35,11 27,19 41,15 27,19 35,27 27,27 41,31 27,27 35,35 27,27 23,41 19,27 11,35 19,27 5,31 19,27 11,19 19,19 5,15 19,19 11,11 19,19" fill="#E8A917" opacity="0.6"/>
+    <polygon points="23,7 27,20 36,10" fill="#D8B15A"/>
+    <polygon points="23,7 19,20 10,10" fill="#D8B15A"/>
+    <polygon points="23,39 27,26 36,36" fill="#D8B15A"/>
+    <polygon points="23,39 19,26 10,36" fill="#D8B15A"/>
+    <polygon points="7,23 20,19 10,10" fill="#E8C252"/>
+    <polygon points="7,23 20,27 10,36" fill="#E8C252"/>
+    <polygon points="39,23 26,19 36,10" fill="#E8C252"/>
+    <polygon points="39,23 26,27 36,36" fill="#E8C252"/>
+    <!-- Center circle -->
+    <circle cx="23" cy="23" r="4" fill="#D8B15A"/>
+    <circle cx="23" cy="23" r="2" fill="#07080B"/>
+  </g>
+  <!-- KARA text -->
+  <text x="60" y="34" font-family="Inter, Arial, sans-serif" font-weight="800" font-size="26" fill="#FFFFFF" letter-spacing="2">KARA</text>
+  <!-- VAN text in gold -->
+  <text x="152" y="34" font-family="Inter, Arial, sans-serif" font-weight="800" font-size="26" fill="#D8B15A" letter-spacing="2">VAN</text>
+</svg>

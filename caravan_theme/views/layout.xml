@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ============================================================
+         BASE LAYOUT TEMPLATE — wraps all caravan pages
+         ============================================================ -->
+    <template id="caravan_layout" name="Caravan Base Layout" inherit_id="website.layout" primary="True">
+        <xpath expr="//div[@id='wrapwrap']" position="attributes">
+            <attribute name="class" add="caravan-page" separator=" "/>
+        </xpath>
+    </template>
+
+</odoo>

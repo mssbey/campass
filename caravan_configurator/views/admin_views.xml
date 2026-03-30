@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- ============================================================
+         CARAVAN MODEL — Tree & Form
+         ============================================================ -->
+    <record id="view_caravan_model_tree" model="ir.ui.view">
+        <field name="name">caravan.model.tree</field>
+        <field name="model">caravan.model</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="base_price" widget="monetary"/>
+                <field name="solar_power"/>
+                <field name="capacity"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_caravan_model_form" model="ir.ui.view">
+        <field name="name">caravan.model.form</field>
+        <field name="model">caravan.model</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" placeholder="Model Name"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="base_price"/>
+                            <field name="sequence"/>
+                            <field name="active"/>
+                        </group>
+                        <group>
+                            <field name="glb_file"/>
+                            <field name="image" widget="image"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Specifications">
+                            <group>
+                                <group>
+                                    <field name="solar_power"/>
+                                    <field name="water_capacity"/>
+                                    <field name="suspension"/>
+                                    <field name="max_incline"/>
+                                </group>
+                                <group>
+                                    <field name="length"/>
+                                    <field name="width"/>
+                                    <field name="weight"/>
+                                    <field name="capacity"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Options">
+                            <field name="option_ids" widget="many2many_tags"/>
+                        </page>
+                        <page string="Configurations">
+                            <field name="configuration_ids"/>
+                        </page>
+                    </notebook>
+                    <field name="description" placeholder="Description..."/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_caravan_model" model="ir.actions.act_window">
+        <field name="name">Caravan Models</field>
+        <field name="res_model">caravan.model</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- ============================================================
+         CARAVAN OPTION — Tree & Form
+         ============================================================ -->
+    <record id="view_caravan_option_tree" model="ir.ui.view">
+        <field name="name">caravan.option.tree</field>
+        <field name="model">caravan.option</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="category"/>
+                <field name="price" widget="monetary"/>
+                <field name="color_hex"/>
+                <field name="is_default"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_caravan_option_form" model="ir.ui.view">
+        <field name="name">caravan.option.form</field>
+        <field name="model">caravan.option</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="code"/>
+                            <field name="category"/>
+                            <field name="price"/>
+                        </group>
+                        <group>
+                            <field name="color_hex"/>
+                            <field name="mesh_name"/>
+                            <field name="is_default"/>
+                            <field name="sequence"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                    <field name="description" placeholder="Description..."/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_caravan_option" model="ir.actions.act_window">
+        <field name="name">Configuration Options</field>
+        <field name="res_model">caravan.option</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- ============================================================
+         CARAVAN CONFIGURATION — Tree & Form
+         ============================================================ -->
+    <record id="view_caravan_configuration_tree" model="ir.ui.view">
+        <field name="name">caravan.configuration.tree</field>
+        <field name="model">caravan.configuration</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="model_id"/>
+                <field name="base_price" widget="monetary"/>
+                <field name="options_price" widget="monetary"/>
+                <field name="total_price" widget="monetary"/>
+                <field name="create_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_caravan_configuration_form" model="ir.ui.view">
+        <field name="name">caravan.configuration.form</field>
+        <field name="model">caravan.configuration</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="model_id"/>
+                            <field name="session_id"/>
+                            <field name="custom_color"/>
+                        </group>
+                        <group>
+                            <field name="base_price" widget="monetary"/>
+                            <field name="options_price" widget="monetary"/>
+                            <field name="total_price" widget="monetary"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Options">
+                            <field name="option_ids" widget="many2many_tags"/>
+                        </page>
+                        <page string="Timeline (JSON)">
+                            <field name="timeline_json" widget="text"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_caravan_configuration" model="ir.actions.act_window">
+        <field name="name">Configurations</field>
+        <field name="res_model">caravan.configuration</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- ============================================================
+         CARAVAN ORDER — Tree & Form
+         ============================================================ -->
+    <record id="view_caravan_order_tree" model="ir.ui.view">
+        <field name="name">caravan.order.tree</field>
+        <field name="model">caravan.order</field>
+        <field name="arch" type="xml">
+            <tree decoration-success="state == 'delivered'" decoration-info="state == 'confirmed'" decoration-warning="state == 'production'" decoration-danger="state == 'cancelled'">
+                <field name="name"/>
+                <field name="customer_name"/>
+                <field name="model_id"/>
+                <field name="total_price" widget="monetary"/>
+                <field name="state" widget="badge"/>
+                <field name="create_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_caravan_order_form" model="ir.ui.view">
+        <field name="name">caravan.order.form</field>
+        <field name="model">caravan.order</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_confirm" type="object" string="Confirm" states="draft" class="oe_highlight"/>
+                    <button name="action_production" type="object" string="Start Production" states="confirmed" class="oe_highlight"/>
+                    <button name="action_ready" type="object" string="Mark Ready" states="production" class="oe_highlight"/>
+                    <button name="action_deliver" type="object" string="Deliver" states="ready" class="oe_highlight"/>
+                    <button name="action_cancel" type="object" string="Cancel" states="draft,confirmed,production"/>
+                    <button name="action_draft" type="object" string="Reset to Draft" states="cancelled"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,production,ready,delivered"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name"/></h1>
+                    </div>
+                    <group>
+                        <group string="Customer">
+                            <field name="customer_name"/>
+                            <field name="customer_phone"/>
+                            <field name="customer_email"/>
+                        </group>
+                        <group string="Configuration">
+                            <field name="configuration_id"/>
+                            <field name="model_id"/>
+                            <field name="total_price" widget="monetary"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Notes">
+                            <field name="customer_notes"/>
+                        </page>
+                        <page string="Config Summary">
+                            <field name="config_summary"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids"/>
+                    <field name="activity_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_caravan_order" model="ir.actions.act_window">
+        <field name="name">Orders</field>
+        <field name="res_model">caravan.order</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ============================================================
+         NEWS / HABERLER PAGE �?" Blog cards
+         ============================================================ -->
+    <template id="caravan_news" name="Caravan News Page">
+        <t t-call="website.layout">
+            <t t-set="pageName" t-value="'news'"/>
+            <div id="wrap" class="oe_structure caravan-page">
+
+                <t t-call="caravan_theme.caravan_header"/>
+
+                <!-- Breadcrumb -->
+                <section class="cv-breadcrumb">
+                    <div class="cv-container">
+                        <div class="cv-breadcrumb-nav">
+                            <a href="/">Anasayfa</a>
+                            <span class="separator">�?�</span>
+                            <span>Haberler</span>
+                        </div>
+                        <h1 class="cv-animate">Haberler</h1>
+                    </div>
+                </section>
+
+                <!-- News Grid -->
+                <section class="cv-section">
+                    <div class="cv-container">
+                        <div class="cv-news-grid">
+
+                            <!-- Article 1 -->
+                            <div class="cv-news-card cv-animate">
+                                <div class="cv-news-card-img">
+                                    <img src="/caravan_theme/static/src/img/news-1.jpg" alt="CR555 Haber" loading="lazy"/>
+                                </div>
+                                <div class="cv-news-card-body">
+                                    <div class="cv-news-card-date">15 Mart 2026</div>
+                                    <h3>CampPass CR555: Şehir Maceralarını Unutturacak Off-Road Karavan</h3>
+                                    <p>CR555 seyahat karavanı, kompakt yapısı ve off-road yetenekleriyle do�Ya tutkunları için tasarlandı. Ba�Yımsız süspansiyon sistemi ve güçlü enerji altyapısı ile her arazide üstün performans sunuyor.</p>
+                                    <a href="#" class="cv-read-more">
+                                        Devamını Oku
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Article 2 -->
+                            <div class="cv-news-card cv-animate cv-animate-delay-1">
+                                <div class="cv-news-card-img">
+                                    <img src="/caravan_theme/static/src/img/news-2.jpg" alt="CR650 Haber" loading="lazy"/>
+                                </div>
+                                <div class="cv-news-card-body">
+                                    <div class="cv-news-card-date">28 Şubat 2026</div>
+                                    <h3>CR650: Dört Ki�Yilik Aileler İçin En Büyük ve Ki�Yiselle�Ytirilebilir Karavan</h3>
+                                    <p>CampPass'ın en geni�Y modeli CR650, dört ki�Yilik aileler için tasarlanmı�Y geni�Y ya�Yam alanıyla öne çıkıyor. Tamamen ki�Yiselle�Ytirilebilir iç mekan seçenekleri sunuyor.</p>
+                                    <a href="#" class="cv-read-more">
+                                        Devamını Oku
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Article 3 -->
+                            <div class="cv-news-card cv-animate cv-animate-delay-2">
+                                <div class="cv-news-card-img">
+                                    <img src="/caravan_theme/static/src/img/news-3.jpg" alt="X1 PRO Haber" loading="lazy"/>
+                                </div>
+                                <div class="cv-news-card-body">
+                                    <div class="cv-news-card-date">10 Ocak 2026</div>
+                                    <h3>X1 PRO Tanıtıldı: Premium Segmentin Yeni Lideri</h3>
+                                    <p>En geli�Ymi�Y modelimiz X1 PRO, 1500W güne�Y paneli, 400L su kapasitesi ve tam akıllı ev sistemi ile lüks karavan deneyimini yeniden tanımlıyor.</p>
+                                    <a href="#" class="cv-read-more">
+                                        Devamını Oku
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Article 4 -->
+                            <div class="cv-news-card cv-animate cv-animate-delay-3">
+                                <div class="cv-news-card-img">
+                                    <img src="/caravan_theme/static/src/img/news-4.jpg" alt="Fuar Haberi" loading="lazy"/>
+                                </div>
+                                <div class="cv-news-card-body">
+                                    <div class="cv-news-card-date">5 Aralık 2025</div>
+                                    <h3>Düsseldorf Caravan Salon 2025'te Büyük İlgi</h3>
+                                    <p>Düsseldorf'ta düzenlenen Caravan Salon fuarında WS1 ve CR serisi modeller uluslararası basında büyük yankı uyandırdı.</p>
+                                    <a href="#" class="cv-read-more">
+                                        Devamını Oku
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Article 5 -->
+                            <div class="cv-news-card cv-animate cv-animate-delay-4">
+                                <div class="cv-news-card-img">
+                                    <img src="/caravan_theme/static/src/img/news-5.jpg" alt="Fabrika Haberi" loading="lazy"/>
+                                </div>
+                                <div class="cv-news-card-body">
+                                    <div class="cv-news-card-date">18 Kasım 2025</div>
+                                    <h3>Yeni �oretim Tesisi Faaliyete Geçti</h3>
+                                    <p>10.000 m² kapalı alana sahip yeni üretim tesisimiz ile yıllık üretim kapasitemizi üç katına çıkardık.</p>
+                                    <a href="#" class="cv-read-more">
+                                        Devamını Oku
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Article 6 -->
+                            <div class="cv-news-card cv-animate cv-animate-delay-5">
+                                <div class="cv-news-card-img">
+                                    <img src="/caravan_theme/static/src/img/news-6.jpg" alt="�-dül Haberi" loading="lazy"/>
+                                </div>
+                                <div class="cv-news-card-body">
+                                    <div class="cv-news-card-date">2 Ekim 2025</div>
+                                    <h3>WS1, Yılın En İyi Off-Road Karavanı �-dülünü Kazandı</h3>
+                                    <p>Ba�Yımsız jüri tarafından de�Yerlendirilen WS1 modelimiz, yılın en iyi off-road karavanı seçildi.</p>
+                                    <a href="#" class="cv-read-more">
+                                        Devamını Oku
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+
+                <t t-call="caravan_theme.caravan_footer"/>
+            </div>
+        </t>
+    </template>
+
+    <record id="caravan_news_page" model="website.page">
+        <field name="name">Haberler</field>
+        <field name="url">/haberler</field>
+        <field name="is_published">True</field>
+        <field name="view_id" ref="caravan_news"/>
+        <field name="website_indexed">True</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,1650 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Camppass Premium — Local Preview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="static/src/css/style.css"/>
+    <link rel="stylesheet" href="static/src/css/models-cinematic.css"/>
+    <link rel="stylesheet" href="static/src/css/corporate-cinematic.css"/>
+    <link rel="stylesheet" href="static/src/css/contact-cinematic.css"/>
+    <style>
+        /* Preview-only nav for page switching */
+        .preview-nav{position:fixed;bottom:0;left:0;right:0;z-index:99999;background:rgba(15,17,21,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid rgba(255,255,255,.08);display:flex;gap:4px;padding:8px 12px;overflow-x:auto;font-family:'Inter',sans-serif;}
+        .preview-nav button{background:rgba(255,255,255,.06);color:#aaa;border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:7px 14px;font-size:.78rem;font-weight:600;cursor:pointer;white-space:nowrap;transition:all .25s;}
+        .preview-nav button:hover,.preview-nav button.active{background:rgba(245,166,35,.15);color:#F5A623;border-color:rgba(245,166,35,.35);}
+        .preview-page{display:none;}
+        .preview-page.active{display:block;}
+        /* placeholder images */
+        img[src*="caravan_theme"]{background:linear-gradient(135deg,#14161C 0%,#1A1D25 100%);display:block;min-height:180px;object-fit:cover;}
+        video{background:#0a0b0e;}
+        body{margin:0;padding:0;}
+
+        /* ============================================================
+           HERO CINEMATIC TEXT REVEAL
+           ============================================================ */
+        #heroContent {
+            transition: opacity 0.9s ease-in-out,
+                        filter 0.9s ease-in-out,
+                        transform 0.9s ease-in-out;
+        }
+        #heroContent.hero-playing {
+            opacity: 0.28;
+            filter: blur(5px) brightness(0.6) saturate(0.45);
+            transform: scale(0.982);
+        }
+        #heroContent.hero-revealed {
+            opacity: 1;
+            filter: blur(0px) brightness(1) saturate(1)
+                    drop-shadow(0 0 28px rgba(245,166,35,0.35));
+            transform: scale(1);
+        }
+        /* Overlay: darker during playback, lighter after reveal */
+        #heroOverlay {
+            transition: background 0.9s ease-in-out;
+        }
+        #heroOverlay.hero-playing {
+            background: linear-gradient(180deg,
+                rgba(7,8,11,0.50) 0%,
+                rgba(7,8,11,0.72) 55%,
+                rgba(7,8,11,1) 100%);
+        }
+        #heroOverlay.hero-revealed {
+            background: linear-gradient(180deg,
+                rgba(7,8,11,0.12) 0%,
+                rgba(7,8,11,0.30) 48%,
+                rgba(7,8,11,0.82) 84%,
+                rgba(7,8,11,1) 100%);
+        }
+    </style>
+</head>
+<body class="caravan-page" style="padding-bottom:52px;">
+
+<!-- ============ PREVIEW PAGE SWITCHER ============ -->
+<div class="preview-nav" id="previewNav">
+    <button class="active" data-page="home">Anasayfa</button>
+    <button data-page="models">Modeller</button>
+    <button data-page="detail">Model Detay</button>
+    <button data-page="service">Servis</button>
+    <button data-page="corporate">Kurumsal</button>
+    <button data-page="news">Haberler</button>
+    <button data-page="faq">SSS</button>
+    <button data-page="contact">İletişim</button>
+</div>
+
+<!-- ============================================================
+     HEADER (shared)
+     ============================================================ -->
+<header class="cv-header" id="cvHeader">
+    <div class="cv-header-inner">
+        <a href="#" class="cv-logo" onclick="return false;">
+            <img src="static/src/img/camppass-logo.webp" alt="Camppass" height="38"/>
+        </a>
+        <ul class="cv-nav">
+            <li class="cv-nav-dropdown">
+                <a href="#" data-go="models" class="cv-nav-dropdown-trigger">Modeller <svg class="cv-nav-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a>
+                <ul class="cv-nav-dropdown-menu">
+                    <li><a href="#" data-go="detail" data-detail-model="cr650">CR650</a></li>
+                    <li><a href="#" data-go="detail" data-detail-model="cr550i">CR550i</a></li>
+                    <li><a href="#" data-go="detail" data-detail-model="cr555">CR555</a></li>
+                    <li><a href="#" data-go="detail" data-detail-model="cr400j">CR400 Journey</a></li>
+                    <li><a href="#" data-go="detail" data-detail-model="cr400">CR400</a></li>
+                    <li><a href="#" data-go="detail" data-detail-model="cr455">CR455</a></li>
+                    <li><a href="#" data-go="detail" data-detail-model="cr550">CR550</a></li>
+                    <li class="cv-nav-dropdown-divider"></li>
+                    <li><a href="#" data-go="models" class="cv-nav-dropdown-all">Stoktaki Modeller →</a></li>
+                </ul>
+            </li>
+            <li><a href="#" data-go="service">Servis</a></li>
+            <li><a href="#" data-go="corporate">Kurumsal</a></li>
+            <li><a href="#" data-go="news">Haberler</a></li>
+            <li><a href="#" data-go="contact">İletişim</a></li>
+        </ul>
+        <div class="cv-header-cta">
+            <a href="#" class="cv-btn cv-btn-gold" data-go="models">Teklif Al</a>
+            <a href="#" class="cv-btn cv-btn-outline" data-go="contact">Kirala</a>
+        </div>
+        <button class="cv-hamburger" aria-label="Menü" id="cvHamburger">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<div class="cv-mobile-menu" id="cvMobileMenu">
+    <button class="cv-mobile-close" id="cvMobileClose" aria-label="Kapat">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <nav class="cv-mobile-nav">
+        <a href="#" class="cv-mob-link" data-go="home">Anasayfa</a>
+
+        <!-- Modeller accordion -->
+        <div class="cv-mob-accordion">
+            <button class="cv-mob-accordion-trigger" id="cvMobModelsTrigger" type="button">
+                Modeller
+                <svg class="cv-mob-acc-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="cv-mob-accordion-body" id="cvMobModelsBody">
+                <a href="#" class="cv-mob-sublink" data-go="detail" data-detail-model="cr650">CR650</a>
+                <a href="#" class="cv-mob-sublink" data-go="detail" data-detail-model="cr550i">CR550i</a>
+                <a href="#" class="cv-mob-sublink" data-go="detail" data-detail-model="cr555">CR555</a>
+                <a href="#" class="cv-mob-sublink" data-go="detail" data-detail-model="cr400j">CR400 Journey</a>
+                <a href="#" class="cv-mob-sublink" data-go="detail" data-detail-model="cr400">CR400</a>
+                <a href="#" class="cv-mob-sublink" data-go="detail" data-detail-model="cr455">CR455</a>
+                <a href="#" class="cv-mob-sublink" data-go="detail" data-detail-model="cr550">CR550</a>
+                <a href="#" class="cv-mob-sublink cv-mob-sublink-all" data-go="models">Stoktaki Modeller →</a>
+            </div>
+        </div>
+
+        <a href="#" class="cv-mob-link" data-go="service">Servis</a>
+        <a href="#" class="cv-mob-link" data-go="corporate">Kurumsal</a>
+        <a href="#" class="cv-mob-link" data-go="news">Haberler</a>
+        <a href="#" class="cv-mob-link" data-go="contact">İletişim</a>
+    </nav>
+    <div class="cv-mobile-cta">
+        <a href="#" class="cv-btn cv-btn-gold" data-go="models">Teklif Al</a>
+        <a href="#" class="cv-btn cv-btn-outline" data-go="contact">Kirala</a>
+    </div>
+</div>
+
+<!-- ================================================================
+     PAGE: HOME
+     ================================================================ -->
+<div class="preview-page active" id="page-home">
+
+    <!-- HERO -->
+    <section class="cv-hero">
+        <video id="heroVideo" class="cv-hero-video" autoplay muted playsinline preload="auto">
+            <source src="static/src/video/hero.mp4" type="video/mp4"/>
+        </video>
+        <div id="heroOverlay" class="cv-hero-overlay hero-playing"></div>
+        <div id="heroContent" class="cv-hero-content hero-playing">
+            <div class="cv-hero-hud cv-animate">
+                <div class="cv-hud-item"><span>Eğim:</span><span class="cv-hud-value">35°</span></div>
+                <div class="cv-hud-item"><span>Süspansiyon:</span><span class="cv-hud-value">280mm</span></div>
+                <div class="cv-hud-item"><span>Bağımsız Şasi</span></div>
+            </div>
+            <h1 class="cv-hero-title cv-animate cv-animate-delay-1">
+                Özgürlük bir seçenek değil,<br/><span class="highlight">mühendisliktir.</span>
+            </h1>
+            <p class="cv-hero-subtitle cv-animate cv-animate-delay-2">Her koşulda, her yolda. Camppass mühendislik harikası karavan serisi.</p>
+            <div class="cv-animate cv-animate-delay-3">
+                <a href="#" class="cv-btn cv-btn-gold cv-btn-lg" data-go="models">
+                    Modelleri Keşfet
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="cv-hero-scroll"><span>Keşfet</span><div class="cv-scroll-line"></div></div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="cv-features-strip">
+        <div class="cv-feature-item cv-animate">
+            <div class="cv-feature-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <h4>Zırhlı Şasi</h4><p>Bağımsız süspansiyon sistemi ile maksimum dayanıklılık</p>
+        </div>
+        <div class="cv-feature-item cv-animate cv-animate-delay-1">
+            <div class="cv-feature-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+            <h4>800W Güneş Paneli</h4><p>Tamamen off-grid yaşam için yeterli enerji kapasitesi</p>
+        </div>
+        <div class="cv-feature-item cv-animate cv-animate-delay-2">
+            <div class="cv-feature-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="6" width="22" height="12" rx="2" ry="2"/><line x1="23" y1="13" x2="23" y2="11"/></svg></div>
+            <h4>Lityum Batarya</h4><p>Uzun ömürlü lityum iyon enerji depolama sistemi</p>
+        </div>
+        <div class="cv-feature-item cv-animate cv-animate-delay-3">
+            <div class="cv-feature-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+            <h4>Akıllı Kontrol</h4><p>Mobil uygulama ile tüm sistemleri kontrol edin</p>
+        </div>
+    </section>
+
+    <!-- FEATURED MODELS -->
+    <section class="cv-section">
+        <div class="cv-container">
+            <div class="cv-animate" style="text-align:center;">
+                <hr class="cv-gold-line centered"/>
+                <h2 class="cv-section-title">Öne Çıkan <span class="cv-accent-text">Modeller</span></h2>
+                <p class="cv-section-subtitle centered">Her ihtiyaca özel tasarlanmış, mühendislik harikası Camppass karavan serimiz.</p>
+            </div>
+            <div class="cv-models-grid">
+                <a href="#" class="cv-model-card cv-animate cv-animate-delay-1" data-go="models" style="text-decoration:none;color:inherit;">
+                    <div class="cv-model-card-img"><img src="static/src/img/model-cr550i.png" alt="CR550i"/><span class="cv-model-card-badge">2 Kişi</span></div>
+                    <div class="cv-model-card-body">
+                        <h3>CR550i</h3>
+                        <div class="cv-model-card-price">33.980 €'den başlayan</div>
+                        <div class="cv-model-specs">
+                            <span class="cv-spec-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> 1.000 kg</span>
+                            <span class="cv-spec-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="22" height="12" rx="2" ry="2"/><line x1="23" y1="13" x2="23" y2="11"/></svg> 15 m³</span>
+                            <span class="cv-spec-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> İç Mutfak</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="cv-model-card cv-animate cv-animate-delay-2" data-go="models" style="text-decoration:none;color:inherit;">
+                    <div class="cv-model-card-img"><img src="static/src/img/model-cr555.png" alt="CR555"/><span class="cv-model-card-badge">Popüler</span></div>
+                    <div class="cv-model-card-body">
+                        <h3>CR555</h3>
+                        <div class="cv-model-card-price">38.900 €'den başlayan</div>
+                        <div class="cv-model-specs">
+                            <span class="cv-spec-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> 1.100 kg</span>
+                            <span class="cv-spec-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="22" height="12" rx="2" ry="2"/><line x1="23" y1="13" x2="23" y2="11"/></svg> 20 m³</span>
+                            <span class="cv-spec-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 4 Kişi</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="cv-model-card cv-animate cv-animate-delay-3" data-go="models" style="text-decoration:none;color:inherit;">
+                    <div class="cv-model-card-img"><img src="static/src/img/model-cr650.webp" alt="CR650"/><span class="cv-model-card-badge">Premium</span></div>
+                    <div class="cv-model-card-body">
+                        <h3>CR650</h3>
+                        <div class="cv-model-card-price">41.900 €'den başlayan</div>
+                        <div class="cv-model-specs">
+                            <span class="cv-spec-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> 1.150 kg</span>
+                            <span class="cv-spec-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="22" height="12" rx="2" ry="2"/><line x1="23" y1="13" x2="23" y2="11"/></svg> 17.5 m³</span>
+                            <span class="cv-spec-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 4 Kişi</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div style="text-align:center;margin-top:56px;" class="cv-animate">
+                <a href="#" class="cv-btn cv-btn-outline cv-btn-lg" data-go="models">Tüm Modelleri Gör <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cv-cta-banner">
+        <div class="cv-cta-split">
+            <div class="cv-cta-left cv-animate">
+                <h2>Hayalinizdeki Camppass Karavanı <span class="cv-accent-text">Konfigüre Edin</span></h2>
+                <p>İhtiyaçlarınıza göre Camppass karavanınızı özelleştirin. Size özel çözümler sunuyoruz.</p>
+                <div class="cv-cta-buttons">
+                    <a href="#" class="cv-btn cv-btn-gold cv-btn-lg" data-go="models">Teklif Al</a>
+                    <a href="#" class="cv-btn cv-btn-outline cv-btn-lg" data-go="contact">Kirala</a>
+                </div>
+            </div>
+            <div class="cv-cta-right">
+                <img src="static/src/img/banner2.webp" alt="Camppass Karavan" class="cv-cta-img"/>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- ================================================================
+     PAGE: MODELS — CINEMATIC SCROLL EXPERIENCE
+     ================================================================ -->
+<div class="preview-page" id="page-models">
+
+    <!-- ===== SECTION 1: IMMERSIVE ENTRY ===== -->
+    <section class="mx-entry" id="mxEntry">
+        <canvas class="mx-particles" id="mxParticles"></canvas>
+        <div class="mx-entry-content">
+            <div class="mx-entry-line mx-entry-l1">Bir Camppass karavan seçmiyorsun.</div>
+            <div class="mx-entry-line mx-entry-l2">Bir yaşam tarzı <span class="cv-accent-text">seçiyorsun.</span></div>
+        </div>
+        <div class="mx-scroll-hint" id="mxScrollHint">
+            <span>Keşfet</span>
+            <svg class="mx-scroll-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="mx-light-ray mx-ray-1"></div>
+        <div class="mx-light-ray mx-ray-2"></div>
+    </section>
+
+    <!-- ===== SECTION 2: CINEMATIC MODEL SCENES ===== -->
+    <section class="mx-scenes" id="mxScenes">
+        <!-- Model counter -->
+        <div class="mx-model-counter" id="mxCounter"><span class="mx-counter-current">01</span> / <span class="mx-counter-total">07</span></div>
+
+        <!-- Progress bar -->
+        <div class="mx-progress"><div class="mx-progress-bar" id="mxProgressBar"></div></div>
+
+        <!-- Scene 1: CR400 Journey -->
+        <div class="mx-scene active" data-model="cr400j" data-bg="static/src/img/model-cr400j.png" data-detail-model="cr400j">
+            <div class="mx-scene-bg"></div>
+            <div class="mx-scene-inner">
+                <div class="mx-scene-info">
+                    <span class="mx-scene-badge">Kompakt</span>
+                    <h2 class="mx-scene-name">CR400 Journey</h2>
+                    <div class="mx-scene-tagline">Kompakt, hafif, özgür keşif</div>
+                    <div class="mx-scene-price">12.900 €<span>'den başlayan</span></div>
+                    <div class="mx-scene-cta">
+                        <a href="#" class="cv-btn cv-btn-gold" data-go="detail">Detayları Keşfet</a>
+                        <a href="#" class="cv-btn cv-btn-outline" data-go="contact">Teklif Al</a>
+                    </div>
+                </div>
+                <div class="mx-scene-visual">
+                    <div class="mx-scene-spotlight"></div>
+                    <img src="static/src/img/model-cr400j.png" alt="CR400 Journey" class="mx-scene-img"/>
+                    <div class="mx-scene-glow"></div>
+                </div>
+                <div class="mx-scene-specs">
+                    <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span class="mx-spec-val">~450 kg</span><span class="mx-spec-lbl">Boş Ağırlık</span></div>
+                    <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="22" height="12" rx="2" ry="2"/><line x1="23" y1="13" x2="23" y2="11"/></svg><span class="mx-spec-val">4 m³</span><span class="mx-spec-lbl">İç Hacim</span></div>
+                    <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span class="mx-spec-val">2 Kişi</span><span class="mx-spec-lbl">Kapasite</span></div>
+                    <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span class="mx-spec-val">4.440 mm</span><span class="mx-spec-lbl">Uzunluk</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scene 2: CR400 -->
+        <div class="mx-scene" data-model="cr400" data-bg="static/src/img/model-cr400.png" data-detail-model="cr400">
+            <div class="mx-scene-bg"></div>
+            <div class="mx-scene-inner">
+                <div class="mx-scene-info">
+                    <span class="mx-scene-badge">Başlangıç</span>
+                    <h2 class="mx-scene-name">CR400</h2>
+                    <div class="mx-scene-tagline">Özgürlüğün anahtarı – macera burada başlıyor</div>
+                    <div class="mx-scene-price">14.900 €<span>'den başlayan</span></div>
+                    <div class="mx-scene-cta">
+                        <a href="#" class="cv-btn cv-btn-gold" data-go="detail">Detayları Keşfet</a>
+                        <a href="#" class="cv-btn cv-btn-outline" data-go="contact">Teklif Al</a>
+                    </div>
+                </div>
+                <div class="mx-scene-visual">
+                    <div class="mx-scene-spotlight"></div>
+                    <img src="static/src/img/model-cr400.png" alt="CR400" class="mx-scene-img"/>
+                    <div class="mx-scene-glow"></div>
+                </div>
+                <div class="mx-scene-specs">
+                    <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span class="mx-spec-val">450 kg</span><span class="mx-spec-lbl">Boş Ağırlık</span></div>
+                    <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="22" height="12" rx="2" ry="2"/><line x1="23" y1="13" x2="23" y2="11"/></svg><span class="mx-spec-val">4 m³</span><span class="mx-spec-lbl">İç Hacim</span></div>
+                    <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span class="mx-spec-val">2 Kişi</span><span class="mx-spec-lbl">Kapasite</span></div>
+                    <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span class="mx-spec-val">750 kg</span><span class="mx-spec-lbl">Taşıma Kap.</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scene 3: CR455 -->
+        <div class="mx-scene" data-model="cr455" data-bg="static/src/img/model-cr455.webp" data-detail-model="cr455">
+            <div class="mx-scene-bg"></div>
+            <div class="mx-scene-inner">
+                <div class="mx-scene-info">
+                    <span class="mx-scene-badge">Off-Road</span>
+                    <h2 class="mx-scene-name">CR455</h2>
+                    <div class="mx-scene-tagline">Her arazide özgürlük ve konfor</div>
+                    <div class="mx-scene-price">34.800 €<span>'den başlayan</span></div>
+                    <div class="mx-scene-cta">
+                        <a href="#" class="cv-btn cv-btn-gold" data-go="detail">Detayları Keşfet</a>
+                        <a href="#" class="cv-btn cv-btn-outline" data-go="contact">Teklif Al</a>
+                    </div>
+                </div>
+                <div class="mx-scene-visual">
+                    <div class="mx-scene-spotlight"></div>
+                    <img src="static/src/img/model-cr455.webp" alt="CR455" class="mx-scene-img"/>
+                    <div class="mx-scene-glow"></div>
+                </div>
+                <div class="mx-scene-specs">
+                    <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span class="mx-spec-val">900 kg</span><span class="mx-spec-lbl">Boş Ağırlık</span></div>
+                    <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="22" height="12" rx="2" ry="2"/><line x1="23" y1="13" x2="23" y2="11"/></svg><span class="mx-spec-val">15 m³</span><span class="mx-spec-lbl">İç Hacim</span></div>
+                    <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span class="mx-spec-val">4 Kişi</span><span class="mx-spec-lbl">Kapasite</span></div>
+                    <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span class="mx-spec-val">Dış+İç</span><span class="mx-spec-lbl">Mutfak</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scene 4: CR550 -->
+        <div class="mx-scene" data-model="cr550" data-bg="static/src/img/model-cr550.webp" data-detail-model="cr550">
+            <div class="mx-scene-bg"></div>
+            <div class="mx-scene-inner">
+                <div class="mx-scene-info">
+                    <span class="mx-scene-badge">Aile</span>
+                    <h2 class="mx-scene-name">CR550</h2>
+                    <div class="mx-scene-tagline">Macera, konfor ve güvenilirlik bir arada</div>
+                    <div class="mx-scene-price">33.980 €<span>'den başlayan</span></div>
+                    <div class="mx-scene-cta">
+                        <a href="#" class="cv-btn cv-btn-gold" data-go="detail">Detayları Keşfet</a>
+                        <a href="#" class="cv-btn cv-btn-outline" data-go="contact">Teklif Al</a>
+                    </div>
+                </div>
+                <div class="mx-scene-visual">
+                    <div class="mx-scene-spotlight"></div>
+                    <img src="static/src/img/model-cr550.webp" alt="CR550" class="mx-scene-img"/>
+                    <div class="mx-scene-glow"></div>
+                </div>
+                <div class="mx-scene-specs">
+                    <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span class="mx-spec-val">1.000 kg</span><span class="mx-spec-lbl">Boş Ağırlık</span></div>
+                    <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="22" height="12" rx="2" ry="2"/><line x1="23" y1="13" x2="23" y2="11"/></svg><span class="mx-spec-val">15 m³</span><span class="mx-spec-lbl">İç Hacim</span></div>
+                    <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span class="mx-spec-val">4 Kişi</span><span class="mx-spec-lbl">Kapasite</span></div>
+                    <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span class="mx-spec-val">5.520 mm</span><span class="mx-spec-lbl">Uzunluk</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scene 5: CR550i -->
+        <div class="mx-scene" data-model="cr550i" data-bg="static/src/img/model-cr550i.png" data-detail-model="cr550i">
+            <div class="mx-scene-bg"></div>
+            <div class="mx-scene-inner">
+                <div class="mx-scene-info">
+                    <span class="mx-scene-badge">Çift Kişilik</span>
+                    <h2 class="mx-scene-name">CR550i</h2>
+                    <div class="mx-scene-tagline">Macera, konfor ve stil bir arada</div>
+                    <div class="mx-scene-price">33.980 €<span>'den başlayan</span></div>
+                    <div class="mx-scene-cta">
+                        <a href="#" class="cv-btn cv-btn-gold" data-go="detail">Detayları Keşfet</a>
+                        <a href="#" class="cv-btn cv-btn-outline" data-go="contact">Teklif Al</a>
+                    </div>
+                </div>
+                <div class="mx-scene-visual">
+                    <div class="mx-scene-spotlight"></div>
+                    <img src="static/src/img/model-cr550i.png" alt="CR550i" class="mx-scene-img"/>
+                    <div class="mx-scene-glow"></div>
+                </div>
+                <div class="mx-scene-specs">
+                    <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span class="mx-spec-val">1.000 kg</span><span class="mx-spec-lbl">Boş Ağırlık</span></div>
+                    <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="22" height="12" rx="2" ry="2"/><line x1="23" y1="13" x2="23" y2="11"/></svg><span class="mx-spec-val">15 m³</span><span class="mx-spec-lbl">İç Hacim</span></div>
+                    <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span class="mx-spec-val">2 Kişi</span><span class="mx-spec-lbl">Kapasite</span></div>
+                    <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span class="mx-spec-val">İç Mutfak</span><span class="mx-spec-lbl">Donanım</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scene 6: CR555 -->
+        <div class="mx-scene" data-model="cr555" data-bg="static/src/img/model-cr555.png" data-detail-model="cr555">
+            <div class="mx-scene-bg"></div>
+            <div class="mx-scene-inner">
+                <div class="mx-scene-info">
+                    <span class="mx-scene-badge">Popüler</span>
+                    <h2 class="mx-scene-name">CR555</h2>
+                    <div class="mx-scene-tagline">Özgürlük ve konfor, yol nereye giderse gitsin</div>
+                    <div class="mx-scene-price">38.900 €<span>'den başlayan</span></div>
+                    <div class="mx-scene-cta">
+                        <a href="#" class="cv-btn cv-btn-gold" data-go="detail">Detayları Keşfet</a>
+                        <a href="#" class="cv-btn cv-btn-outline" data-go="contact">Teklif Al</a>
+                    </div>
+                </div>
+                <div class="mx-scene-visual">
+                    <div class="mx-scene-spotlight"></div>
+                    <img src="static/src/img/model-cr555.png" alt="CR555" class="mx-scene-img"/>
+                    <div class="mx-scene-glow"></div>
+                </div>
+                <div class="mx-scene-specs">
+                    <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span class="mx-spec-val">1.100 kg</span><span class="mx-spec-lbl">Boş Ağırlık</span></div>
+                    <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="22" height="12" rx="2" ry="2"/><line x1="23" y1="13" x2="23" y2="11"/></svg><span class="mx-spec-val">20 m³</span><span class="mx-spec-lbl">İç Hacim</span></div>
+                    <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span class="mx-spec-val">4 Kişi</span><span class="mx-spec-lbl">Kapasite</span></div>
+                    <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span class="mx-spec-val">5.750 mm</span><span class="mx-spec-lbl">Uzunluk</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scene 7: CR650 -->
+        <div class="mx-scene" data-model="cr650" data-bg="static/src/img/model-cr650.webp" data-detail-model="cr650">
+            <div class="mx-scene-bg"></div>
+            <div class="mx-scene-inner">
+                <div class="mx-scene-info">
+                    <span class="mx-scene-badge">Premium</span>
+                    <h2 class="mx-scene-name">CR650</h2>
+                    <div class="mx-scene-tagline">Lüks ve konforun mükemmel buluşması</div>
+                    <div class="mx-scene-price">41.900 €<span>'den başlayan</span></div>
+                    <div class="mx-scene-cta">
+                        <a href="#" class="cv-btn cv-btn-gold" data-go="detail">Detayları Keşfet</a>
+                        <a href="#" class="cv-btn cv-btn-outline" data-go="contact">Teklif Al</a>
+                    </div>
+                </div>
+                <div class="mx-scene-visual">
+                    <div class="mx-scene-spotlight"></div>
+                    <img src="static/src/img/model-cr650.webp" alt="CR650" class="mx-scene-img"/>
+                    <div class="mx-scene-glow"></div>
+                </div>
+                <div class="mx-scene-specs">
+                    <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span class="mx-spec-val">1.150 kg</span><span class="mx-spec-lbl">Boş Ağırlık</span></div>
+                    <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="22" height="12" rx="2" ry="2"/><line x1="23" y1="13" x2="23" y2="11"/></svg><span class="mx-spec-val">17.5 m³</span><span class="mx-spec-lbl">İç Hacim</span></div>
+                    <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span class="mx-spec-val">4 Kişi</span><span class="mx-spec-lbl">Kapasite</span></div>
+                    <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span class="mx-spec-val">6.960 mm</span><span class="mx-spec-lbl">Uzunluk</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nav dots -->
+        <div class="mx-nav-dots" id="mxNavDots">
+            <button class="mx-dot active" data-idx="0"><span>CR400 Journey</span></button>
+            <button class="mx-dot" data-idx="1"><span>CR400</span></button>
+            <button class="mx-dot" data-idx="2"><span>CR455</span></button>
+            <button class="mx-dot" data-idx="3"><span>CR550</span></button>
+            <button class="mx-dot" data-idx="4"><span>CR550i</span></button>
+            <button class="mx-dot" data-idx="5"><span>CR555</span></button>
+            <button class="mx-dot" data-idx="6"><span>CR650</span></button>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 3: FLEET FINALE ===== -->
+    <section class="mx-fleet" id="mxFleet">
+        <canvas class="mx-particles mx-particles-fleet" id="mxParticles2"></canvas>
+        <div class="mx-fleet-inner">
+            <h2 class="mx-fleet-title"><span class="cv-accent-text">Seçimini yap.</span><br/>Yol seni bekliyor.</h2>
+            <div class="mx-fleet-grid" id="mxFleetGrid">
+                <div class="mx-fleet-card" data-go="detail" data-detail-model="cr400j">
+                    <img src="static/src/img/model-cr400j.png" alt="CR400 Journey"/>
+                    <div class="mx-fleet-label"><strong>CR400 Journey</strong><span>12.900 €</span></div>
+                </div>
+                <div class="mx-fleet-card" data-go="detail" data-detail-model="cr400">
+                    <img src="static/src/img/model-cr400.png" alt="CR400"/>
+                    <div class="mx-fleet-label"><strong>CR400</strong><span>14.900 €</span></div>
+                </div>
+                <div class="mx-fleet-card" data-go="detail" data-detail-model="cr455">
+                    <img src="static/src/img/model-cr455.webp" alt="CR455"/>
+                    <div class="mx-fleet-label"><strong>CR455</strong><span>34.800 €</span></div>
+                </div>
+                <div class="mx-fleet-card" data-go="detail" data-detail-model="cr550">
+                    <img src="static/src/img/model-cr550.webp" alt="CR550"/>
+                    <div class="mx-fleet-label"><strong>CR550</strong><span>33.980 €</span></div>
+                </div>
+                <div class="mx-fleet-card" data-go="detail" data-detail-model="cr550i">
+                    <img src="static/src/img/model-cr550i.png" alt="CR550i"/>
+                    <div class="mx-fleet-label"><strong>CR550i</strong><span>33.980 €</span></div>
+                </div>
+                <div class="mx-fleet-card" data-go="detail" data-detail-model="cr555">
+                    <img src="static/src/img/model-cr555.png" alt="CR555"/>
+                    <div class="mx-fleet-label"><strong>CR555</strong><span>38.900 €</span></div>
+                </div>
+                <div class="mx-fleet-card" data-go="detail" data-detail-model="cr650">
+                    <img src="static/src/img/model-cr650.webp" alt="CR650"/>
+                    <div class="mx-fleet-label"><strong>CR650</strong><span>41.900 €</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 4: AI MODEL SUGGESTION ===== -->
+    <section class="mx-suggest" id="mxSuggest">
+        <div class="cv-container">
+            <div class="mx-suggest-header">
+                <hr class="cv-gold-line centered"/>
+                <h2 class="cv-section-title" style="text-align:center;">Hangi karavan <span class="cv-accent-text">sana göre?</span></h2>
+                <p class="cv-section-subtitle centered">Birkaç soruya cevap ver, sana en uygun modeli önerelim.</p>
+            </div>
+            <div class="mx-suggest-wizard" id="mxWizard">
+                <div class="mx-wiz-step active" data-step="1">
+                    <div class="mx-wiz-q">Kaç kişi seyahat edeceksiniz?</div>
+                    <div class="mx-wiz-options">
+                        <button class="mx-wiz-opt" data-key="people" data-val="2">1-2 Kişi</button>
+                        <button class="mx-wiz-opt" data-key="people" data-val="4">3-4 Kişi</button>
+                        <button class="mx-wiz-opt" data-key="people" data-val="6">5-6 Kişi</button>
+                    </div>
+                </div>
+                <div class="mx-wiz-step" data-step="2">
+                    <div class="mx-wiz-q">Kullanım tercihiniz?</div>
+                    <div class="mx-wiz-options">
+                        <button class="mx-wiz-opt" data-key="terrain" data-val="road">Şehir &amp; Karayolu</button>
+                        <button class="mx-wiz-opt" data-key="terrain" data-val="mixed">Karma Kullanım</button>
+                        <button class="mx-wiz-opt" data-key="terrain" data-val="offroad">Off-Road &amp; Arazi</button>
+                    </div>
+                </div>
+                <div class="mx-wiz-step" data-step="3">
+                    <div class="mx-wiz-q">Bütçe aralığınız?</div>
+                    <div class="mx-wiz-options">
+                        <button class="mx-wiz-opt" data-key="budget" data-val="low">?1M altı</button>
+                        <button class="mx-wiz-opt" data-key="budget" data-val="mid">?1M — ?1.5M</button>
+                        <button class="mx-wiz-opt" data-key="budget" data-val="high">?1.5M üzeri</button>
+                    </div>
+                </div>
+                <div class="mx-wiz-result" id="mxWizResult">
+                    <div class="mx-wiz-result-inner">
+                        <div class="mx-wiz-result-badge">Senin İçin Öneri</div>
+                        <h3 class="mx-wiz-result-name" id="mxResultName">—</h3>
+                        <p class="mx-wiz-result-reason" id="mxResultReason"></p>
+                        <div class="mx-wiz-result-cta">
+                            <a href="#" class="cv-btn cv-btn-gold" data-go="detail">Detayları Gör</a>
+                            <button class="cv-btn cv-btn-outline" id="mxWizReset">Tekrar Dene</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mx-wiz-progress" id="mxWizProgress">
+                <div class="mx-wiz-pip active"></div>
+                <div class="mx-wiz-pip"></div>
+                <div class="mx-wiz-pip"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== COMPARE MODE OVERLAY ===== -->
+    <div class="mx-compare-overlay" id="mxCompare">
+        <button class="mx-compare-close" id="mxCompareClose">&times;</button>
+        <h2 class="mx-compare-title">Model <span class="cv-accent-text">Karşılaştır</span></h2>
+        <div class="mx-compare-selectors">
+            <select id="mxCompLeft" class="mx-compare-sel"></select>
+            <span class="mx-compare-vs">VS</span>
+            <select id="mxCompRight" class="mx-compare-sel"></select>
+        </div>
+        <div class="mx-compare-grid" id="mxCompareGrid"></div>
+    </div>
+
+    <!-- Floating compare button -->
+    <button class="mx-compare-fab" id="mxCompareFab" title="Modelleri Karşılaştır">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        <span>Karşılaştır</span>
+    </button>
+
+</div>
+
+<!-- ================================================================
+     PAGE: MODEL DETAIL
+     ================================================================ -->
+<div class="preview-page" id="page-detail">
+    <section class="cv-detail-hero">
+        <img id="dtHeroImg" src="static/src/img/model-cr550.webp" alt="Model"/>
+        <div class="cv-detail-hero-overlay"></div>
+        <div class="cv-detail-hero-content cv-container">
+            <div class="cv-breadcrumb-nav" style="margin-bottom:24px;"><a href="#" data-go="home">Anasayfa</a><span class="separator">›</span><a href="#" data-go="models">Modeller</a><span class="separator">›</span><span id="dtBreadcrumb">CR550</span></div>
+            <h1 class="cv-animate" id="dtTitle">CR550</h1>
+            <div class="cv-model-card-price cv-animate cv-animate-delay-1" style="font-size:1.4rem;" id="dtPrice">33.980 €'den başlayan</div>
+            <div style="margin-top:24px;" class="cv-animate cv-animate-delay-2">
+                <a href="#" class="cv-btn cv-btn-gold cv-btn-lg" data-go="contact">Teklif Al</a>
+                <a href="#" class="cv-btn cv-btn-outline cv-btn-lg" style="margin-left:12px;" data-go="contact">Kirala</a>
+            </div>
+        </div>
+    </section>
+    <section class="cv-section">
+        <div class="cv-container">
+            <div class="cv-animate" style="text-align:center;"><hr class="cv-gold-line centered"/><h2 class="cv-section-title">Teknik <span class="cv-accent-text">Özellikler</span></h2></div>
+            <div class="cv-detail-specs-grid">
+                <div class="cv-detail-spec-card cv-animate"><span class="spec-value" id="dtSpecKapasite">4 Kişi</span><span class="spec-label">Kapasite</span></div>
+                <div class="cv-detail-spec-card cv-animate cv-animate-delay-1"><span class="spec-value" id="dtSpecAgirlik">1.000 kg</span><span class="spec-label">Boş Ağırlık</span></div>
+                <div class="cv-detail-spec-card cv-animate cv-animate-delay-2"><span class="spec-value" id="dtSpecHacim">15 m³</span><span class="spec-label">İç Hacim</span></div>
+                <div class="cv-detail-spec-card cv-animate cv-animate-delay-3"><span class="spec-value" id="dtSpecTasima">1.800 kg</span><span class="spec-label">Taşıma Kap.</span></div>
+                <div class="cv-detail-spec-card cv-animate"><span class="spec-value" id="dtSpecUzunluk">5.520 mm</span><span class="spec-label">Uzunluk</span></div>
+                <div class="cv-detail-spec-card cv-animate cv-animate-delay-1"><span class="spec-value" id="dtSpecGenislik">2.320 mm</span><span class="spec-label">Genişlik</span></div>
+                <div class="cv-detail-spec-card cv-animate cv-animate-delay-2"><span class="spec-value" id="dtSpecYukseklik">2.650 mm</span><span class="spec-label">Yükseklik</span></div>
+                <div class="cv-detail-spec-card cv-animate cv-animate-delay-3"><span class="spec-value" id="dtSpecSu">100 L</span><span class="spec-label">Su Tankı</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cv-section">
+        <div class="cv-container">
+            <div class="cv-animate" style="text-align:center;"><hr class="cv-gold-line centered"/><h2 class="cv-section-title">Öne Çıkan <span class="cv-accent-text">Özellikler</span></h2></div>
+            <div class="cv-detail-features" id="dtFeatures">
+                <div class="cv-detail-feature-item cv-animate"><div class="cv-detail-feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><h4>Bağımsız Tekerlek Süspansiyonu</h4><p>1.800 kg taşıma kapasiteli bağımsız tekerlek süspansiyon sistemi ile zorlu arazi koşullarında üstün stabilite.</p></div></div>
+                <div class="cv-detail-feature-item cv-animate cv-animate-delay-1"><div class="cv-detail-feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div><h4>Geniş Yaşam Alanı</h4><p>Dört yetişkin için uyuma imkânı: Ana yatak 2030×1360 mm, ranzalı ek alan ile 15 m³ konforlu iç hacim.</p></div></div>
+                <div class="cv-detail-feature-item cv-animate cv-animate-delay-2"><div class="cv-detail-feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><div><h4>Tam Donanımlı İç Mekan</h4><p>Dış mutfak, WC'li iç duş, ambiyans LED aydınlatma, USB portları ve 100 L temiz su tankı standart olarak dahil.</p></div></div>
+                <div class="cv-detail-feature-item cv-animate cv-animate-delay-3"><div class="cv-detail-feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div><div><h4>Isı Köprüsüz Teknoloji</h4><p>Gelişmiş ısı köprüsüz yapı ile nem ve yoğuşma olmadan dört mevsim boyunca sağlıklı ve konforlu iç ortam.</p></div></div>
+            </div>
+        </div>
+    </section>
+    <section class="cv-section cv-highlight-section">
+        <div class="cv-container">
+            <div class="cv-animate" style="text-align:center;"><hr class="cv-gold-line centered"/><h2 class="cv-section-title">Galeri</h2></div>
+            <div class="cv-gallery" id="dtGallery">
+                <div class="cv-gallery-item cv-animate"><img src="static/src/img/model-cr550.webp" alt="CR550 Ana"/></div>
+                <div class="cv-gallery-item cv-animate cv-animate-delay-1"><img src="static/src/img/gallery-cr550-1.webp" alt="CR550 Detay 1"/></div>
+                <div class="cv-gallery-item cv-animate cv-animate-delay-2"><img src="static/src/img/model-cr550i.png" alt="CR550i"/></div>
+                <div class="cv-gallery-item cv-animate cv-animate-delay-3"><img src="static/src/img/model-cr555.png" alt="CR555"/></div>
+                <div class="cv-gallery-item cv-animate cv-animate-delay-4"><img src="static/src/img/model-cr650.webp" alt="CR650"/></div>
+                <div class="cv-gallery-item cv-animate cv-animate-delay-5"><img src="static/src/img/gallery-cr650-2.webp" alt="CR650 Detay"/></div>
+            </div>
+        </div>
+    </section>
+    <section class="cv-cta-banner"><div class="cv-container cv-animate"><h2 id="dtCtaTitle">Camppass ile <span class="cv-accent-text">Özgürlüğe Adım Atın</span></h2><p>Hayalinizdeki karavanı konfigüre edin veya hemen kiralayın.</p><div class="cv-cta-buttons"><a href="#" class="cv-btn cv-btn-gold cv-btn-lg" data-go="contact">Teklif Al</a><a href="#" class="cv-btn cv-btn-outline cv-btn-lg" data-go="contact">Kirala</a></div></div></section>
+</div>
+
+<!-- ================================================================
+     PAGE: SERVICE
+     ================================================================ -->
+<div class="preview-page" id="page-service">
+    <section class="cv-breadcrumb"><div class="cv-container"><div class="cv-breadcrumb-nav"><a href="#" data-go="home">Anasayfa</a><span class="separator">›</span><span>Servis</span></div><h1 class="cv-animate">Servis &amp; Bayiler</h1></div></section>
+    <section class="cv-section">
+        <div class="cv-container">
+            <div class="cv-animate" style="text-align:center;"><hr class="cv-gold-line centered"/><h2 class="cv-section-title">Bayiler &amp; <span class="cv-accent-text">Servisler</span></h2><p class="cv-section-subtitle centered">Türkiye genelindeki yetkili bayi ve servis noktalarımız.</p></div>
+            <div class="cv-map-wrapper cv-animate">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d385396.3509929498!2d28.731994199999998!3d41.00495465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caa7040068086b%3A0xe1ccfe98bc01b0d0!2zxLBzdGFuYnVs!5e0!3m2!1str!2str!4v1700000000000!5m2!1str!2str" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Bayi Haritası"></iframe>
+            </div>
+            <div class="cv-dealer-grid">
+                <div class="cv-dealer-card cv-animate"><h4>İstanbul Merkez</h4><p>Maslak Mah. Büyükdere Cad. No:123, Sarıyer/İstanbul</p><p class="cv-dealer-phone">+90 212 123 45 67</p><p style="color:var(--cv-text-dark);font-size:.85rem;margin-top:8px;">Pzt-Cmt: 09:00 - 18:00</p></div>
+                <div class="cv-dealer-card cv-animate cv-animate-delay-1"><h4>Ankara Showroom</h4><p>Orhaniye Mah. 2051 Cad. No: 15, Kahramankazan/Ankara</p><p class="cv-dealer-phone">+90 533 085 17 81</p><p style="color:var(--cv-text-dark);font-size:.85rem;margin-top:8px;">Pzt-Cmt: 09:00 - 18:00</p></div>
+                <div class="cv-dealer-card cv-animate cv-animate-delay-2"><h4>İzmir Servis</h4><p>Alsancak Mah. Kordon Cad. No:789, Konak/İzmir</p><p class="cv-dealer-phone">+90 232 789 01 23</p><p style="color:var(--cv-text-dark);font-size:.85rem;margin-top:8px;">Pzt-Cmt: 09:00 - 18:00</p></div>
+            </div>
+        </div>
+    </section>
+    <section class="cv-section cv-highlight-section">
+        <div class="cv-container">
+            <div class="cv-animate" style="text-align:center;"><hr class="cv-gold-line centered"/><h2 class="cv-section-title">Servis <span class="cv-accent-text">Randevusu</span></h2><p class="cv-section-subtitle centered">Online randevu oluşturun, sizi arayalım.</p></div>
+            <div class="cv-form-section cv-animate" style="max-width:720px;margin:0 auto;">
+                <form class="cv-form-grid" onsubmit="event.preventDefault();alert('Randevu oluşturuldu! (Preview)');">
+                    <div class="cv-form-group"><label>Ad Soyad</label><input type="text" placeholder="Adınız Soyadınız" required/></div>
+                    <div class="cv-form-group"><label>Telefon</label><input type="tel" placeholder="+90 5XX XXX XX XX" required/></div>
+                    <div class="cv-form-group"><label>Tercih Edilen Tarih</label><input type="date" required/></div>
+                    <div class="cv-form-group"><label>Servis Türü</label><select required><option value="">Seçiniz</option><option>Periyodik Bakım</option><option>Onarım</option><option>Modifikasyon</option><option>Garanti İşlemi</option><option>Diğer</option></select></div>
+                    <div class="cv-form-group full-width" style="text-align:center;margin-top:12px;"><button type="submit" class="cv-btn cv-btn-gold cv-btn-lg">Randevu Oluştur</button></div>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- ================================================================
+     PAGE: CORPORATE — CINEMATIC BRAND EXPERIENCE
+     ================================================================ -->
+<div class="preview-page" id="page-corporate">
+
+    <!-- ===== S1: IMMERSIVE BRAND ENTRY ===== -->
+    <section class="cp-entry">
+        <div class="cp-entry-bg">
+            <img src="static/src/img/caravan-4.png" alt="" class="cp-entry-bg-img"/>
+        </div>
+        <div class="cp-entry-overlay"></div>
+        <canvas class="cp-particles" id="cpParticles"></canvas>
+        <div class="cp-entry-content">
+            <div class="cp-entry-line cp-el-1">Biz karavan üretmiyoruz.</div>
+            <div class="cp-entry-line cp-el-2">Biz özgürlüğü mühendislikle <span class="cv-accent-text">tasarlıyoruz.</span></div>
+        </div>
+        <div class="cp-scroll-hint">
+            <span>Keşfet</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+    </section>
+
+    <!-- ===== S2: BRAND DNA — THREE PILLARS ===== -->
+    <section class="cp-dna" id="cpDna">
+        <div class="cv-container">
+            <div class="cp-dna-header">
+                <hr class="cv-gold-line centered"/>
+                <h2 class="cv-section-title" style="text-align:center;">Marka <span class="cv-accent-text">DNA'mız</span></h2>
+            </div>
+            <div class="cp-pillars">
+                <div class="cp-pillar" data-pillar="eng">
+                    <div class="cp-pillar-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                    </div>
+                    <h3>Mühendislik</h3>
+                    <p class="cp-pillar-short">Hassas mühendislik her detayda</p>
+                    <div class="cp-pillar-expand">
+                        <p>Her karavanımız 2.000'den fazla mühendislik saati ile tasarlanır. Bağımsız süspansiyon, askeri sınıf şasi ve akıllı enerji yönetimi — her bileşen mükemmellik için optimize edilmiştir.</p>
+                        <div class="cp-pillar-stat"><span class="cp-stat-num">2.000+</span><span class="cp-stat-lbl">Mühendislik Saati</span></div>
+                    </div>
+                </div>
+                <div class="cp-pillar" data-pillar="free">
+                    <div class="cp-pillar-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <h3>Özgürlük</h3>
+                    <p class="cp-pillar-short">Tamamen bağımsız yaşam</p>
+                    <div class="cp-pillar-expand">
+                        <p>Off-grid enerji sistemi, 400L su kapasitesi ve dört mevsim iklim kontrolü ile dünyanın en uzak köşelerinde bile evinizdeki konforu yaşayın. Hiçbir yol sınırınız değil.</p>
+                        <div class="cp-pillar-stat"><span class="cp-stat-num">365</span><span class="cp-stat-lbl">Gün Off-Grid</span></div>
+                    </div>
+                </div>
+                <div class="cp-pillar" data-pillar="dur">
+                    <div class="cp-pillar-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3>Dayanıklılık</h3>
+                    <p class="cp-pillar-short">Askeri sınıf koruma</p>
+                    <div class="cp-pillar-expand">
+                        <p>-30°C ile +55°C arasında test edilmiş yapı. 50.000 km garanti, çelik takviyeli kompozit gövde ve IP67 koruma sınıfıyla doğanın en zorlu koşullarına meydan okuyoruz.</p>
+                        <div class="cp-pillar-stat"><span class="cp-stat-num">50.000</span><span class="cp-stat-lbl">km Garanti</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ===== S5: CINEMATIC TEAM ===== -->
+    <section class="cp-team" id="cpTeam">
+        <div class="cv-container">
+            <div class="cp-team-header">
+                <hr class="cv-gold-line centered"/>
+                <h2 class="cv-section-title" style="text-align:center;">Vizyonun <span class="cv-accent-text">Arkasındakiler</span></h2>
+                <p class="cv-section-subtitle centered">Tutkulu mühendisler ve tasarımcılardan oluşan kadromuz.</p>
+            </div>
+            <div class="cp-team-orbit" id="cpTeamOrbit">
+                <div class="cp-member" data-member="0">
+                    <div class="cp-member-glow"></div>
+                    <img src="static/src/img/team-hasmet.webp" alt="Hasmet Acıkyer"/>
+                    <div class="cp-member-info">
+                        <h4>Hasmet Acıkyer</h4>
+                        <span>C.E.O</span>
+                        <p class="cp-member-quote">+43 676 598 5555<br/>acikyer@camppass.at</p>
+                    </div>
+                </div>
+                <div class="cp-member" data-member="1">
+                    <div class="cp-member-glow"></div>
+                    <img src="static/src/img/team-hakan.webp" alt="Hakan Kes"/>
+                    <div class="cp-member-info">
+                        <h4>Hakan Kes</h4>
+                        <span>Head of Camppass</span>
+                        <p class="cp-member-quote">"Kaliteyi ve özgürlüğü birleştiriyoruz."</p>
+                    </div>
+                </div>
+                <div class="cp-member" data-member="2">
+                    <div class="cp-member-glow"></div>
+                    <img src="static/src/img/team-ozgur.webp" alt="Özgür Özatay"/>
+                    <div class="cp-member-info">
+                        <h4>Özgür Özatay</h4>
+                        <span>Yönetici Ortak</span>
+                        <p class="cp-member-quote">"İş ortaklığı güvene dayanır."</p>
+                    </div>
+                </div>
+                <div class="cp-member" data-member="3">
+                    <div class="cp-member-glow"></div>
+                    <img src="static/src/img/team-karya.webp" alt="Karya Kes"/>
+                    <div class="cp-member-info">
+                        <h4>Karya Kes</h4>
+                        <span>Yönetim Kurulu Başkanı</span>
+                        <p class="cp-member-quote">"Vizyonun gücü her şeyin önünde gelir."</p>
+                    </div>
+                </div>
+                <div class="cp-member" data-member="4">
+                    <div class="cp-member-glow"></div>
+                    <img src="static/src/img/team-onur.webp" alt="Onur Arslan"/>
+                    <div class="cp-member-info">
+                        <h4>Onur Arslan</h4>
+                        <span>Genel Müdür</span>
+                        <p class="cp-member-quote">"Operasyonel mükemmellik hedefimizdir."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== S6: PRODUCTION EXPERIENCE ===== -->
+    <section class="cp-production" id="cpProduction">
+        <div class="cp-prod-split">
+            <div class="cp-prod-visual">
+                <img src="static/src/img/caravan-3.png" alt="Üretim" class="cp-prod-img"/>
+                <div class="cp-prod-overlay"></div>
+            </div>
+            <div class="cp-prod-content">
+                <hr class="cv-gold-line"/>
+                <h2 class="cv-section-title">Üretim <span class="cv-accent-text">Deneyimi</span></h2>
+                <div class="cp-prod-points">
+                    <div class="cp-prod-point">
+                        <div class="cp-prod-point-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06"/></svg></div>
+                        <div><h4>Hassas Mühendislik</h4><p>0.1mm toleransla CNC işleme, lazer kesim ve robotik kaynak teknolojileri.</p></div>
+                    </div>
+                    <div class="cp-prod-point">
+                        <div class="cp-prod-point-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                        <div><h4>Askeri Sınıf Dayanıklılık</h4><p>MIL-STD testlerinden geçen çelik-kompozit hibrit gövde yapısı.</p></div>
+                    </div>
+                    <div class="cp-prod-point">
+                        <div class="cp-prod-point-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+                        <div><h4>El İşçiliği Detaylar</h4><p>İç mekan kaplamaları ve mobilyalar usta ellerle özenle hazırlanır.</p></div>
+                    </div>
+                </div>
+                <div class="cp-prod-stats">
+                    <div class="cp-prod-stat"><span class="cp-stat-big">10.000</span><span>m² Tesis</span></div>
+                    <div class="cp-prod-stat"><span class="cp-stat-big">120+</span><span>Uzman Personel</span></div>
+                    <div class="cp-prod-stat"><span class="cp-stat-big">48</span><span>Kalite Kontrol</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== S8: BRAND MANIFESTO ===== -->
+    <section class="cp-manifesto" id="cpManifesto">
+        <canvas class="cp-particles cp-particles-end" id="cpParticles2"></canvas>
+        <div class="cp-manifesto-content">
+            <div class="cp-mf-line cp-mf-l1">Yollar bizim için sınır değil.</div>
+            <div class="cp-mf-line cp-mf-l2">Başlangıç <span class="cv-accent-text">noktasıdır.</span></div>
+            <div class="cp-mf-logo">
+                <img src="static/src/img/camppass-logo.webp" alt="Camppass" height="44" style="filter:drop-shadow(0 0 20px rgba(245,166,35,0.3));"/>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<!-- ================================================================
+     PAGE: NEWS
+     ================================================================ -->
+<div class="preview-page" id="page-news">
+    <section class="cv-breadcrumb"><div class="cv-container"><div class="cv-breadcrumb-nav"><a href="#" data-go="home">Anasayfa</a><span class="separator">›</span><span>Haberler</span></div><h1 class="cv-animate">Haberler</h1></div></section>
+    <section class="cv-section">
+        <div class="cv-container">
+            <div class="cv-news-grid">
+                <div class="cv-news-card cv-animate"><div class="cv-news-card-img"><img src="static/src/img/caravan-4.png" alt="Haber 1"/></div><div class="cv-news-card-body"><div class="cv-news-card-date">15 Mart 2026</div><h3>CampPass CR555: Şehir Maceralarını Unutturacak Off-Road Karavan</h3><p>CR555 seyahat karavanı, kompakt yapısı ve off-road yetenekleriyle doğa tutkunları için tasarlandı.</p><a href="#" class="cv-read-more">Devamını Oku ›</a></div></div>
+                <div class="cv-news-card cv-animate cv-animate-delay-1"><div class="cv-news-card-img"><img src="static/src/img/caravan-5.png" alt="Haber 2"/></div><div class="cv-news-card-body"><div class="cv-news-card-date">28 Şubat 2026</div><h3>CR650: Dört Kişilik Aileler İçin En Büyük ve Kişiselleştirilebilir Karavan</h3><p>CampPass'ın en geniş modeli CR650, dört kişilik aileler için geniş yaşam alanıyla öne çıkıyor.</p><a href="#" class="cv-read-more">Devamını Oku ›</a></div></div>
+                <div class="cv-news-card cv-animate cv-animate-delay-2"><div class="cv-news-card-img"><img src="static/src/img/caravan-6.png" alt="Haber 3"/></div><div class="cv-news-card-body"><div class="cv-news-card-date">10 Ocak 2026</div><h3>X1 PRO Tanıtıldı: Premium Segmentin Yeni Lideri</h3><p>En gelişmiş modelimiz X1 PRO, 1500W güneş paneli ve tam akıllı ev sistemi ile lüks karavan deneyimini yeniden tanımlıyor.</p><a href="#" class="cv-read-more">Devamını Oku ›</a></div></div>
+                <div class="cv-news-card cv-animate cv-animate-delay-3"><div class="cv-news-card-img"><img src="static/src/img/caravan-2.png" alt="Haber 4"/></div><div class="cv-news-card-body"><div class="cv-news-card-date">5 Aralık 2025</div><h3>Düsseldorf Caravan Salon 2025'te Büyük İlgi</h3><p>Düsseldorf'ta düzenlenen Caravan Salon fuarında WS1 ve CR serisi modeller uluslararası basında büyük yankı uyandırdı.</p><a href="#" class="cv-read-more">Devamını Oku ›</a></div></div>
+                <div class="cv-news-card cv-animate cv-animate-delay-4"><div class="cv-news-card-img"><img src="static/src/img/caravan-3.png" alt="Haber 5"/></div><div class="cv-news-card-body"><div class="cv-news-card-date">18 Kasım 2025</div><h3>Yeni Üretim Tesisi Faaliyete Geçti</h3><p>10.000 m² kapalı alana sahip yeni üretim tesisimiz ile yıllık üretim kapasitemizi üç katına çıkardık.</p><a href="#" class="cv-read-more">Devamını Oku ›</a></div></div>
+                <div class="cv-news-card cv-animate cv-animate-delay-5"><div class="cv-news-card-img"><img src="static/src/img/caravan-1.png" alt="Haber 6"/></div><div class="cv-news-card-body"><div class="cv-news-card-date">2 Ekim 2025</div><h3>WS1, Yılın En İyi Off-Road Karavanı Ödülünü Kazandı</h3><p>Bağımsız jüri tarafından değerlendirilen WS1 modelimiz, yılın en iyi off-road karavanı seçildi.</p><a href="#" class="cv-read-more">Devamını Oku ›</a></div></div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- ================================================================
+     PAGE: FAQ
+     ================================================================ -->
+<div class="preview-page" id="page-faq">
+    <section class="cv-breadcrumb"><div class="cv-container"><div class="cv-breadcrumb-nav"><a href="#" data-go="home">Anasayfa</a><span class="separator">›</span><span>SSS</span></div><h1 class="cv-animate">Sıkça Sorulan Sorular</h1></div></section>
+    <section class="cv-section">
+        <div class="cv-container">
+            <div class="cv-faq-list">
+                <div class="cv-faq-item cv-animate"><button class="cv-faq-question" type="button"><span>Karavanlarınızın garanti süresi ne kadardır?</span><span class="cv-faq-icon">+</span></button><div class="cv-faq-answer"><p>Tüm modellerimiz 3 yıl veya 50.000 km garantiye sahiptir. Şasi ve yapısal bileşenler için 5 yıl garanti sunuyoruz.</p></div></div>
+                <div class="cv-faq-item cv-animate cv-animate-delay-1"><button class="cv-faq-question" type="button"><span>Off-grid enerji sistemi nasıl çalışır?</span><span class="cv-faq-icon">+</span></button><div class="cv-faq-answer"><p>Güneş panelleri ve lityum iyon batarya sistemiyle donatılmıştır. WS1 modelinde 800W panel ile günde ortalama 4-5 kWh enerji üretimi sağlanır.</p></div></div>
+                <div class="cv-faq-item cv-animate cv-animate-delay-2"><button class="cv-faq-question" type="button"><span>Hangi ehliyet sınıfı ile çekebilirim?</span><span class="cv-faq-icon">+</span></button><div class="cv-faq-answer"><p>S1 ve TS1 modelleri B sınıfı ehliyet ile çekilebilir. WS1, CR555, CR650 ve X1 PRO modelleri için BE sınıfı ehliyet gereklidir.</p></div></div>
+                <div class="cv-faq-item cv-animate cv-animate-delay-3"><button class="cv-faq-question" type="button"><span>Karavanımı kişiselleştirebilir miyim?</span><span class="cv-faq-icon">+</span></button><div class="cv-faq-answer"><p>Evet! Tüm modellerimizde iç mekan renkleri, malzeme seçenekleri ve ek donanım paketleri sunuyoruz.</p></div></div>
+                <div class="cv-faq-item cv-animate cv-animate-delay-4"><button class="cv-faq-question" type="button"><span>Teslimat süresi ne kadardır?</span><span class="cv-faq-icon">+</span></button><div class="cv-faq-answer"><p>Stokta bulunan standart konfigürasyonlar 2-4 hafta içinde teslim edilir. Kişiselleştirilmiş siparişler için 6-12 hafta arasında.</p></div></div>
+                <div class="cv-faq-item cv-animate cv-animate-delay-5"><button class="cv-faq-question" type="button"><span>Kiralama seçenekleri mevcut mu?</span><span class="cv-faq-icon">+</span></button><div class="cv-faq-answer"><p>Evet, günlük, haftalık ve aylık kiralama paketlerimiz mevcuttur. "Satın Almadan Önce Dene" programımız da bulunmaktadır.</p></div></div>
+                <div class="cv-faq-item cv-animate cv-animate-delay-6"><button class="cv-faq-question" type="button"><span>Servis ağınız nerede bulunuyor?</span><span class="cv-faq-icon">+</span></button><div class="cv-faq-answer"><p>İstanbul, Ankara, İzmir, Antalya, Bursa ve Trabzon'da yetkili servis noktalarımız bulunmaktadır.</p></div></div>
+                <div class="cv-faq-item cv-animate"><button class="cv-faq-question" type="button"><span>Finansman seçenekleri var mı?</span><span class="cv-faq-icon">+</span></button><div class="cv-faq-answer"><p>Anlaşmalı bankalarımız aracılığıyla 12, 24, 36 ve 48 aya varan taksit seçenekleri sunuyoruz.</p></div></div>
+            </div>
+        </div>
+    </section>
+    <section class="cv-cta-banner"><div class="cv-container cv-animate"><h2>Başka Sorunuz mu Var?</h2><p>Uzman ekibimiz tüm sorularınızı yanıtlamaya hazır.</p><div class="cv-cta-buttons"><a href="#" class="cv-btn cv-btn-gold cv-btn-lg" data-go="contact">Bize Ulaşın</a></div></div></section>
+</div>
+
+<!-- ================================================================
+     PAGE: CONTACT — CINEMATIC CONTACT EXPERIENCE
+     ================================================================ -->
+<div class="preview-page" id="page-contact">
+
+<!-- S1: HERO — EMOTIONAL ENTRY -->
+<section class="ct-hero">
+    <div class="ct-hero-bg">
+        <img src="static/src/img/banner2.webp" alt="" class="ct-hero-bg-img"/>
+    </div>
+    <div class="ct-hero-overlay"></div>
+    <canvas class="ct-particles" id="ctParticlesHero"></canvas>
+    <div class="ct-hero-content">
+        <div class="ct-hero-line ct-hl-1">Yolculuğun burada başlıyor.</div>
+        <div class="ct-hero-line ct-hl-2">Biz hazırız. <span class="cv-accent-text">Ya sen?</span></div>
+        <button class="cv-btn cv-btn-gold cv-btn-lg ct-hero-cta" onclick="document.getElementById('ct-options').scrollIntoView({behavior:'smooth'})">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            İletişime Geç
+        </button>
+    </div>
+    <div class="ct-scroll-hint">
+        <span>Keşfet</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </div>
+</section>
+
+<!-- S2: CONTACT OPTIONS — SMART CHOICE UI -->
+<section class="ct-options" id="ct-options">
+    <div class="cv-container">
+        <div class="ct-options-header">
+            <div class="cv-gold-line"></div>
+            <h2 class="cv-section-title">Size Nasıl <span class="cv-accent-text">Yardımcı</span> Olabiliriz?</h2>
+            <p class="cv-section-subtitle">İhtiyacınıza uygun seçeneği belirleyin, formu sizin için hazırlayalım.</p>
+        </div>
+        <div class="ct-cards">
+            <!-- Card 1: Teklif Al -->
+            <div class="ct-card" data-type="teklif">
+                <div class="ct-card-glow"></div>
+                <div class="ct-card-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                </div>
+                <h3>Teklif Al</h3>
+                <p class="ct-card-short">Hayalinizdeki karavan için özel fiyat teklifi alın.</p>
+                <div class="ct-card-expand">
+                    <ul>
+                        <li>Model seçimi & özelleştirme</li>
+                        <li>Bütçenize uygun çözümler</li>
+                        <li>24 saat içinde dönüş</li>
+                    </ul>
+                    <button class="cv-btn cv-btn-gold ct-card-btn" data-type="teklif">Teklif Formu ›</button>
+                </div>
+            </div>
+            <!-- Card 2: Kiralama -->
+            <div class="ct-card" data-type="kiralama">
+                <div class="ct-card-glow"></div>
+                <div class="ct-card-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                </div>
+                <h3>Kiralama</h3>
+                <p class="ct-card-short">Premium karavan kiralama ile özgürlüğü keşfedin.</p>
+                <div class="ct-card-expand">
+                    <ul>
+                        <li>Günlük / haftalık / aylık</li>
+                        <li>Full ekipman dahil</li>
+                        <li>Sigorta & yol yardım</li>
+                    </ul>
+                    <button class="cv-btn cv-btn-gold ct-card-btn" data-type="kiralama">Kiralama Formu ›</button>
+                </div>
+            </div>
+            <!-- Card 3: Destek -->
+            <div class="ct-card" data-type="destek">
+                <div class="ct-card-glow"></div>
+                <div class="ct-card-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                </div>
+                <h3>Destek</h3>
+                <p class="ct-card-short">Teknik destek, garanti ve servis talepleri.</p>
+                <div class="ct-card-expand">
+                    <ul>
+                        <li>Garanti & servis talepleri</li>
+                        <li>Teknik destek</li>
+                        <li>Dosya / fotoğraf yükleme</li>
+                    </ul>
+                    <button class="cv-btn cv-btn-gold ct-card-btn" data-type="destek">Destek Formu ›</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- S3: SMART FORM — DYNAMIC -->
+<section class="ct-form-section" id="ct-form-section">
+    <div class="cv-container">
+        <div class="ct-form-wrapper">
+            <!-- Type indicator -->
+            <div class="ct-form-type-bar">
+                <button class="ct-type-btn active" data-type="teklif">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    Teklif Al
+                </button>
+                <button class="ct-type-btn" data-type="kiralama">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    Kiralama
+                </button>
+                <button class="ct-type-btn" data-type="destek">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    Destek
+                </button>
+            </div>
+
+            <form class="ct-form" id="ctForm" onsubmit="event.preventDefault();document.getElementById('ctFormSuccess').classList.add('show');">
+                <!-- Common fields -->
+                <div class="ct-form-row">
+                    <div class="ct-field">
+                        <input type="text" id="ctName" required placeholder=" "/>
+                        <label for="ctName">Ad Soyad</label>
+                        <div class="ct-field-line"></div>
+                    </div>
+                    <div class="ct-field">
+                        <input type="email" id="ctEmail" required placeholder=" "/>
+                        <label for="ctEmail">E-posta</label>
+                        <div class="ct-field-line"></div>
+                    </div>
+                </div>
+                <div class="ct-form-row">
+                    <div class="ct-field">
+                        <input type="tel" id="ctPhone" placeholder=" "/>
+                        <label for="ctPhone">Telefon</label>
+                        <div class="ct-field-line"></div>
+                    </div>
+                </div>
+
+                <!-- DYNAMIC: Teklif fields -->
+                <div class="ct-dynamic-fields" id="ctFieldsTeklif">
+                    <div class="ct-form-row">
+                        <div class="ct-field">
+                            <select id="ctModel">
+                                <option value="">Model seçiniz</option>
+                                <option>Explorer 450</option>
+                                <option>Nomad 550</option>
+                                <option>Voyager 650</option>
+                                <option>Summit 750</option>
+                                <option>Horizon 850</option>
+                                <option>Prestige 950</option>
+                            </select>
+                            <label for="ctModel" class="ct-label-select">Karavan Modeli</label>
+                        </div>
+                        <div class="ct-field">
+                            <select id="ctBudget">
+                                <option value="">Bütçe aralığı</option>
+                                <option>500.000 ? - 1.000.000 ?</option>
+                                <option>1.000.000 ? - 2.000.000 ?</option>
+                                <option>2.000.000 ? - 3.500.000 ?</option>
+                                <option>3.500.000 ?+</option>
+                            </select>
+                            <label for="ctBudget" class="ct-label-select">Bütçe Aralığı</label>
+                        </div>
+                    </div>
+                    <div class="ct-form-row">
+                        <div class="ct-field ct-full">
+                            <textarea id="ctCustom" rows="3" placeholder=" "></textarea>
+                            <label for="ctCustom">Özelleştirme İsteğiniz</label>
+                            <div class="ct-field-line"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DYNAMIC: Kiralama fields -->
+                <div class="ct-dynamic-fields ct-hidden" id="ctFieldsKiralama">
+                    <div class="ct-form-row">
+                        <div class="ct-field">
+                            <input type="date" id="ctDate" placeholder=" "/>
+                            <label for="ctDate" class="ct-label-select">Başlangıç Tarihi</label>
+                        </div>
+                        <div class="ct-field">
+                            <select id="ctDays">
+                                <option value="">Gün sayısı</option>
+                                <option>1–3 gün</option>
+                                <option>4–7 gün</option>
+                                <option>1–2 hafta</option>
+                                <option>1 ay+</option>
+                            </select>
+                            <label for="ctDays" class="ct-label-select">Kiralama Süresi</label>
+                        </div>
+                    </div>
+                    <div class="ct-form-row">
+                        <div class="ct-field">
+                            <select id="ctRentalModel">
+                                <option value="">Model tercihi</option>
+                                <option>Explorer 450</option>
+                                <option>Nomad 550</option>
+                                <option>Voyager 650</option>
+                                <option>Farketmez</option>
+                            </select>
+                            <label for="ctRentalModel" class="ct-label-select">Model Tercihi</label>
+                        </div>
+                        <div class="ct-field">
+                            <input type="number" id="ctPax" min="1" max="8" placeholder=" "/>
+                            <label for="ctPax">Kişi Sayısı</label>
+                            <div class="ct-field-line"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DYNAMIC: Destek fields -->
+                <div class="ct-dynamic-fields ct-hidden" id="ctFieldsDestek">
+                    <div class="ct-form-row">
+                        <div class="ct-field">
+                            <select id="ctSubject">
+                                <option value="">Konu seçiniz</option>
+                                <option>Garanti Talebi</option>
+                                <option>Servis Randevusu</option>
+                                <option>Teknik Sorun</option>
+                                <option>Yedek Parça</option>
+                                <option>Diğer</option>
+                            </select>
+                            <label for="ctSubject" class="ct-label-select">Destek Konusu</label>
+                        </div>
+                    </div>
+                    <div class="ct-form-row">
+                        <div class="ct-field ct-full">
+                            <textarea id="ctDesc" rows="3" placeholder=" "></textarea>
+                            <label for="ctDesc">Açıklama</label>
+                            <div class="ct-field-line"></div>
+                        </div>
+                    </div>
+                    <div class="ct-form-row">
+                        <div class="ct-upload">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                            <span>Dosya / Fotoğraf Yükle</span>
+                            <small>PNG, JPG, PDF — maks. 10 MB</small>
+                            <input type="file" accept=".png,.jpg,.jpeg,.pdf" multiple/>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Common message -->
+                <div class="ct-form-row">
+                    <div class="ct-field ct-full">
+                        <textarea id="ctMessage" rows="4" placeholder=" "></textarea>
+                        <label for="ctMessage">Mesajınız</label>
+                        <div class="ct-field-line"></div>
+                    </div>
+                </div>
+
+                <button type="submit" class="cv-btn cv-btn-gold cv-btn-lg ct-submit-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                    Gönder
+                </button>
+            </form>
+
+            <!-- Config send preview -->
+            <div class="ct-config-preview ct-hidden" id="ctConfigPreview">
+                <div class="ct-config-badge">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    Konfigüratörden Geldiniz
+                </div>
+                <div class="ct-config-summary" id="ctConfigSummary"></div>
+            </div>
+
+            <!-- Success state -->
+            <div class="ct-form-success" id="ctFormSuccess">
+                <div class="ct-success-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                </div>
+                <h3>Mesajınız Gönderildi!</h3>
+                <p>En kısa sürede sizinle iletişime geçeceğiz.</p>
+                <button class="cv-btn cv-btn-outline" onclick="document.getElementById('ctFormSuccess').classList.remove('show');document.getElementById('ctForm').reset();">Yeni Mesaj</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- S4: LIVE ASSIST -->
+<section class="ct-assist">
+    <div class="cv-container">
+        <div class="ct-assist-inner">
+            <div class="ct-assist-header">
+                <div class="ct-assist-avatar">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </div>
+                <div>
+                    <h3>Size yardımcı olayım mı?</h3>
+                    <p>Hızlı yanıt almak için tercih edin.</p>
+                </div>
+            </div>
+            <div class="ct-assist-options">
+                <a href="https://wa.me/905339876543" target="_blank" rel="noopener noreferrer" class="ct-assist-btn ct-wa">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 0 0 .612.616l4.535-1.456A11.948 11.948 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.24 0-4.326-.66-6.085-1.797l-.424-.27-2.836.911.942-2.8-.292-.445A9.937 9.937 0 0 1 2 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+                    WhatsApp
+                </a>
+                <a href="tel:+902121234567" class="ct-assist-btn ct-call">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    Hızlı Arama
+                </a>
+                <button class="ct-assist-btn ct-live" onclick="this.innerHTML='<svg width=22 height=22 viewBox=&quot;0 0 24 24&quot; fill=none stroke=currentColor stroke-width=2><path d=&quot;M22 11.08V12a10 10 0 1 1-5.93-9.14&quot;/><polyline points=&quot;22 4 12 14.01 9 11.01&quot;/></svg> Bağlanıyor...'">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    Canlı Destek
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- S5: INTERACTIVE MAP -->
+<section class="ct-map-section">
+    <div class="cv-container">
+        <div class="ct-map-header">
+            <div class="cv-gold-line"></div>
+            <h2 class="cv-section-title">Bizi <span class="cv-accent-text">Ziyaret</span> Edin</h2>
+        </div>
+        <div class="ct-map-wrap">
+            <div class="ct-map-frame" id="ctMapFrame">
+                <div class="ct-map-placeholder" id="ctMapPlaceholder">
+                    <div class="ct-map-pin">
+                        <div class="ct-pin-dot"></div>
+                        <div class="ct-pin-pulse"></div>
+                        <div class="ct-pin-pulse ct-pin-pulse-2"></div>
+                    </div>
+                    <div class="ct-map-dark-bg"></div>
+                    <button class="cv-btn cv-btn-outline ct-map-load-btn" id="ctMapLoadBtn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        Haritayı Yükle
+                    </button>
+                </div>
+            </div>
+            <div class="ct-map-info">
+                <div class="ct-map-info-card">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <div>
+                        <strong>Merkez Ofis</strong>
+                        <span>Maslak Mah. Büyükdere Cad. No:123, Sarıyer / İstanbul</span>
+                    </div>
+                </div>
+                <a href="https://www.google.com/maps/dir/?api=1&destination=41.10816,29.01839" target="_blank" rel="noopener noreferrer" class="cv-btn cv-btn-gold ct-directions-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+                    Yol Tarifi Al
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- S6: VISIT EXPERIENCE -->
+<section class="ct-visit">
+    <div class="ct-visit-split">
+        <div class="ct-visit-visual">
+            <img src="static/src/img/caravan-2.png" alt="Ofis" class="ct-visit-img"/>
+            <div class="ct-visit-video-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                Sanal Tur
+            </div>
+        </div>
+        <div class="ct-visit-content">
+            <div class="cv-gold-line"></div>
+            <h2 class="cv-section-title">Showroom <span class="cv-accent-text">Deneyimi</span></h2>
+            <p class="cv-section-subtitle">Karavanlarımızı yakından görün, test edin ve uzmanlarımızla konuşun.</p>
+            <div class="ct-visit-details">
+                <div class="ct-visit-detail">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <div>
+                        <strong>Adres</strong>
+                        <span>Orhaniye Mah. 2051 Cad. No: 15<br/>Kahramankazan / Ankara / Türkiye</span>
+                    </div>
+                </div>
+                <div class="ct-visit-detail">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <div>
+                        <strong>Çalışma Saatleri</strong>
+                        <span>Pazartesi – Cumartesi: 09:00 – 18:00<br/>Pazar: Kapalı</span>
+                    </div>
+                </div>
+                <div class="ct-visit-detail">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    <div>
+                        <strong>İletişim</strong>
+                        <span>+90 533 085 17 81<br/>info@camppass.com</span>
+                    </div>
+                </div>
+            </div>
+            <a href="#" class="cv-btn cv-btn-gold cv-btn-lg ct-appointment-btn" onclick="event.preventDefault();document.getElementById('ct-form-section').scrollIntoView({behavior:'smooth'});">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Randevu Al
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- S7: TRUST BOOST — ANIMATED COUNTERS -->
+<section class="ct-trust">
+    <div class="cv-container">
+        <div class="ct-trust-grid">
+            <div class="ct-trust-item">
+                <span class="ct-counter" data-target="500">0</span><span class="ct-counter-plus">+</span>
+                <p>Mutlu Müşteri</p>
+            </div>
+            <div class="ct-trust-item">
+                <span class="ct-counter" data-target="12">0</span>
+                <p>Ülkeye Teslimat</p>
+            </div>
+            <div class="ct-trust-item">
+                <span class="ct-counter" data-target="5">0</span>
+                <p>Yıl Garanti</p>
+            </div>
+            <div class="ct-trust-item">
+                <span class="ct-counter" data-target="48">0</span><span class="ct-counter-unit">saat</span>
+                <p>Ortalama Dönüş Süresi</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- S8: FINAL CTA -->
+<section class="ct-final">
+    <canvas class="ct-particles" id="ctParticlesFinal"></canvas>
+    <div class="ct-final-content">
+        <div class="ct-final-line ct-fl-1">Hayalindeki karavan</div>
+        <div class="ct-final-line ct-fl-2">bir mesaj <span class="cv-accent-text">uzağında.</span></div>
+        <button class="cv-btn cv-btn-gold cv-btn-lg ct-final-cta" onclick="document.getElementById('ct-form-section').scrollIntoView({behavior:'smooth'});">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            Hemen Başla
+        </button>
+    </div>
+</section>
+
+</div>
+
+<!-- ============================================================
+     FOOTER (shared)
+     ============================================================ -->
+<footer class="cv-footer">
+    <div class="cv-container">
+        <div class="cv-footer-grid">
+            <div class="cv-footer-brand">
+                <a href="#" class="cv-logo" data-go="home"><img src="static/src/img/camppass-logo.webp" alt="Camppass" height="32"/></a>
+                <p>Özgürlük bir seçenek değil, mühendisliktir. Premium karavan deneyiminde yeni nesil standart.</p>
+            </div>
+            <div><h5>Sayfalar</h5><ul class="cv-footer-links"><li><a href="#" data-go="models">Modeller</a></li><li><a href="#" data-go="service">Servis</a></li><li><a href="#" data-go="corporate">Kurumsal</a></li><li><a href="#" data-go="news">Haberler</a></li></ul></div>
+            <div><h5>Destek</h5><ul class="cv-footer-links"><li><a href="#" data-go="faq">SSS</a></li><li><a href="#" data-go="contact">İletişim</a></li><li><a href="#" data-go="service">Randevu Al</a></li></ul></div>
+            <div><h5>İletişim</h5><ul class="cv-footer-links"><li><a href="tel:+905330851781">+90 533 085 17 81</a></li><li><a href="mailto:info@camppass.com">info@camppass.com</a></li><li><span style="color:var(--cv-text-muted);font-size:.9rem;">Kahramankazan / Ankara</span></li></ul></div>
+        </div>
+        <div class="cv-footer-bottom">
+            <span>&copy; 2026 Karavan. Tüm hakları saklıdır.</span>
+            <div class="cv-footer-social">
+                <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+                <a href="#" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29.94 29.94 0 0 0 1 12a29.94 29.94 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2A29.94 29.94 0 0 0 23 12a29.94 29.94 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg></a>
+                <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- ============================================================
+     PREVIEW JS — page switching + animations + accordion
+     ============================================================ -->
+<script src="static/src/js/main.js"></script>
+<script src="static/src/js/models-cinematic.js"></script>
+<script src="static/src/js/corporate-cinematic.js"></script>
+<script src="static/src/js/contact-cinematic.js"></script>
+<script>
+(function(){
+    'use strict';
+
+    /* ── Modeller Dropdown — touch/click toggle ── */
+    var ddItem = document.querySelector('.cv-nav-dropdown');
+    if(ddItem){
+        var trigger = ddItem.querySelector('.cv-nav-dropdown-trigger');
+        trigger.addEventListener('click', function(e){
+            var isLink = !ddItem.classList.contains('open');
+            // If menu is already open and user clicks trigger → go to models page
+            if(!isLink){ ddItem.classList.remove('open'); return; }
+            e.preventDefault();
+            ddItem.classList.toggle('open');
+        });
+        document.addEventListener('click', function(e){
+            if(!ddItem.contains(e.target)) ddItem.classList.remove('open');
+        });
+    }
+
+    /* ── Mobil Menü Accordion ── */
+    (function(){
+        var accTrigger = document.getElementById('cvMobModelsTrigger');
+        var accBody    = document.getElementById('cvMobModelsBody');
+        if(!accTrigger || !accBody) return;
+        accTrigger.addEventListener('click', function(e){
+            e.stopPropagation();
+            var opening = !accBody.classList.contains('open');
+            accBody.classList.toggle('open', opening);
+            accTrigger.classList.toggle('open', opening);
+        });
+    })();
+
+    /* Page switching */
+    function showPage(name){
+        document.querySelectorAll('.preview-page').forEach(function(p){p.classList.remove('active');});
+        var target=document.getElementById('page-'+name);
+        if(target){target.classList.add('active');}
+        document.querySelectorAll('.preview-nav button').forEach(function(b){b.classList.toggle('active',b.dataset.page===name);});
+        window.scrollTo({top:0,behavior:'smooth'});
+        /* re-trigger animations for newly visible page */
+        setTimeout(function(){
+            target.querySelectorAll('.cv-animate').forEach(function(el){el.classList.remove('cv-visible');});
+            setTimeout(function(){initPageAnimations(target);},50);
+        },100);
+    }
+
+    function initPageAnimations(container){
+        var els=(container||document).querySelectorAll('.cv-animate:not(.cv-visible)');
+        if(!els.length)return;
+        if('IntersectionObserver' in window){
+            var obs=new IntersectionObserver(function(entries){
+                entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('cv-visible');obs.unobserve(e.target);}});
+            },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+            els.forEach(function(el){obs.observe(el);});
+        } else {
+            els.forEach(function(el){el.classList.add('cv-visible');});
+        }
+    }
+
+    /* Bottom tab nav */
+    document.getElementById('previewNav').addEventListener('click',function(e){
+        var btn=e.target.closest('button');
+        if(btn&&btn.dataset.page)showPage(btn.dataset.page);
+    });
+
+    /* ============================================================
+       MODEL DETAIL DATA — all 7 models (scraped from camppass.com)
+       ============================================================ */
+    var MODELS_DATA = {
+        'cr400j': {
+            name: 'CR400 Journey', img: 'static/src/img/model-cr400j.png', price: '12.900 €\'den başlayan',
+            kapasite: '2 Kişi', agirlik: '~450 kg', hacim: '4 m³', tasima: '750 kg',
+            uzunluk: '4.440 mm', genislik: '2.200 mm', yukseklik: '1.750 mm', su: '15 L',
+            features: [
+                { title: 'Kompakt & Hafif Tasarım', desc: '~450 kg boş ağırlık ile her araç tarafından çekilebilir; kolay park ve manevra için ideal 4.440 mm uzunluk.' },
+                { title: 'Geniş Uyku Alanı', desc: 'İki yetişkin için 2000×1430 mm ana yatak; opsiyonel tavan çadırı ile ek uyku kapasitesi.' },
+                { title: 'Dört Mevsim Konfor', desc: 'Isı köprüsüz yapı ve sezgisel kontrol sistemi ile her mevsimde konforlu ve sağlıklı iç ortam.' },
+                { title: 'Kolay Keşif Ruhu', desc: 'Dar sokaklar ve sıkışık park alanları için mükemmel; spontane kaçamalara ideal kompakt yapı.' }
+            ],
+            gallery: ['gallery-cr400j-1.webp','gallery-cr400j-2.webp','gallery-cr400j-3.webp','gallery-cr400j-4.webp','gallery-cr400j-5.webp','gallery-cr400j-6.webp','gallery-cr400j-7.webp']
+        },
+        'cr400': {
+            name: 'CR400', img: 'static/src/img/model-cr400.png', price: '14.900 €\'den başlayan',
+            kapasite: '2 Kişi', agirlik: '450 kg', hacim: '4 m³', tasima: '750 kg',
+            uzunluk: '4.440 mm', genislik: '2.200 mm', yukseklik: '1.750 mm', su: '15 L',
+            features: [
+                { title: 'Offroad Uyumlu Şasi', desc: 'Torsiyon süspansiyonlu şasi ve 750 kg taşıma kapasitesi ile zorlu arazilerde güvenilir performans.' },
+                { title: 'Geniş Uyku Alanı', desc: 'İki yetişkin için 2000×1430 mm ana yatak; opsiyonel tavan çadırı ile ek uyku kapasitesi.' },
+                { title: 'Isı Köprüsüz İzolasyon', desc: 'Her mevsimde konforlu iç ortam; nem ve yoğuşma olmadan sağlıklı bir kamp deneyimi.' },
+                { title: 'Kompakt ve Çevik', desc: 'Sadece 450 kg boş ağırlık ile kolayca kullanılabilir, park edilebilir ve uygun araçla çekilebilir.' }
+            ],
+            gallery: ['gallery-cr400-1.webp','gallery-cr400-2.webp','gallery-cr400-3.webp','gallery-cr400-4.webp','gallery-cr400-5.webp','gallery-cr400-6.webp']
+        },
+        'cr455': {
+            name: 'CR455', img: 'static/src/img/model-cr455.webp', price: '34.800 €\'den başlayan',
+            kapasite: '4 Kişi', agirlik: '900 kg', hacim: '15 m³', tasima: '1.500 kg',
+            uzunluk: '5.090 mm', genislik: '2.200 mm', yukseklik: '2.450 mm', su: '70 L',
+            features: [
+                { title: 'Açılır Pop-up Tavan', desc: '4 kişilik uyku kapasitesi: Ana yatak 1485×1950 mm + çekme yatak 1870×1400 mm ile tam esneklik.' },
+                { title: 'Dış + İç Mutfak', desc: 'Hem dış hem de iç mutfak kombinasyonu ile her koşulda tam donanımlı pişirme imkânı.' },
+                { title: 'Bağımsız Süspansiyon', desc: '1.500 kg taşıma kapasiteli bağımsız tekerlek süspansiyonu ve 23° yaklaşma açısı ile offroad performans.' },
+                { title: '70 L Su Tankı & WC', desc: '70 litrelik temiz su tankı, iç duş ve WC ile tam bağımsız kamp konforu.' }
+            ],
+            gallery: ['gallery-cr455-1.webp','gallery-cr455-2.webp','gallery-cr455-3.webp','gallery-cr455-4.webp','gallery-cr455-5.webp','gallery-cr455-6.webp','gallery-cr455-7.webp','gallery-cr455-8.webp']
+        },
+        'cr550': {
+            name: 'CR550', img: 'static/src/img/model-cr550.webp', price: '33.980 €\'den başlayan',
+            kapasite: '4 Kişi', agirlik: '1.000 kg', hacim: '15 m³', tasima: '1.800 kg',
+            uzunluk: '5.520 mm', genislik: '2.320 mm', yukseklik: '2.650 mm', su: '100 L',
+            features: [
+                { title: 'Bağımsız Tekerlek Süspansiyonu', desc: '1.800 kg taşıma kapasiteli bağımsız tekerlek süspansiyon sistemi ile zorlu arazi koşullarında üstün stabilite.' },
+                { title: 'Geniş Yaşam Alanı', desc: 'Dört yetişkin için uyuma imkânı: Ana yatak 2030×1360 mm, ranzalı ek alan ile 15 m³ konforlu iç hacim.' },
+                { title: 'Tam Donanımlı İç Mekan', desc: 'Dış mutfak, WC\'li iç duş, ambiyans LED aydınlatma, USB portları ve 100 L temiz su tankı standart dahil.' },
+                { title: 'Isı Köprüsüz Teknoloji', desc: 'Gelişmiş ısı köprüsüz yapı ile nem ve yoğuşma olmadan dört mevsim boyunca sağlıklı ve konforlu iç ortam.' }
+            ],
+            gallery: ['gallery-cr550-1.webp','gallery-cr550-2.webp','gallery-cr550-3.webp','gallery-cr550-4.webp']
+        },
+        'cr550i': {
+            name: 'CR550i', img: 'static/src/img/model-cr550i.png', price: '33.980 €\'den başlayan',
+            kapasite: '2 Kişi', agirlik: '1.000 kg', hacim: '15 m³', tasima: '1.800 kg',
+            uzunluk: '5.520 mm', genislik: '2.320 mm', yukseklik: '2.650 mm', su: '100 L',
+            features: [
+                { title: 'Bağımsız Tekerlek Süspansiyonu', desc: '1.800 kg taşıma kapasiteli bağımsız tekerlek süspansiyonu ile her arazide güvenilir ve konforlu sürüş.' },
+                { title: 'İki Kişilik Lüks', desc: 'Çift kişilik 2030×1360 mm geniş ana yatak ve 15 m³ iç hacim ile özel ve konforlu kamp deneyimi.' },
+                { title: 'İç Mutfak & WC', desc: 'Tam donanımlı iç mutfak, WC\'li iç duş ve 100 L temiz su tankı ile eksiksiz bağımsız seyahat.' },
+                { title: 'Isı Köprüsüz Teknoloji', desc: 'Gelişmiş ısı köprüsüz yapı ile her mevsim sağlıklı, konforlu ve nem/yoğuşmasız iç ortam.' }
+            ],
+            gallery: ['gallery-cr550i-1.webp','gallery-cr550i-2.webp','gallery-cr550i-3.webp','gallery-cr550i-4.webp','gallery-cr550i-5.webp','gallery-cr550i-6.webp','gallery-cr550i-7.webp','gallery-cr550i-8.webp']
+        },
+        'cr555': {
+            name: 'CR555', img: 'static/src/img/model-cr555.png', price: '38.900 €\'den başlayan',
+            kapasite: '4 Kişi', agirlik: '1.100 kg', hacim: '20 m³', tasima: '1.800 kg',
+            uzunluk: '5.750 mm', genislik: '2.200 mm', yukseklik: '2.650 mm', su: '100 L',
+            features: [
+                { title: 'Pop-up Açılır Tavan', desc: '4 kişilik uyku kapasitesi: Ana yatak 2030×1360 mm ve çekme yatak 1870×1400 mm ile genişletilmiş alan.' },
+                { title: '20 m³ İç Hacim', desc: 'En büyük iç hacimlerden biri; geniş oturma, yaşam ve depolama alanı ile maksimum konfor.' },
+                { title: 'Bağımsız Süspansiyon', desc: '1.800 kg taşıma kapasiteli bağımsız tekerlek süspansiyonu ve offroad şasi ile her arazide güven.' },
+                { title: 'Isı Köprüsüz İzolasyon', desc: 'Her mevsimde sağlıklı ve konforlu iç ortam; soğuk bölgeler için de mükemmel dört mevsim yalıtım.' }
+            ],
+            gallery: ['gallery-cr555-1.webp','gallery-cr555-2.webp','gallery-cr555-3.webp','gallery-cr555-4.webp','gallery-cr555-5.webp']
+        },
+        'cr650': {
+            name: 'CR650', img: 'static/src/img/model-cr650.webp', price: '41.900 €\'den başlayan',
+            kapasite: '4 Kişi', agirlik: '1.150 kg', hacim: '17.5 m³', tasima: '1.800 kg',
+            uzunluk: '6.960 mm', genislik: '2.320 mm', yukseklik: '2.650 mm', su: '100 L',
+            features: [
+                { title: 'Lüks & Geniş Yaşam', desc: 'En uzun model: 6.960 mm şasi, 4680×2030 mm kabin ve 17.5 m³ hacim ile premium kamp yaşam kalitesi.' },
+                { title: 'Dört Kişilik Uyku', desc: 'Ana yatak 2030×1360 mm ve ranza 2000×650 mm ile dört yetişkin için konforlu gece uykusu.' },
+                { title: 'Güçlü Şasi', desc: '1.800 kg taşıma kapasiteli şasi ve aks amortisörü ile zorlu arazilerde stabil ve güvenli çekiş performansı.' },
+                { title: 'Isı Köprüsüz Teknoloji', desc: 'Gelişmiş ısı köprüsüz yapı ile nem ve yoğuşma olmadan dört mevsim boyunca lüks iç ortam.' }
+            ],
+            gallery: ['gallery-cr650-1.webp','gallery-cr650-2.webp','gallery-cr650-3.webp','gallery-cr650-4.webp','gallery-cr650-5.webp','gallery-cr650-6.webp','gallery-cr650-7.webp','gallery-cr650-8.webp']
+        }
+    };
+
+    var SVG_ICONS = [
+        '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
+        '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',
+        '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
+        '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>'
+    ];
+
+    function loadDetailPage(modelId) {
+        var m = MODELS_DATA[modelId] || MODELS_DATA['cr550'];
+        document.getElementById('dtHeroImg').src = m.img;
+        document.getElementById('dtHeroImg').alt = m.name;
+        document.getElementById('dtBreadcrumb').textContent = m.name;
+        document.getElementById('dtTitle').textContent = m.name;
+        document.getElementById('dtPrice').textContent = m.price;
+        document.getElementById('dtSpecKapasite').textContent = m.kapasite;
+        document.getElementById('dtSpecAgirlik').textContent = m.agirlik;
+        document.getElementById('dtSpecHacim').textContent = m.hacim;
+        document.getElementById('dtSpecTasima').textContent = m.tasima;
+        document.getElementById('dtSpecUzunluk').textContent = m.uzunluk;
+        document.getElementById('dtSpecGenislik').textContent = m.genislik;
+        document.getElementById('dtSpecYukseklik').textContent = m.yukseklik;
+        document.getElementById('dtSpecSu').textContent = m.su;
+        document.getElementById('dtCtaTitle').innerHTML = m.name + ' ile <span class="cv-accent-text">Özgürlüğe Adım Atın</span>';
+        var delays = ['','cv-animate-delay-1','cv-animate-delay-2','cv-animate-delay-3'];
+        document.getElementById('dtFeatures').innerHTML = m.features.map(function(f,i){
+            return '<div class="cv-detail-feature-item cv-animate '+delays[i]+'"><div class="cv-detail-feature-icon">'+SVG_ICONS[i]+'</div><div><h4>'+f.title+'</h4><p>'+f.desc+'</p></div></div>';
+        }).join('');
+        document.getElementById('dtGallery').innerHTML = m.gallery.map(function(img,i){
+            var d=i>0?' cv-animate-delay-'+Math.min(i,5):'';
+            return '<div class="cv-gallery-item cv-animate'+d+'"><img src="static/src/img/'+img+'" alt="'+m.name+' '+(i+1)+'"/></div>';
+        }).join('');
+    }
+
+    /* data-go links anywhere */
+    document.addEventListener('click',function(e){
+        var link=e.target.closest('[data-go]');
+        if(link){
+            e.preventDefault();
+            var page=link.dataset.go;
+            if(page==='detail'){
+                var modelId=link.dataset.detailModel;
+                if(!modelId){var sc=link.closest('[data-detail-model]');if(sc)modelId=sc.dataset.detailModel;}
+                loadDetailPage(modelId||'cr550');
+            }
+            showPage(page);
+        }
+    });
+
+    /* Init animations for starting page */
+    initPageAnimations(document.getElementById('page-home'));
+
+    /* ============================================================
+       HERO CINEMATIC TEXT REVEAL — video plays = blurry, ends = sharp + glow
+       ============================================================ */
+    (function(){
+        var video   = document.getElementById('heroVideo');
+        var content = document.getElementById('heroContent');
+        var overlay = document.getElementById('heroOverlay');
+        if(!video || !content || !overlay) return;
+
+        var revealed = false;
+
+        function setPlaying(){
+            if(revealed) return;
+            content.classList.add('hero-playing');
+            content.classList.remove('hero-revealed');
+            overlay.classList.add('hero-playing');
+            overlay.classList.remove('hero-revealed');
+        }
+
+        function setRevealed(){
+            if(revealed) return;
+            revealed = true;
+            /* slight delay for polish */
+            setTimeout(function(){
+                content.classList.remove('hero-playing');
+                content.classList.add('hero-revealed');
+                overlay.classList.remove('hero-playing');
+                overlay.classList.add('hero-revealed');
+                /* after reveal glow fades naturally — loop video silently */
+                setTimeout(function(){
+                    video.loop = true;
+                    video.play().catch(function(){});
+                }, 1000);
+            }, 150);
+        }
+
+        /* Video events */
+        video.addEventListener('play',    setPlaying);
+        video.addEventListener('playing', setPlaying);
+        video.addEventListener('ended',   setRevealed);
+
+        /* Time-based fallback — reveal ~0.8s before video ends */
+        video.addEventListener('loadedmetadata', function(){
+            if(video.duration && isFinite(video.duration)){
+                var revealAt = Math.max((video.duration - 0.8) * 1000, 1000);
+                setTimeout(setRevealed, revealAt);
+            }
+        });
+
+        /* Hard fallback: if nothing fires within 12s, reveal anyway */
+        setTimeout(setRevealed, 12000);
+    })();
+
+})();
+</script>
+</body>
+</html>
+

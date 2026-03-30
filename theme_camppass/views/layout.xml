@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ============================================================
+         BASE LAYOUT — wraps all Camppass theme pages
+         Inherits website.layout and adds .caravan-page class
+         ============================================================ -->
+    <template id="camppass_layout" name="Camppass Base Layout" inherit_id="website.layout" primary="True">
+        <xpath expr="//div[@id='wrapwrap']" position="attributes">
+            <attribute name="class" add="caravan-page" separator=" "/>
+        </xpath>
+    </template>
+
+    <!-- Hide default Odoo header/footer on Camppass pages -->
+    <template id="camppass_hide_default_nav" inherit_id="website.layout" name="Hide Default Nav for Camppass">
+        <xpath expr="//header" position="attributes">
+            <attribute name="t-attf-class">#{pageName in ('homepage','models','model_detail','corporate','contact','service','faq','news') and 'd-none' or ''}</attribute>
+        </xpath>
+    </template>
+
+    <template id="camppass_hide_default_footer" inherit_id="website.layout" name="Hide Default Footer for Camppass">
+        <xpath expr="//footer" position="attributes">
+            <attribute name="t-attf-class">#{pageName in ('homepage','models','model_detail','corporate','contact','service','faq','news') and 'd-none' or ''}</attribute>
+        </xpath>
+    </template>
+
+</odoo>

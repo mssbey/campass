@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ============================================================
+         HEADER / NAVBAR �?" sticky transparent �?' solid on scroll
+         ============================================================ -->
+    <template id="caravan_header" name="Caravan Header">
+        <header class="cv-header">
+            <div class="cv-header-inner">
+
+                <!-- Logo -->
+                <a href="/" class="cv-logo">
+                    <img src="/caravan_theme/static/src/img/camppass-logo.webp" alt="Camppass" class="cv-logo-img"/>
+                </a>
+
+                <!-- Desktop Nav -->
+                <ul class="cv-nav">
+                    <li><a href="/modeller">Modeller</a></li>
+                    <li><a href="/servis">Servis</a></li>
+                    <li><a href="/kurumsal">Kurumsal</a></li>
+                    <li><a href="/haberler">Haberler</a></li>
+                    <li><a href="/iletisim">İleti�Yim</a></li>
+                </ul>
+
+                <!-- CTA Buttons -->
+                <div class="cv-header-cta">
+                    <a href="/modeller" class="cv-btn cv-btn-gold">Configure</a>
+                    <a href="/iletisim" class="cv-btn cv-btn-outline">Kirala</a>
+                </div>
+
+                <!-- Hamburger (mobile) -->
+                <button class="cv-hamburger" aria-label="Menü">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Mobile Menu Overlay -->
+        <div class="cv-mobile-menu">
+            <a href="/">Anasayfa</a>
+            <a href="/modeller">Modeller</a>
+            <a href="/servis">Servis</a>
+            <a href="/kurumsal">Kurumsal</a>
+            <a href="/haberler">Haberler</a>
+            <a href="/iletisim">İleti�Yim</a>
+            <div class="cv-mobile-cta">
+                <a href="/modeller" class="cv-btn cv-btn-gold">Configure</a>
+                <a href="/iletisim" class="cv-btn cv-btn-outline">Kirala</a>
+            </div>
+        </div>
+    </template>
+
+</odoo>
