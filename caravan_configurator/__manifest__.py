@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Camppass 3D Configurator & Order System',
-    'version': '16.0.1.0.0',
+    'version': '19.0.1.0.0',
     'category': 'Website',
     'summary': 'Tesla-like 3D Camppass configurator with live preview, pricing, and order system',
     'description': """

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Camppass Theme',
-    'version': '16.0.1.0.0',
+    'version': '19.0.1.0.0',
     'category': 'Theme',
     'summary': 'Premium cinematic dark theme for Camppass caravan website',
     'author': 'Camppass',

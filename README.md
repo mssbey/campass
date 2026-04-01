@@ -92,7 +92,7 @@ Tarayıcıda aç: [http://127.0.0.1:8080/caravan_theme/preview.html](http://127.
 - **Hero:** `hero.mp4` video arka planı + sinematik metin reveal efekti
 - **Nav:** Hover dropdown ile 7 model direkt erişimi
 - **Galeri:** Her model için 4–8 gerçek ürün fotoğrafı
-- **Odoo Uyumlu:** `__manifest__.py` ile Odoo 16 tema modülü olarak kullanılabilir
+- **Odoo Uyumlu:** `__manifest__.py` ile Odoo 19 tema modülü olarak kullanılabilir
 
 ---
 

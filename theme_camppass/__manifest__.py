@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Camppass Premium Dark Theme',
-    'version': '16.0.1.0.0',
+    'version': '19.0.1.0.0',
     'category': 'Theme/Corporate',
     'summary': 'Premium cinematic dark-theme Camppass caravan website',
     'description': """
-        Camppass Premium Dark Theme for Odoo 16 Website.
+        Camppass Premium Dark Theme for Odoo 19 Website.
         - Cinematic dark luxury design
         - Glassmorphism effects
         - Smooth scroll animations via IntersectionObserver
