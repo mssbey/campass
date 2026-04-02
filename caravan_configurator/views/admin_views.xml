@@ -7,7 +7,7 @@
         <field name="name">caravan.model.tree</field>
         <field name="model">caravan.model</field>
         <field name="arch" type="xml">
-            <tree>
+            <list>
                 <field name="sequence" widget="handle"/>
                 <field name="name"/>
                 <field name="code"/>
@@ -15,7 +15,7 @@
                 <field name="solar_power"/>
                 <field name="capacity"/>
                 <field name="active"/>
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -73,7 +73,7 @@
     <record id="action_caravan_model" model="ir.actions.act_window">
         <field name="name">Caravan Models</field>
         <field name="res_model">caravan.model</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
     </record>
 
     <!-- ============================================================
@@ -83,7 +83,7 @@
         <field name="name">caravan.option.tree</field>
         <field name="model">caravan.option</field>
         <field name="arch" type="xml">
-            <tree>
+            <list>
                 <field name="sequence" widget="handle"/>
                 <field name="name"/>
                 <field name="code"/>
@@ -92,7 +92,7 @@
                 <field name="color_hex"/>
                 <field name="is_default"/>
                 <field name="active"/>
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -126,7 +126,7 @@
     <record id="action_caravan_option" model="ir.actions.act_window">
         <field name="name">Configuration Options</field>
         <field name="res_model">caravan.option</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
     </record>
 
     <!-- ============================================================
@@ -136,14 +136,14 @@
         <field name="name">caravan.configuration.tree</field>
         <field name="model">caravan.configuration</field>
         <field name="arch" type="xml">
-            <tree>
+            <list>
                 <field name="name"/>
                 <field name="model_id"/>
                 <field name="base_price" widget="monetary"/>
                 <field name="options_price" widget="monetary"/>
                 <field name="total_price" widget="monetary"/>
                 <field name="create_date"/>
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -184,7 +184,7 @@
     <record id="action_caravan_configuration" model="ir.actions.act_window">
         <field name="name">Configurations</field>
         <field name="res_model">caravan.configuration</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
     </record>
 
     <!-- ============================================================
@@ -194,14 +194,14 @@
         <field name="name">caravan.order.tree</field>
         <field name="model">caravan.order</field>
         <field name="arch" type="xml">
-            <tree decoration-success="state == 'delivered'" decoration-info="state == 'confirmed'" decoration-warning="state == 'production'" decoration-danger="state == 'cancelled'">
+            <list decoration-success="state == 'delivered'" decoration-info="state == 'confirmed'" decoration-warning="state == 'production'" decoration-danger="state == 'cancelled'">
                 <field name="name"/>
                 <field name="customer_name"/>
                 <field name="model_id"/>
                 <field name="total_price" widget="monetary"/>
                 <field name="state" widget="badge"/>
                 <field name="create_date"/>
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -256,6 +256,6 @@
     <record id="action_caravan_order" model="ir.actions.act_window">
         <field name="name">Orders</field>
         <field name="res_model">caravan.order</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
     </record>
 </odoo>
