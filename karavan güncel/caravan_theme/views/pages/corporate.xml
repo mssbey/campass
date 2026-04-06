@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ============================================================
+         CORPORATE PAGE — Cinematic Brand Experience
+         ============================================================ -->
+    <template id="page_corporate" name="Camppass Corporate">
+        <t t-call="caravan_theme.caravan_layout">
+
+            <!-- S1: IMMERSIVE BRAND ENTRY -->
+            <section class="cp-entry">
+                <div class="cp-entry-bg">
+                    <img src="/caravan_theme/static/src/img/caravan-4.png" alt="" class="cp-entry-bg-img"/>
+                </div>
+                <div class="cp-entry-overlay"></div>
+                <canvas class="cp-particles" id="cpParticles"></canvas>
+                <div class="cp-entry-content">
+                    <div class="cp-entry-line cp-el-1">Biz karavan &#x00FC;retmiyoruz.</div>
+                    <div class="cp-entry-line cp-el-2">Biz &#x00F6;zg&#x00FC;rl&#x00FC;&#x011F;&#x00FC; m&#x00FC;hendislikle <span class="cv-accent-text">tasar&#x0131;l&#x0131;yoruz.</span></div>
+                </div>
+                <div class="cp-scroll-hint">
+                    <span>Ke&#x015F;fet</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+            </section>
+
+            <!-- S2: BRAND DNA — THREE PILLARS -->
+            <section class="cp-dna" id="cpDna">
+                <div class="cv-container">
+                    <div class="cp-dna-header">
+                        <hr class="cv-gold-line centered"/>
+                        <h2 class="cv-section-title" style="text-align:center;">Marka <span class="cv-accent-text">DNA'm&#x0131;z</span></h2>
+                    </div>
+                    <div class="cp-pillars">
+                        <!-- Pillar 1: Engineering -->
+                        <div class="cp-pillar" data-pillar="eng">
+                            <div class="cp-pillar-icon">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                            </div>
+                            <h3>M&#x00FC;hendislik</h3>
+                            <p class="cp-pillar-short">Hassas m&#x00FC;hendislik her detayda</p>
+                            <div class="cp-pillar-expand">
+                                <p>Her karavan&#x0131;m&#x0131;z 2.000'den fazla m&#x00FC;hendislik saati ile tasarlan&#x0131;r. Ba&#x011F;&#x0131;ms&#x0131;z s&#x00FC;spansiyon, askeri s&#x0131;n&#x0131;f &#x015F;asi ve ak&#x0131;ll&#x0131; enerji y&#x00F6;netimi &#x2014; her bile&#x015F;en m&#x00FC;kemmellik i&#x00E7;in optimize edilmi&#x015F;tir.</p>
+                                <div class="cp-pillar-stat"><span class="cp-stat-num">2.000+</span><span class="cp-stat-lbl">M&#x00FC;hendislik Saati</span></div>
+                            </div>
+                        </div>
+                        <!-- Pillar 2: Freedom -->
+                        <div class="cp-pillar" data-pillar="free">
+                            <div class="cp-pillar-icon">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            </div>
+                            <h3>&#x00D6;zg&#x00FC;rl&#x00FC;k</h3>
+                            <p class="cp-pillar-short">Tamamen ba&#x011F;&#x0131;ms&#x0131;z ya&#x015F;am</p>
+                            <div class="cp-pillar-expand">
+                                <p>Off-grid enerji sistemi, 400L su kapasitesi ve d&#x00F6;rt mevsim iklim kontrol&#x00FC; ile d&#x00FC;nyan&#x0131;n en uzak k&#x00F6;&#x015F;elerinde bile evinizdeki konforu ya&#x015F;ay&#x0131;n. Hi&#x00E7;bir yol s&#x0131;n&#x0131;r&#x0131;n&#x0131;z de&#x011F;il.</p>
+                                <div class="cp-pillar-stat"><span class="cp-stat-num">365</span><span class="cp-stat-lbl">G&#x00FC;n Off-Grid</span></div>
+                            </div>
+                        </div>
+                        <!-- Pillar 3: Durability -->
+                        <div class="cp-pillar" data-pillar="dur">
+                            <div class="cp-pillar-icon">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            </div>
+                            <h3>Dayan&#x0131;kl&#x0131;l&#x0131;k</h3>
+                            <p class="cp-pillar-short">Askeri s&#x0131;n&#x0131;f koruma</p>
+                            <div class="cp-pillar-expand">
+                                <p>-30&#x00B0;C ile +55&#x00B0;C aras&#x0131;nda test edilmi&#x015F; yap&#x0131;. 50.000 km garanti, &#x00E7;elik takviyeli kompozit g&#x00F6;vde ve IP67 koruma s&#x0131;n&#x0131;f&#x0131;yla do&#x011F;an&#x0131;n en zorlu ko&#x015F;ullar&#x0131;na meydan okuyoruz.</p>
+                                <div class="cp-pillar-stat"><span class="cp-stat-num">50.000</span><span class="cp-stat-lbl">km Garanti</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- S3: CINEMATIC TEAM -->
+            <section class="cp-team" id="cpTeam">
+                <div class="cv-container">
+                    <div class="cp-team-header">
+                        <hr class="cv-gold-line centered"/>
+                        <h2 class="cv-section-title" style="text-align:center;">Vizyonun <span class="cv-accent-text">Arkas&#x0131;ndakiler</span></h2>
+                        <p class="cv-section-subtitle centered">Tutkulu m&#x00FC;hendisler ve tasar&#x0131;mc&#x0131;lardan olu&#x015F;an kadromuz.</p>
+                    </div>
+                    <div class="cp-team-orbit" id="cpTeamOrbit">
+                        <div class="cp-member" data-member="0">
+                            <div class="cp-member-glow"></div>
+                            <img src="/caravan_theme/static/src/img/team-hasmet.webp" alt="Hasmet Ac&#x0131;kyer"/>
+                            <div class="cp-member-info">
+                                <h4>Hasmet Ac&#x0131;kyer</h4>
+                                <span>C.E.O</span>
+                                <p class="cp-member-quote">+43 676 598 5555<br/>acikyer@camppass.at</p>
+                            </div>
+                        </div>
+                        <div class="cp-member" data-member="1">
+                            <div class="cp-member-glow"></div>
+                            <img src="/caravan_theme/static/src/img/team-hakan.webp" alt="Hakan Kes"/>
+                            <div class="cp-member-info">
+                                <h4>Hakan Kes</h4>
+                                <span>Head of Camppass</span>
+                                <p class="cp-member-quote">"Kaliteyi ve &#x00F6;zg&#x00FC;rl&#x00FC;&#x011F;&#x00FC; birle&#x015F;tiriyoruz."</p>
+                            </div>
+                        </div>
+                        <div class="cp-member" data-member="2">
+                            <div class="cp-member-glow"></div>
+                            <img src="/caravan_theme/static/src/img/team-ozgur.webp" alt="&#x00D6;zg&#x00FC;r &#x00D6;zatay"/>
+                            <div class="cp-member-info">
+                                <h4>&#x00D6;zg&#x00FC;r &#x00D6;zatay</h4>
+                                <span>Y&#x00F6;netici Ortak</span>
+                                <p class="cp-member-quote">"&#x0130;&#x015F; ortakl&#x0131;&#x011F;&#x0131; g&#x00FC;vene dayan&#x0131;r."</p>
+                            </div>
+                        </div>
+                        <div class="cp-member" data-member="3">
+                            <div class="cp-member-glow"></div>
+                            <img src="/caravan_theme/static/src/img/team-karya.webp" alt="Karya Kes"/>
+                            <div class="cp-member-info">
+                                <h4>Karya Kes</h4>
+                                <span>Y&#x00F6;netim Kurulu Ba&#x015F;kan&#x0131;</span>
+                                <p class="cp-member-quote">"Vizyonun g&#x00FC;c&#x00FC; her &#x015F;eyin &#x00F6;n&#x00FC;nde gelir."</p>
+                            </div>
+                        </div>
+                        <div class="cp-member" data-member="4">
+                            <div class="cp-member-glow"></div>
+                            <img src="/caravan_theme/static/src/img/team-onur.webp" alt="Onur Arslan"/>
+                            <div class="cp-member-info">
+                                <h4>Onur Arslan</h4>
+                                <span>Genel M&#x00FC;d&#x00FC;r</span>
+                                <p class="cp-member-quote">"Operasyonel m&#x00FC;kemmellik hedefimizdir."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- S4: PRODUCTION EXPERIENCE -->
+            <section class="cp-production" id="cpProduction">
+                <div class="cp-prod-split">
+                    <div class="cp-prod-visual">
+                        <img src="/caravan_theme/static/src/img/caravan-3.png" alt="&#x00DC;retim" class="cp-prod-img"/>
+                        <div class="cp-prod-overlay"></div>
+                    </div>
+                    <div class="cp-prod-content">
+                        <hr class="cv-gold-line"/>
+                        <h2 class="cv-section-title">&#x00DC;retim <span class="cv-accent-text">Deneyimi</span></h2>
+                        <div class="cp-prod-points">
+                            <div class="cp-prod-point">
+                                <div class="cp-prod-point-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06"/></svg></div>
+                                <div><h4>Hassas M&#x00FC;hendislik</h4><p>0.1mm toleransla CNC i&#x015F;leme, lazer kesim ve robotik kaynak teknolojileri.</p></div>
+                            </div>
+                            <div class="cp-prod-point">
+                                <div class="cp-prod-point-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                                <div><h4>Askeri S&#x0131;n&#x0131;f Dayan&#x0131;kl&#x0131;l&#x0131;k</h4><p>MIL-STD testlerinden ge&#x00E7;en &#x00E7;elik-kompozit hibrit g&#x00F6;vde yap&#x0131;s&#x0131;.</p></div>
+                            </div>
+                            <div class="cp-prod-point">
+                                <div class="cp-prod-point-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+                                <div><h4>El &#x0130;&#x015F;&#x00E7;ili&#x011F;i Detaylar</h4><p>&#x0130;&#x00E7; mekan kaplamalar&#x0131; ve mobilyalar usta ellerle &#x00F6;zenle haz&#x0131;rlan&#x0131;r.</p></div>
+                            </div>
+                        </div>
+                        <div class="cp-prod-stats">
+                            <div class="cp-prod-stat"><span class="cp-stat-big">10.000</span><span>m&#x00B2; Tesis</span></div>
+                            <div class="cp-prod-stat"><span class="cp-stat-big">120+</span><span>Uzman Personel</span></div>
+                            <div class="cp-prod-stat"><span class="cp-stat-big">48</span><span>Kalite Kontrol</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- S5: BRAND MANIFESTO -->
+            <section class="cp-manifesto" id="cpManifesto">
+                <canvas class="cp-particles cp-particles-end" id="cpParticles2"></canvas>
+                <div class="cp-manifesto-content">
+                    <div class="cp-mf-line cp-mf-l1">Yollar bizim i&#x00E7;in s&#x0131;n&#x0131;r de&#x011F;il.</div>
+                    <div class="cp-mf-line cp-mf-l2">Ba&#x015F;lang&#x0131;&#x00E7; <span class="cv-accent-text">noktas&#x0131;d&#x0131;r.</span></div>
+                    <div class="cp-mf-logo">
+                        <img src="/caravan_theme/static/src/img/camppass-logo.webp" alt="Camppass" height="44" style="filter:drop-shadow(0 0 20px rgba(245,166,35,0.3));"/>
+                    </div>
+                </div>
+            </section>
+
+        </t>
+    </template>
+
+</odoo>

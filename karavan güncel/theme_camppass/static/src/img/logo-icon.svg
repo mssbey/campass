@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <g transform="translate(1,1)">
+    <polygon points="23,0 26,17 23,8 20,17" fill="#D8B15A"/>
+    <polygon points="46,23 29,20 38,23 29,26" fill="#D8B15A"/>
+    <polygon points="23,46 20,29 23,38 26,29" fill="#D8B15A"/>
+    <polygon points="0,23 17,26 8,23 17,20" fill="#D8B15A"/>
+    <polygon points="23,7 27,20 36,10" fill="#D8B15A"/>
+    <polygon points="23,7 19,20 10,10" fill="#D8B15A"/>
+    <polygon points="23,39 27,26 36,36" fill="#D8B15A"/>
+    <polygon points="23,39 19,26 10,36" fill="#D8B15A"/>
+    <polygon points="7,23 20,19 10,10" fill="#E8C252"/>
+    <polygon points="7,23 20,27 10,36" fill="#E8C252"/>
+    <polygon points="39,23 26,19 36,10" fill="#E8C252"/>
+    <polygon points="39,23 26,27 36,36" fill="#E8C252"/>
+    <circle cx="23" cy="23" r="4" fill="#D8B15A"/>
+    <circle cx="23" cy="23" r="2" fill="#07080B"/>
+  </g>
+</svg>

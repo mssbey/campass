@@ -1,0 +1,746 @@
+/* ============================================================
+   CARAVAN 3D CONFIGURATOR — PREMIUM DARK UI
+   ============================================================ */
+:root {
+    --cfg-bg: #07080B;
+    --cfg-bg2: #0F1115;
+    --cfg-bg3: #161920;
+    --cfg-surface: #1A1D25;
+    --cfg-border: rgba(255,255,255,0.07);
+    --cfg-gold: #F5A623;
+    --cfg-gold-dim: rgba(245,166,35,0.15);
+    --cfg-text: #EAEAEA;
+    --cfg-text2: #9CA3AF;
+    --cfg-text3: #6B7280;
+    --cfg-green: #22C55E;
+    --cfg-red: #EF4444;
+    --cfg-radius: 12px;
+    --cfg-radius-sm: 8px;
+    --cfg-font: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    --cfg-transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* RESET for configurator wrapper */
+.cfg-app {
+    font-family: var(--cfg-font);
+    background: var(--cfg-bg);
+    color: var(--cfg-text);
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+.cfg-app *, .cfg-app *::before, .cfg-app *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ============================================================
+   TOP BAR
+   ============================================================ */
+.cfg-topbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    height: 60px;
+    background: rgba(7,8,11,0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--cfg-border);
+}
+
+.cfg-topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.cfg-back-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: 1px solid var(--cfg-border);
+    color: var(--cfg-text2);
+    padding: 7px 14px;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--cfg-transition);
+    font-family: var(--cfg-font);
+}
+.cfg-back-btn:hover { color: var(--cfg-gold); border-color: rgba(245,166,35,0.3); }
+
+.cfg-logo { font-size: 1.3rem; font-weight: 900; letter-spacing: 3px; text-decoration: none; color: var(--cfg-text); }
+.cfg-logo-accent { color: var(--cfg-gold); }
+
+.cfg-topbar-model { font-size: 0.95rem; font-weight: 700; color: var(--cfg-gold); }
+
+.cfg-topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.cfg-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    font-family: var(--cfg-font);
+    cursor: pointer;
+    border: none;
+    transition: var(--cfg-transition);
+    text-decoration: none;
+    white-space: nowrap;
+}
+.cfg-btn svg { flex-shrink: 0; }
+
+.cfg-btn-gold {
+    background: linear-gradient(135deg, var(--cfg-gold), #C9A23E);
+    color: #0a0a0a;
+}
+.cfg-btn-gold:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(245,166,35,0.3); }
+
+.cfg-btn-outline {
+    background: transparent;
+    border: 1px solid var(--cfg-border);
+    color: var(--cfg-text2);
+}
+.cfg-btn-outline:hover { border-color: var(--cfg-gold); color: var(--cfg-gold); }
+
+.cfg-btn-ghost {
+    background: rgba(255,255,255,0.05);
+    color: var(--cfg-text2);
+    border: none;
+    padding: 8px 14px;
+    font-size: 0.8rem;
+}
+.cfg-btn-ghost:hover { background: rgba(255,255,255,0.1); color: var(--cfg-text); }
+
+.cfg-btn-small {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid var(--cfg-border);
+    background: rgba(255,255,255,0.04);
+    color: var(--cfg-text2);
+    font-family: var(--cfg-font);
+    transition: var(--cfg-transition);
+}
+.cfg-btn-small:hover { border-color: var(--cfg-gold); color: var(--cfg-gold); }
+
+/* ============================================================
+   MODEL SELECT SCREEN
+   ============================================================ */
+.cfg-model-select {
+    padding: 60px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.cfg-model-select-header {
+    text-align: center;
+    margin-bottom: 48px;
+}
+.cfg-model-select-header h1 {
+    font-size: 2.4rem;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+}
+.cfg-model-select-header p {
+    font-size: 1.05rem;
+    color: var(--cfg-text2);
+}
+.cfg-gold-accent { color: var(--cfg-gold); }
+
+.cfg-model-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.cfg-model-card {
+    background: var(--cfg-surface);
+    border: 1px solid var(--cfg-border);
+    border-radius: var(--cfg-radius);
+    overflow: hidden;
+    transition: var(--cfg-transition);
+    cursor: default;
+}
+.cfg-model-card:hover {
+    border-color: rgba(245,166,35,0.25);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+}
+
+.cfg-model-card-visual {
+    height: 180px;
+    background: linear-gradient(135deg, #0e1018, #151820);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+.cfg-model-card-visual::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-bottom: 1px solid var(--cfg-border);
+}
+
+.cfg-model-3d-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--cfg-text3);
+}
+.cfg-model-3d-placeholder span { font-size: 0.8rem; font-weight: 600; letter-spacing: 2px; }
+
+.cfg-model-card-info {
+    padding: 20px;
+}
+.cfg-model-card-info h3 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 6px;
+}
+.cfg-model-card-info p {
+    font-size: 0.85rem;
+    color: var(--cfg-text2);
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+.cfg-model-specs-mini {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+.cfg-model-specs-mini span {
+    font-size: 0.78rem;
+    color: var(--cfg-text3);
+    background: rgba(255,255,255,0.04);
+    padding: 4px 10px;
+    border-radius: 6px;
+}
+
+.cfg-model-price {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--cfg-gold);
+    margin-bottom: 16px;
+}
+
+.cfg-model-card .cfg-btn {
+    width: 100%;
+}
+
+/* ============================================================
+   CONFIGURATOR SCREEN — SPLIT LAYOUT
+   ============================================================ */
+.cfg-configurator {
+    display: none;
+    height: calc(100vh - 60px);
+}
+
+/* LEFT: Options Panel */
+.cfg-panel {
+    width: 380px;
+    min-width: 340px;
+    background: var(--cfg-bg2);
+    border-right: 1px solid var(--cfg-border);
+    overflow-y: auto;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+/* Custom scrollbar */
+.cfg-panel::-webkit-scrollbar { width: 5px; }
+.cfg-panel::-webkit-scrollbar-track { background: transparent; }
+.cfg-panel::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
+
+/* RIGHT: 3D Viewer + Price */
+.cfg-viewer-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background: var(--cfg-bg);
+}
+
+.cfg-viewer-container {
+    flex: 1;
+    position: relative;
+    min-height: 0;
+}
+.cfg-viewer-container canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Viewer overlay controls */
+.cfg-viewer-controls {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 5;
+}
+
+.cfg-viewer-hint {
+    position: absolute;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.75rem;
+    color: var(--cfg-text3);
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(8px);
+    padding: 6px 14px;
+    border-radius: 20px;
+    pointer-events: none;
+    z-index: 5;
+    opacity: 0.7;
+}
+
+/* ============================================================
+   OPTION SECTIONS
+   ============================================================ */
+.cfg-option-section {
+    border-bottom: 1px solid var(--cfg-border);
+}
+
+.cfg-option-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 20px;
+    cursor: default;
+}
+.cfg-option-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: var(--cfg-gold-dim);
+    color: var(--cfg-gold);
+    flex-shrink: 0;
+}
+.cfg-option-header h4 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.cfg-option-body {
+    padding: 0 20px 20px;
+}
+
+/* Color swatches */
+.cfg-color-grid {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+}
+.cfg-color-swatch {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    border: 2px solid var(--cfg-border);
+    cursor: pointer;
+    transition: var(--cfg-transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.cfg-color-swatch:hover {
+    border-color: rgba(255,255,255,0.3);
+    transform: scale(1.1);
+}
+.cfg-color-swatch.active {
+    border-color: var(--cfg-gold);
+    box-shadow: 0 0 0 3px var(--cfg-gold-dim);
+}
+
+.cfg-custom-color {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 8px;
+    border: 1px solid var(--cfg-border);
+}
+.cfg-custom-color label {
+    font-size: 0.8rem;
+    color: var(--cfg-text2);
+    white-space: nowrap;
+}
+.cfg-custom-color input[type="color"] {
+    width: 36px;
+    height: 32px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background: none;
+    padding: 0;
+}
+.cfg-custom-color input[type="color"]::-webkit-color-swatch-wrapper { padding: 2px; }
+.cfg-custom-color input[type="color"]::-webkit-color-swatch { border: 1px solid var(--cfg-border); border-radius: 4px; }
+
+/* Radio options */
+.cfg-radio-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border: 1px solid var(--cfg-border);
+    border-radius: 10px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: var(--cfg-transition);
+}
+.cfg-radio-option:hover {
+    border-color: rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.02);
+}
+.cfg-radio-option.active {
+    border-color: var(--cfg-gold);
+    background: var(--cfg-gold-dim);
+}
+
+.cfg-radio-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid var(--cfg-text3);
+    flex-shrink: 0;
+    transition: var(--cfg-transition);
+    position: relative;
+}
+.cfg-radio-dot.checked {
+    border-color: var(--cfg-gold);
+}
+.cfg-radio-dot.checked::after {
+    content: '';
+    position: absolute;
+    top: 3px; left: 3px; right: 3px; bottom: 3px;
+    background: var(--cfg-gold);
+    border-radius: 50%;
+}
+
+.cfg-radio-info {
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+}
+.cfg-radio-name { font-size: 0.88rem; font-weight: 600; }
+.cfg-radio-price { font-size: 0.82rem; color: var(--cfg-gold); font-weight: 600; }
+
+/* Toggle options */
+.cfg-toggle-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 14px;
+    border: 1px solid var(--cfg-border);
+    border-radius: 10px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: var(--cfg-transition);
+}
+.cfg-toggle-option:hover {
+    border-color: rgba(255,255,255,0.15);
+}
+
+.cfg-toggle-info { display: flex; flex-direction: column; gap: 2px; }
+.cfg-toggle-name { font-size: 0.88rem; font-weight: 600; }
+.cfg-toggle-price { font-size: 0.8rem; color: var(--cfg-gold); font-weight: 500; }
+
+.cfg-toggle-switch {
+    width: 44px;
+    height: 24px;
+    border-radius: 12px;
+    background: var(--cfg-bg3);
+    border: 1px solid var(--cfg-border);
+    position: relative;
+    cursor: pointer;
+    transition: var(--cfg-transition);
+    flex-shrink: 0;
+}
+.cfg-toggle-switch.on {
+    background: var(--cfg-gold);
+    border-color: var(--cfg-gold);
+}
+.cfg-toggle-knob {
+    position: absolute;
+    top: 2px; left: 2px;
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: #fff;
+    transition: var(--cfg-transition);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+}
+.cfg-toggle-switch.on .cfg-toggle-knob {
+    left: 22px;
+}
+
+/* ============================================================
+   PRICE BAR
+   ============================================================ */
+.cfg-price-bar {
+    border-top: 1px solid var(--cfg-border);
+    background: var(--cfg-bg2);
+    padding: 16px 24px;
+}
+
+.cfg-price-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.cfg-price-label { font-size: 0.78rem; color: var(--cfg-text3); text-transform: uppercase; letter-spacing: 1px; }
+.cfg-price-value { font-size: 0.9rem; font-weight: 600; }
+.cfg-price-value.gold { color: var(--cfg-gold); }
+
+.cfg-price-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: 8px;
+    padding-top: 10px;
+    border-top: 1px solid var(--cfg-border);
+}
+.cfg-price-total-label { font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; }
+.cfg-price-total-value { font-size: 1.6rem; font-weight: 900; color: var(--cfg-gold); }
+
+.cfg-price-line {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.78rem;
+    color: var(--cfg-text3);
+    padding: 3px 0;
+}
+
+.cfg-price-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 14px;
+}
+.cfg-price-actions .cfg-btn {
+    flex: 1;
+    font-size: 0.85rem;
+    padding: 12px;
+}
+
+/* ============================================================
+   ORDER MODAL
+   ============================================================ */
+.cfg-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+.cfg-modal-overlay.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.cfg-modal {
+    background: var(--cfg-surface);
+    border: 1px solid var(--cfg-border);
+    border-radius: 16px;
+    padding: 32px;
+    max-width: 480px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.cfg-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    color: var(--cfg-text3);
+    cursor: pointer;
+    font-size: 1.3rem;
+    line-height: 1;
+    transition: var(--cfg-transition);
+}
+.cfg-modal-close:hover { color: var(--cfg-text); }
+
+.cfg-modal h2 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 6px;
+}
+.cfg-modal p.sub {
+    color: var(--cfg-text2);
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+}
+
+.cfg-modal-info {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px;
+    background: var(--cfg-gold-dim);
+    border-radius: 10px;
+    margin-bottom: 24px;
+}
+.cfg-modal-info span { font-weight: 700; }
+.cfg-modal-info .price { color: var(--cfg-gold); font-size: 1.1rem; }
+
+.cfg-form-group {
+    margin-bottom: 16px;
+}
+.cfg-form-group label {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--cfg-text2);
+    margin-bottom: 6px;
+}
+.cfg-form-group input,
+.cfg-form-group textarea {
+    width: 100%;
+    padding: 11px 14px;
+    background: var(--cfg-bg3);
+    border: 1px solid var(--cfg-border);
+    border-radius: 8px;
+    color: var(--cfg-text);
+    font-size: 0.9rem;
+    font-family: var(--cfg-font);
+    transition: var(--cfg-transition);
+    outline: none;
+}
+.cfg-form-group input:focus,
+.cfg-form-group textarea:focus {
+    border-color: var(--cfg-gold);
+    box-shadow: 0 0 0 3px var(--cfg-gold-dim);
+}
+.cfg-form-group textarea { min-height: 80px; resize: vertical; }
+
+.cfg-form-required::after { content: ' *'; color: var(--cfg-red); }
+
+/* ============================================================
+   SUCCESS MESSAGE
+   ============================================================ */
+.cfg-success-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(34,197,94,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.cfg-order-ref {
+    text-align: center;
+    padding: 14px;
+    background: var(--cfg-gold-dim);
+    border-radius: 10px;
+    margin: 20px 0;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--cfg-gold);
+    letter-spacing: 2px;
+}
+
+/* ============================================================
+   PLAYBACK STATUS
+   ============================================================ */
+.cfg-playback-status {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(8px);
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    color: var(--cfg-gold);
+    z-index: 10;
+    pointer-events: none;
+    white-space: nowrap;
+    max-width: 90%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1024px) {
+    .cfg-configurator {
+        flex-direction: column;
+        height: auto;
+    }
+    .cfg-panel {
+        width: 100%;
+        min-width: 0;
+        max-height: none;
+        border-right: none;
+        border-bottom: 1px solid var(--cfg-border);
+        order: 2;
+    }
+    .cfg-viewer-area {
+        order: 1;
+        height: 50vh;
+        min-height: 350px;
+    }
+    .cfg-price-bar { order: 3; }
+}
+
+@media (max-width: 640px) {
+    .cfg-model-select { padding: 32px 16px; }
+    .cfg-model-select-header h1 { font-size: 1.6rem; }
+    .cfg-model-grid { grid-template-columns: 1fr; }
+    .cfg-topbar { padding: 0 12px; }
+    .cfg-topbar .cfg-logo { display: none; }
+    .cfg-modal { padding: 24px 20px; }
+    .cfg-viewer-area { height: 40vh; min-height: 280px; }
+    .cfg-price-total-value { font-size: 1.3rem; }
+}

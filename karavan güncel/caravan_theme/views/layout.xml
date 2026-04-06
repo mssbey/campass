@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ============================================================
+         BASE LAYOUT — wraps all caravan pages, hides default header/footer
+         ============================================================ -->
+    <template id="caravan_layout" name="Caravan Base Layout">
+        <t t-call="website.layout">
+            <t t-set="no_header" t-value="True"/>
+            <t t-set="no_footer" t-value="True"/>
+            <div id="wrapwrap" class="caravan-page">
+                <t t-call="caravan_theme.caravan_header"/>
+                <main id="wrap">
+                    <t t-raw="0"/>
+                </main>
+                <t t-call="caravan_theme.caravan_footer"/>
+            </div>
+        </t>
+    </template>
+
+</odoo>

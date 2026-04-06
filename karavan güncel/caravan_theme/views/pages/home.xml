@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ============================================================
+         HOME PAGE — Hero + Features + Featured Models + CTA
+         ============================================================ -->
+    <template id="page_home" name="Camppass Home">
+        <t t-call="caravan_theme.caravan_layout">
+
+            <!-- HERO -->
+            <section class="cv-hero">
+                <video id="heroVideo" class="cv-hero-video" autoplay="autoplay" muted="muted" playsinline="playsinline" preload="auto">
+                    <source src="/caravan_theme/static/src/video/hero.mp4" type="video/mp4"/>
+                </video>
+                <div id="heroOverlay" class="cv-hero-overlay hero-playing"></div>
+                <div id="heroContent" class="cv-hero-content hero-playing">
+                    <div class="cv-hero-hud cv-animate">
+                        <div class="cv-hud-item"><span>E&#x011F;im:</span><span class="cv-hud-value">35&#x00B0;</span></div>
+                        <div class="cv-hud-item"><span>S&#x00FC;spansiyon:</span><span class="cv-hud-value">280mm</span></div>
+                        <div class="cv-hud-item"><span>Ba&#x011F;&#x0131;ms&#x0131;z &#x015E;asi</span></div>
+                    </div>
+                    <h1 class="cv-hero-title cv-animate cv-animate-delay-1">
+                        &#x00D6;zg&#x00FC;rl&#x00FC;k bir se&#x00E7;enek de&#x011F;il,<br/><span class="highlight">m&#x00FC;hendisliktir.</span>
+                    </h1>
+                    <p class="cv-hero-subtitle cv-animate cv-animate-delay-2">Her ko&#x015F;ulda, her yolda. Camppass m&#x00FC;hendislik harikas&#x0131; karavan serisi.</p>
+                    <div class="cv-animate cv-animate-delay-3">
+                        <a href="/modeller" class="cv-btn cv-btn-gold cv-btn-lg">
+                            Modelleri Ke&#x015F;fet
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="cv-hero-scroll"><span>Ke&#x015F;fet</span><div class="cv-scroll-line"></div></div>
+            </section>
+
+            <!-- FEATURES STRIP -->
+            <section class="cv-features-strip">
+                <div class="cv-feature-item cv-animate">
+                    <div class="cv-feature-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                    <h4>Z&#x0131;rhl&#x0131; &#x015E;asi</h4><p>Ba&#x011F;&#x0131;ms&#x0131;z s&#x00FC;spansiyon sistemi ile maksimum dayan&#x0131;kl&#x0131;l&#x0131;k</p>
+                </div>
+                <div class="cv-feature-item cv-animate cv-animate-delay-1">
+                    <div class="cv-feature-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+                    <h4>800W G&#x00FC;ne&#x015F; Paneli</h4><p>Tamamen off-grid ya&#x015F;am i&#x00E7;in yeterli enerji kapasitesi</p>
+                </div>
+                <div class="cv-feature-item cv-animate cv-animate-delay-2">
+                    <div class="cv-feature-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="6" width="22" height="12" rx="2" ry="2"/><line x1="23" y1="13" x2="23" y2="11"/></svg></div>
+                    <h4>Lityum Batarya</h4><p>Uzun &#x00F6;m&#x00FC;rl&#x00FC; lityum iyon enerji depolama sistemi</p>
+                </div>
+                <div class="cv-feature-item cv-animate cv-animate-delay-3">
+                    <div class="cv-feature-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                    <h4>Ak&#x0131;ll&#x0131; Kontrol</h4><p>Mobil uygulama ile t&#x00FC;m sistemleri kontrol edin</p>
+                </div>
+            </section>
+
+            <!-- FEATURED MODELS -->
+            <section class="cv-section">
+                <div class="cv-container">
+                    <div class="cv-animate" style="text-align:center;">
+                        <hr class="cv-gold-line centered"/>
+                        <h2 class="cv-section-title">&#x00D6;ne &#x00C7;&#x0131;kan <span class="cv-accent-text">Modeller</span></h2>
+                        <p class="cv-section-subtitle centered">Her ihtiyaca &#x00F6;zel tasarlanm&#x0131;&#x015F;, m&#x00FC;hendislik harikas&#x0131; Camppass karavan serimiz.</p>
+                    </div>
+                    <div class="cv-models-grid">
+                        <a href="/model/cr550i" class="cv-model-card cv-animate cv-animate-delay-1" style="text-decoration:none;color:inherit;">
+                            <div class="cv-model-card-img"><img src="/caravan_theme/static/src/img/model-cr550i.png" alt="CR550i"/><span class="cv-model-card-badge">2 Ki&#x015F;i</span></div>
+                            <div class="cv-model-card-body">
+                                <h3>CR550i</h3>
+                                <div class="cv-model-card-price">33.980 &#x20AC;'den ba&#x015F;layan</div>
+                                <div class="cv-model-specs">
+                                    <span class="cv-spec-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> 1.000 kg</span>
+                                    <span class="cv-spec-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="22" height="12" rx="2" ry="2"/><line x1="23" y1="13" x2="23" y2="11"/></svg> 15 m&#x00B3;</span>
+                                    <span class="cv-spec-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> &#x0130;&#x00E7; Mutfak</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="/model/cr555" class="cv-model-card cv-animate cv-animate-delay-2" style="text-decoration:none;color:inherit;">
+                            <div class="cv-model-card-img"><img src="/caravan_theme/static/src/img/model-cr555.png" alt="CR555"/><span class="cv-model-card-badge">Pop&#x00FC;ler</span></div>
+                            <div class="cv-model-card-body">
+                                <h3>CR555</h3>
+                                <div class="cv-model-card-price">38.900 &#x20AC;'den ba&#x015F;layan</div>
+                                <div class="cv-model-specs">
+                                    <span class="cv-spec-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> 1.100 kg</span>
+                                    <span class="cv-spec-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="22" height="12" rx="2" ry="2"/><line x1="23" y1="13" x2="23" y2="11"/></svg> 20 m&#x00B3;</span>
+                                    <span class="cv-spec-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 4 Ki&#x015F;i</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="/model/cr650" class="cv-model-card cv-animate cv-animate-delay-3" style="text-decoration:none;color:inherit;">
+                            <div class="cv-model-card-img"><img src="/caravan_theme/static/src/img/model-cr650.webp" alt="CR650"/><span class="cv-model-card-badge">Premium</span></div>
+                            <div class="cv-model-card-body">
+                                <h3>CR650</h3>
+                                <div class="cv-model-card-price">41.900 &#x20AC;'den ba&#x015F;layan</div>
+                                <div class="cv-model-specs">
+                                    <span class="cv-spec-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> 1.150 kg</span>
+                                    <span class="cv-spec-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="22" height="12" rx="2" ry="2"/><line x1="23" y1="13" x2="23" y2="11"/></svg> 17.5 m&#x00B3;</span>
+                                    <span class="cv-spec-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 4 Ki&#x015F;i</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div style="text-align:center;margin-top:56px;" class="cv-animate">
+                        <a href="/modeller" class="cv-btn cv-btn-outline cv-btn-lg">T&#x00FC;m Modelleri G&#x00F6;r <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA BANNER -->
+            <section class="cv-cta-banner">
+                <div class="cv-cta-split">
+                    <div class="cv-cta-left cv-animate">
+                        <h2>Hayalinizdeki Camppass Karavan&#x0131; <span class="cv-accent-text">Konfig&#x00FC;re Edin</span></h2>
+                        <p>&#x0130;htiya&#x00E7;lar&#x0131;n&#x0131;za g&#x00F6;re Camppass karavan&#x0131;n&#x0131;z&#x0131; &#x00F6;zelle&#x015F;tirin. Size &#x00F6;zel &#x00E7;&#x00F6;z&#x00FC;mler sunuyoruz.</p>
+                        <div class="cv-cta-buttons">
+                            <a href="/modeller" class="cv-btn cv-btn-gold cv-btn-lg">Teklif Al</a>
+                            <a href="/iletisim" class="cv-btn cv-btn-outline cv-btn-lg">Kirala</a>
+                        </div>
+                    </div>
+                    <div class="cv-cta-right">
+                        <img src="/caravan_theme/static/src/img/banner2.webp" alt="Camppass Karavan" class="cv-cta-img"/>
+                    </div>
+                </div>
+            </section>
+
+        </t>
+    </template>
+
+</odoo>

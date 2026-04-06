@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ============================================================
+         MODEL DETAIL PAGE — Dynamic (JS populates via MODELS_DATA)
+         ============================================================ -->
+    <template id="page_model_detail" name="Camppass Model Detail">
+        <t t-call="caravan_theme.caravan_layout">
+
+            <!-- Breadcrumb -->
+            <section class="cv-breadcrumb">
+                <div class="cv-container">
+                    <div class="cv-breadcrumb-nav">
+                        <a href="/modeller">Modeller</a>
+                        <span class="separator">&#x203A;</span>
+                        <span id="dtBreadcrumb">Model Detay</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Hero -->
+            <section class="cv-detail-hero cv-highlight-section">
+                <div class="cv-container">
+                    <div class="cv-detail-hero-grid">
+                        <div class="cv-detail-hero-img cv-animate">
+                            <img id="dtHeroImg" src="/caravan_theme/static/src/img/model-cr550.webp" alt="Karavan"/>
+                        </div>
+                        <div class="cv-detail-hero-info cv-animate cv-animate-delay-1">
+                            <span class="cv-detail-badge" id="dtBadge">Aile</span>
+                            <h1 class="cv-detail-name" id="dtTitle">CR550</h1>
+                            <p class="cv-detail-tagline" id="dtTagline">Macera, konfor ve g&#x00FC;venilirlik bir arada</p>
+                            <div class="cv-detail-price" id="dtPrice">33.980 &#x20AC;<span>'den ba&#x015F;layan</span></div>
+                            <div class="cv-detail-actions">
+                                <a href="/iletisim" class="cv-btn cv-btn-gold cv-btn-lg">Teklif Al</a>
+                                <a href="/iletisim" class="cv-btn cv-btn-outline cv-btn-lg">Kirala</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Specs Grid -->
+            <section class="cv-section">
+                <div class="cv-container">
+                    <div class="cv-animate" style="text-align:center;">
+                        <hr class="cv-gold-line centered"/>
+                        <h2 class="cv-section-title">Teknik <span class="cv-accent-text">&#x00D6;zellikler</span></h2>
+                    </div>
+                    <div class="cv-detail-specs">
+                        <div class="cv-detail-spec-card cv-animate"><span class="spec-value" id="dtSpecKapasite">4 Ki&#x015F;i</span><span class="spec-label">Kapasite</span></div>
+                        <div class="cv-detail-spec-card cv-animate cv-animate-delay-1"><span class="spec-value" id="dtSpecAgirlik">1.000 kg</span><span class="spec-label">Bo&#x015F; A&#x011F;&#x0131;rl&#x0131;k</span></div>
+                        <div class="cv-detail-spec-card cv-animate cv-animate-delay-2"><span class="spec-value" id="dtSpecHacim">15 m&#x00B3;</span><span class="spec-label">&#x0130;&#x00E7; Hacim</span></div>
+                        <div class="cv-detail-spec-card cv-animate cv-animate-delay-3"><span class="spec-value" id="dtSpecTasima">1.800 kg</span><span class="spec-label">Ta&#x015F;&#x0131;ma Kap.</span></div>
+                        <div class="cv-detail-spec-card cv-animate"><span class="spec-value" id="dtSpecUzunluk">5.520 mm</span><span class="spec-label">Uzunluk</span></div>
+                        <div class="cv-detail-spec-card cv-animate cv-animate-delay-1"><span class="spec-value" id="dtSpecGenislik">2.320 mm</span><span class="spec-label">Geni&#x015F;lik</span></div>
+                        <div class="cv-detail-spec-card cv-animate cv-animate-delay-2"><span class="spec-value" id="dtSpecYukseklik">2.650 mm</span><span class="spec-label">Y&#x00FC;kseklik</span></div>
+                        <div class="cv-detail-spec-card cv-animate cv-animate-delay-3"><span class="spec-value" id="dtSpecSu">100 L</span><span class="spec-label">Su Tank&#x0131;</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features -->
+            <section class="cv-section">
+                <div class="cv-container">
+                    <div class="cv-animate" style="text-align:center;">
+                        <hr class="cv-gold-line centered"/>
+                        <h2 class="cv-section-title">&#x00D6;ne &#x00C7;&#x0131;kan <span class="cv-accent-text">&#x00D6;zellikler</span></h2>
+                    </div>
+                    <div class="cv-detail-features" id="dtFeatures">
+                        <div class="cv-detail-feature-item cv-animate">
+                            <div class="cv-detail-feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                            <div><h4>Ba&#x011F;&#x0131;ms&#x0131;z Tekerlek S&#x00FC;spansiyonu</h4><p>1.800 kg ta&#x015F;&#x0131;ma kapasiteli ba&#x011F;&#x0131;ms&#x0131;z tekerlek s&#x00FC;spansiyon sistemi ile zorlu arazi ko&#x015F;ullar&#x0131;nda &#x00FC;st&#x00FC;n stabilite.</p></div>
+                        </div>
+                        <div class="cv-detail-feature-item cv-animate cv-animate-delay-1">
+                            <div class="cv-detail-feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+                            <div><h4>Geni&#x015F; Ya&#x015F;am Alan&#x0131;</h4><p>D&#x00F6;rt yeti&#x015F;kin i&#x00E7;in uyuma imk&#x00E2;n&#x0131;: Ana yatak 2030&#x00D7;1360 mm, ranzal&#x0131; ek alan ile 15 m&#x00B3; konforlu i&#x00E7; hacim.</p></div>
+                        </div>
+                        <div class="cv-detail-feature-item cv-animate cv-animate-delay-2">
+                            <div class="cv-detail-feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+                            <div><h4>Tam Donan&#x0131;ml&#x0131; &#x0130;&#x00E7; Mekan</h4><p>D&#x0131;&#x015F; mutfak, WC'li i&#x00E7; du&#x015F;, ambiyans LED ayd&#x0131;nlatma, USB portlar&#x0131; ve 100 L temiz su tank&#x0131; standart olarak dahil.</p></div>
+                        </div>
+                        <div class="cv-detail-feature-item cv-animate cv-animate-delay-3">
+                            <div class="cv-detail-feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
+                            <div><h4>Is&#x0131; K&#x00F6;pr&#x00FC;s&#x00FC;z Teknoloji</h4><p>Geli&#x015F;mi&#x015F; &#x0131;s&#x0131; k&#x00F6;pr&#x00FC;s&#x00FC;z yap&#x0131; ile nem ve yo&#x011F;u&#x015F;ma olmadan d&#x00F6;rt mevsim boyunca sa&#x011F;l&#x0131;kl&#x0131; ve konforlu i&#x00E7; ortam.</p></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gallery -->
+            <section class="cv-section cv-highlight-section">
+                <div class="cv-container">
+                    <div class="cv-animate" style="text-align:center;">
+                        <hr class="cv-gold-line centered"/>
+                        <h2 class="cv-section-title">Galeri</h2>
+                    </div>
+                    <div class="cv-gallery" id="dtGallery">
+                        <div class="cv-gallery-item cv-animate"><img src="/caravan_theme/static/src/img/model-cr550.webp" alt="CR550 Ana"/></div>
+                        <div class="cv-gallery-item cv-animate cv-animate-delay-1"><img src="/caravan_theme/static/src/img/gallery-cr550-1.webp" alt="CR550 Detay 1"/></div>
+                        <div class="cv-gallery-item cv-animate cv-animate-delay-2"><img src="/caravan_theme/static/src/img/model-cr550i.png" alt="CR550i"/></div>
+                        <div class="cv-gallery-item cv-animate cv-animate-delay-3"><img src="/caravan_theme/static/src/img/model-cr555.png" alt="CR555"/></div>
+                        <div class="cv-gallery-item cv-animate cv-animate-delay-4"><img src="/caravan_theme/static/src/img/model-cr650.webp" alt="CR650"/></div>
+                        <div class="cv-gallery-item cv-animate cv-animate-delay-5"><img src="/caravan_theme/static/src/img/gallery-cr650-2.webp" alt="CR650 Detay"/></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA -->
+            <section class="cv-cta-banner">
+                <div class="cv-container cv-animate">
+                    <h2 id="dtCtaTitle">Camppass ile <span class="cv-accent-text">&#x00D6;zg&#x00FC;rl&#x00FC;&#x011F;e Ad&#x0131;m At&#x0131;n</span></h2>
+                    <p>Hayalinizdeki karavan&#x0131; konfig&#x00FC;re edin veya hemen kiralay&#x0131;n.</p>
+                    <div class="cv-cta-buttons">
+                        <a href="/iletisim" class="cv-btn cv-btn-gold cv-btn-lg">Teklif Al</a>
+                        <a href="/iletisim" class="cv-btn cv-btn-outline cv-btn-lg">Kirala</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pass model_slug to JS -->
+            <script type="text/javascript">
+                var CURRENT_MODEL_SLUG = '<t t-esc="model_slug"/>';
+            </script>
+
+        </t>
+    </template>
+
+</odoo>

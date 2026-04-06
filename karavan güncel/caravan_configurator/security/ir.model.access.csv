@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_caravan_model_user,caravan.model.user,model_caravan_model,base.group_user,1,0,0,0
+access_caravan_model_admin,caravan.model.admin,model_caravan_model,base.group_system,1,1,1,1
+access_caravan_option_user,caravan.option.user,model_caravan_option,base.group_user,1,0,0,0
+access_caravan_option_admin,caravan.option.admin,model_caravan_option,base.group_system,1,1,1,1
+access_caravan_configuration_user,caravan.configuration.user,model_caravan_configuration,base.group_user,1,1,1,0
+access_caravan_configuration_admin,caravan.configuration.admin,model_caravan_configuration,base.group_system,1,1,1,1
+access_caravan_order_user,caravan.order.user,model_caravan_order,base.group_user,1,1,1,0
+access_caravan_order_admin,caravan.order.admin,model_caravan_order,base.group_system,1,1,1,1
+access_caravan_model_public,caravan.model.public,model_caravan_model,base.group_public,1,0,0,0
+access_caravan_option_public,caravan.option.public,model_caravan_option,base.group_public,1,0,0,0
+access_caravan_configuration_public,caravan.configuration.public,model_caravan_configuration,base.group_public,1,1,1,0
+access_caravan_order_public,caravan.order.public,model_caravan_order,base.group_public,1,0,1,0

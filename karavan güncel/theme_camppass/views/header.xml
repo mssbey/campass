@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ============================================================
+         HEADER / NAVBAR — sticky transparent → solid on scroll
+         ============================================================ -->
+    <template id="camppass_header" name="Camppass Header">
+        <header class="cv-header">
+            <div class="cv-header-inner">
+
+                <!-- Logo -->
+                <a href="/" class="cv-logo">
+                    <img src="/theme_camppass/static/src/img/camppass-logo.webp" alt="Camppass" class="cv-logo-img"/>
+                </a>
+
+                <!-- Desktop Nav -->
+                <ul class="cv-nav">
+                    <li class="cv-nav-dropdown">
+                        <a href="/models" class="cv-nav-dropdown-trigger">
+                            Modeller
+                            <svg class="cv-nav-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                        </a>
+                        <ul class="cv-nav-dropdown-menu">
+                            <li><a href="/model/ws1">WS1</a></li>
+                            <li><a href="/model/ts1">TS1</a></li>
+                            <li><a href="/model/s1">S1</a></li>
+                            <li><a href="/model/cr555">CR555</a></li>
+                            <li><a href="/model/cr650">CR650</a></li>
+                            <li><a href="/model/x1pro">X1 PRO</a></li>
+                            <li class="cv-nav-dropdown-divider"></li>
+                            <li><a href="/models" class="cv-nav-dropdown-all">Tüm Modeller</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/service">Servis</a></li>
+                    <li><a href="/corporate">Kurumsal</a></li>
+                    <li><a href="/news">Haberler</a></li>
+                    <li><a href="/contact">İletişim</a></li>
+                </ul>
+
+                <!-- CTA Buttons -->
+                <div class="cv-header-cta">
+                    <a href="/models" class="cv-btn cv-btn-gold">Configure</a>
+                    <a href="/contact" class="cv-btn cv-btn-outline">Kirala</a>
+                </div>
+
+                <!-- Hamburger (mobile) -->
+                <button class="cv-hamburger" aria-label="Menü" type="button">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Mobile Menu Overlay -->
+        <div class="cv-mobile-menu">
+            <!-- Close button -->
+            <button class="cv-mobile-close" id="cvMobileClose" type="button" aria-label="Kapat">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+
+            <nav class="cv-mobile-nav">
+                <a href="/" class="cv-mob-link">Anasayfa</a>
+
+                <!-- Modeller accordion -->
+                <div class="cv-mob-accordion">
+                    <button class="cv-mob-accordion-trigger" type="button">
+                        Modeller
+                        <svg class="cv-mob-acc-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="cv-mob-accordion-body">
+                        <a href="/model/ws1" class="cv-mob-sublink">WS1</a>
+                        <a href="/model/ts1" class="cv-mob-sublink">TS1</a>
+                        <a href="/model/s1" class="cv-mob-sublink">S1</a>
+                        <a href="/model/cr555" class="cv-mob-sublink">CR555</a>
+                        <a href="/model/cr650" class="cv-mob-sublink">CR650</a>
+                        <a href="/model/x1pro" class="cv-mob-sublink">X1 PRO</a>
+                        <a href="/models" class="cv-mob-sublink cv-mob-sublink-all">Tüm Modeller →</a>
+                    </div>
+                </div>
+
+                <a href="/service" class="cv-mob-link">Servis</a>
+                <a href="/corporate" class="cv-mob-link">Kurumsal</a>
+                <a href="/news" class="cv-mob-link">Haberler</a>
+                <a href="/faq" class="cv-mob-link">SSS</a>
+                <a href="/contact" class="cv-mob-link">İletişim</a>
+            </nav>
+
+            <div class="cv-mobile-cta">
+                <a href="/models" class="cv-btn cv-btn-gold">Configure</a>
+                <a href="/contact" class="cv-btn cv-btn-outline">Kirala</a>
+            </div>
+        </div>
+    </template>
+
+</odoo>

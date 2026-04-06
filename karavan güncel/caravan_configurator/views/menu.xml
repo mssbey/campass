@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <menuitem id="menu_caravan_root" name="Caravan" sequence="50"
+              web_icon="caravan_configurator,static/description/icon.png"/>
+
+    <menuitem id="menu_caravan_catalog" name="Catalog" parent="menu_caravan_root" sequence="10"/>
+    <menuitem id="menu_caravan_models" name="Models" parent="menu_caravan_catalog" action="action_caravan_model" sequence="10"/>
+    <menuitem id="menu_caravan_options" name="Options &amp; Pricing" parent="menu_caravan_catalog" action="action_caravan_option" sequence="20"/>
+
+    <menuitem id="menu_caravan_sales" name="Sales" parent="menu_caravan_root" sequence="20"/>
+    <menuitem id="menu_caravan_orders" name="Orders" parent="menu_caravan_sales" action="action_caravan_order" sequence="10"/>
+    <menuitem id="menu_caravan_configs" name="Configurations" parent="menu_caravan_sales" action="action_caravan_configuration" sequence="20"/>
+</odoo>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ============================================================
+         HEADER / NAVBAR — sticky transparent → solid on scroll
+         ============================================================ -->
+    <template id="caravan_header" name="Caravan Header">
+        <header class="cv-header" id="cvHeader">
+            <div class="cv-header-inner">
+                <a href="/" class="cv-logo">
+                    <img src="/caravan_theme/static/src/img/camppass-logo.webp" alt="Camppass" height="38"/>
+                </a>
+                <ul class="cv-nav">
+                    <li class="cv-nav-dropdown">
+                        <a href="/modeller" class="cv-nav-dropdown-trigger">Modeller <svg class="cv-nav-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a>
+                        <ul class="cv-nav-dropdown-menu">
+                            <li><a href="/model/cr650">CR650</a></li>
+                            <li><a href="/model/cr550i">CR550i</a></li>
+                            <li><a href="/model/cr555">CR555</a></li>
+                            <li><a href="/model/cr400j">CR400 Journey</a></li>
+                            <li><a href="/model/cr400">CR400</a></li>
+                            <li><a href="/model/cr455">CR455</a></li>
+                            <li><a href="/model/cr550">CR550</a></li>
+                            <li class="cv-nav-dropdown-divider"></li>
+                            <li><a href="/modeller" class="cv-nav-dropdown-all">Stoktaki Modeller &#x2192;</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/servis">Servis</a></li>
+                    <li><a href="/kurumsal">Kurumsal</a></li>
+                    <li><a href="/haberler">Haberler</a></li>
+                    <li><a href="/iletisim">&#x0130;leti&#x015F;im</a></li>
+                </ul>
+                <div class="cv-header-cta">
+                    <a href="/modeller" class="cv-btn cv-btn-gold">Teklif Al</a>
+                    <a href="/iletisim" class="cv-btn cv-btn-outline">Kirala</a>
+                </div>
+                <button class="cv-hamburger" aria-label="Men&#x00FC;" id="cvHamburger">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Mobile Menu Overlay -->
+        <div class="cv-mobile-menu" id="cvMobileMenu">
+            <button class="cv-mobile-close" id="cvMobileClose" aria-label="Kapat">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            <nav class="cv-mobile-nav">
+                <a href="/" class="cv-mob-link">Anasayfa</a>
+                <div class="cv-mob-accordion">
+                    <button class="cv-mob-accordion-trigger" id="cvMobModelsTrigger" type="button">
+                        Modeller
+                        <svg class="cv-mob-acc-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="cv-mob-accordion-body" id="cvMobModelsBody">
+                        <a href="/model/cr650" class="cv-mob-sublink">CR650</a>
+                        <a href="/model/cr550i" class="cv-mob-sublink">CR550i</a>
+                        <a href="/model/cr555" class="cv-mob-sublink">CR555</a>
+                        <a href="/model/cr400j" class="cv-mob-sublink">CR400 Journey</a>
+                        <a href="/model/cr400" class="cv-mob-sublink">CR400</a>
+                        <a href="/model/cr455" class="cv-mob-sublink">CR455</a>
+                        <a href="/model/cr550" class="cv-mob-sublink">CR550</a>
+                        <a href="/modeller" class="cv-mob-sublink cv-mob-sublink-all">Stoktaki Modeller &#x2192;</a>
+                    </div>
+                </div>
+                <a href="/servis" class="cv-mob-link">Servis</a>
+                <a href="/kurumsal" class="cv-mob-link">Kurumsal</a>
+                <a href="/haberler" class="cv-mob-link">Haberler</a>
+                <a href="/iletisim" class="cv-mob-link">&#x0130;leti&#x015F;im</a>
+            </nav>
+            <div class="cv-mobile-cta">
+                <a href="/modeller" class="cv-btn cv-btn-gold">Teklif Al</a>
+                <a href="/iletisim" class="cv-btn cv-btn-outline">Kirala</a>
+            </div>
+        </div>
+    </template>
+
+</odoo>

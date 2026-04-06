@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Sequences -->
+    <record id="seq_caravan_configuration" model="ir.sequence">
+        <field name="name">Caravan Configuration</field>
+        <field name="code">caravan.configuration</field>
+        <field name="prefix">CFG-</field>
+        <field name="padding">5</field>
+    </record>
+    <record id="seq_caravan_order" model="ir.sequence">
+        <field name="name">Caravan Order</field>
+        <field name="code">caravan.order</field>
+        <field name="prefix">ORD-</field>
+        <field name="padding">5</field>
+    </record>
+
+    <!-- ==================== MODELS ==================== -->
+    <record id="model_ws1" model="caravan.model">
+        <field name="name">WS1</field>
+        <field name="code">ws1</field>
+        <field name="sequence">1</field>
+        <field name="base_price">1250000</field>
+        <field name="description">Amiral gemimiz. 800W güne�Y paneli, ba�Yımsız �Yasi, tam off-grid ya�Yam.</field>
+        <field name="solar_power">800W</field>
+        <field name="water_capacity">245L</field>
+        <field name="suspension">280mm</field>
+        <field name="max_incline">35°</field>
+        <field name="length">4.8m</field>
+        <field name="width">2.2m</field>
+        <field name="weight">1850kg</field>
+        <field name="capacity">4 Ki�Yi</field>
+    </record>
+    <record id="model_ts1" model="caravan.model">
+        <field name="name">TS1</field>
+        <field name="code">ts1</field>
+        <field name="sequence">2</field>
+        <field name="base_price">980000</field>
+        <field name="description">Kompakt ve güçlü. 600W güne�Y paneli, off-road performansı.</field>
+        <field name="solar_power">600W</field>
+        <field name="water_capacity">200L</field>
+        <field name="suspension">240mm</field>
+        <field name="max_incline">30°</field>
+        <field name="length">4.2m</field>
+        <field name="width">2.1m</field>
+        <field name="weight">1600kg</field>
+        <field name="capacity">3 Ki�Yi</field>
+    </record>
+    <record id="model_cr555" model="caravan.model">
+        <field name="name">CR555</field>
+        <field name="code">cr555</field>
+        <field name="sequence">3</field>
+        <field name="base_price">1450000</field>
+        <field name="description">Off-road canavarı. 1000W güne�Y paneli, 300L su kapasitesi.</field>
+        <field name="solar_power">1000W</field>
+        <field name="water_capacity">300L</field>
+        <field name="suspension">320mm</field>
+        <field name="max_incline">40°</field>
+        <field name="length">5.2m</field>
+        <field name="width">2.3m</field>
+        <field name="weight">2100kg</field>
+        <field name="capacity">4 Ki�Yi</field>
+    </record>
+    <record id="model_x1pro" model="caravan.model">
+        <field name="name">X1 PRO</field>
+        <field name="code">x1pro</field>
+        <field name="sequence">4</field>
+        <field name="base_price">2100000</field>
+        <field name="description">Premium segmentin lideri. 1500W güne�Y, akıllı ev sistemi, tam lüks.</field>
+        <field name="solar_power">1500W</field>
+        <field name="water_capacity">400L</field>
+        <field name="suspension">350mm</field>
+        <field name="max_incline">45°</field>
+        <field name="length">5.8m</field>
+        <field name="width">2.4m</field>
+        <field name="weight">2400kg</field>
+        <field name="capacity">6 Ki�Yi</field>
+    </record>
+
+    <!-- ==================== OPTIONS ==================== -->
+    <!-- Colors -->
+    <record id="opt_color_black" model="caravan.option">
+        <field name="name">Siyah</field>
+        <field name="code">color_black</field>
+        <field name="category">color</field>
+        <field name="price">0</field>
+        <field name="color_hex">#1a1a1a</field>
+        <field name="mesh_name">body</field>
+        <field name="is_default">True</field>
+        <field name="sequence">1</field>
+    </record>
+    <record id="opt_color_beige" model="caravan.option">
+        <field name="name">Bej</field>
+        <field name="code">color_beige</field>
+        <field name="category">color</field>
+        <field name="price">1500</field>
+        <field name="color_hex">#C8B08C</field>
+        <field name="mesh_name">body</field>
+        <field name="sequence">2</field>
+    </record>
+    <record id="opt_color_military" model="caravan.option">
+        <field name="name">Askeri Ye�Yil</field>
+        <field name="code">color_military</field>
+        <field name="category">color</field>
+        <field name="price">2000</field>
+        <field name="color_hex">#4A5D23</field>
+        <field name="mesh_name">body</field>
+        <field name="sequence">3</field>
+    </record>
+    <record id="opt_color_white" model="caravan.option">
+        <field name="name">Beyaz</field>
+        <field name="code">color_white</field>
+        <field name="category">color</field>
+        <field name="price">1000</field>
+        <field name="color_hex">#E8E4DE</field>
+        <field name="mesh_name">body</field>
+        <field name="sequence">4</field>
+    </record>
+
+    <!-- Wheels -->
+    <record id="opt_wheel_standard" model="caravan.option">
+        <field name="name">Standart</field>
+        <field name="code">wheel_standard</field>
+        <field name="category">wheel</field>
+        <field name="price">0</field>
+        <field name="mesh_name">wheels_standard</field>
+        <field name="is_default">True</field>
+        <field name="sequence">1</field>
+    </record>
+    <record id="opt_wheel_offroad" model="caravan.option">
+        <field name="name">Off-Road</field>
+        <field name="code">wheel_offroad</field>
+        <field name="category">wheel</field>
+        <field name="price">8500</field>
+        <field name="mesh_name">wheels_offroad</field>
+        <field name="sequence">2</field>
+    </record>
+    <record id="opt_wheel_alloy" model="caravan.option">
+        <field name="name">Premium Alloy</field>
+        <field name="code">wheel_alloy</field>
+        <field name="category">wheel</field>
+        <field name="price">12000</field>
+        <field name="mesh_name">wheels_alloy</field>
+        <field name="sequence">3</field>
+    </record>
+
+    <!-- Roof -->
+    <record id="opt_roof_solar" model="caravan.option">
+        <field name="name">Güne�Y Paneli</field>
+        <field name="code">roof_solar</field>
+        <field name="category">roof</field>
+        <field name="price">35000</field>
+        <field name="mesh_name">solar_panel</field>
+        <field name="sequence">1</field>
+    </record>
+    <record id="opt_roof_rack" model="caravan.option">
+        <field name="name">Tavan Bagajı</field>
+        <field name="code">roof_rack</field>
+        <field name="category">roof</field>
+        <field name="price">7500</field>
+        <field name="mesh_name">roof_rack</field>
+        <field name="sequence">2</field>
+    </record>
+
+    <!-- Lighting -->
+    <record id="opt_light_led" model="caravan.option">
+        <field name="name">LED Şerit</field>
+        <field name="code">light_led</field>
+        <field name="category">lighting</field>
+        <field name="price">4500</field>
+        <field name="mesh_name">led_strip</field>
+        <field name="sequence">1</field>
+    </record>
+    <record id="opt_light_spot" model="caravan.option">
+        <field name="name">Spot I�Yıklar</field>
+        <field name="code">light_spot</field>
+        <field name="category">lighting</field>
+        <field name="price">6000</field>
+        <field name="mesh_name">spot_lights</field>
+        <field name="sequence">2</field>
+    </record>
+
+    <!-- Side Accessories -->
+    <record id="opt_side_awning" model="caravan.option">
+        <field name="name">Tente</field>
+        <field name="code">side_awning</field>
+        <field name="category">side</field>
+        <field name="price">15000</field>
+        <field name="mesh_name">awning</field>
+        <field name="sequence">1</field>
+    </record>
+    <record id="opt_side_kitchen" model="caravan.option">
+        <field name="name">Dı�Y Mekan Mutfa�Yı</field>
+        <field name="code">side_kitchen</field>
+        <field name="category">side</field>
+        <field name="price">22000</field>
+        <field name="mesh_name">outdoor_kitchen</field>
+        <field name="sequence">2</field>
+    </record>
+
+    <!-- Interior -->
+    <record id="opt_interior_basic" model="caravan.option">
+        <field name="name">Basic</field>
+        <field name="code">interior_basic</field>
+        <field name="category">interior</field>
+        <field name="price">0</field>
+        <field name="mesh_name">interior_basic</field>
+        <field name="is_default">True</field>
+        <field name="sequence">1</field>
+    </record>
+    <record id="opt_interior_comfort" model="caravan.option">
+        <field name="name">Comfort</field>
+        <field name="code">interior_comfort</field>
+        <field name="category">interior</field>
+        <field name="price">45000</field>
+        <field name="mesh_name">interior_comfort</field>
+        <field name="sequence">2</field>
+    </record>
+    <record id="opt_interior_premium" model="caravan.option">
+        <field name="name">Premium</field>
+        <field name="code">interior_premium</field>
+        <field name="category">interior</field>
+        <field name="price">85000</field>
+        <field name="mesh_name">interior_premium</field>
+        <field name="sequence">3</field>
+    </record>
+
+    <!-- Link options to models -->
+    <record id="model_ws1" model="caravan.model">
+        <field name="option_ids" eval="[(6, 0, [
+            ref('opt_color_black'), ref('opt_color_beige'), ref('opt_color_military'), ref('opt_color_white'),
+            ref('opt_wheel_standard'), ref('opt_wheel_offroad'), ref('opt_wheel_alloy'),
+            ref('opt_roof_solar'), ref('opt_roof_rack'),
+            ref('opt_light_led'), ref('opt_light_spot'),
+            ref('opt_side_awning'), ref('opt_side_kitchen'),
+            ref('opt_interior_basic'), ref('opt_interior_comfort'), ref('opt_interior_premium'),
+        ])]"/>
+    </record>
+    <record id="model_ts1" model="caravan.model">
+        <field name="option_ids" eval="[(6, 0, [
+            ref('opt_color_black'), ref('opt_color_beige'), ref('opt_color_military'), ref('opt_color_white'),
+            ref('opt_wheel_standard'), ref('opt_wheel_offroad'), ref('opt_wheel_alloy'),
+            ref('opt_roof_solar'), ref('opt_roof_rack'),
+            ref('opt_light_led'), ref('opt_light_spot'),
+            ref('opt_side_awning'), ref('opt_side_kitchen'),
+            ref('opt_interior_basic'), ref('opt_interior_comfort'), ref('opt_interior_premium'),
+        ])]"/>
+    </record>
+    <record id="model_cr555" model="caravan.model">
+        <field name="option_ids" eval="[(6, 0, [
+            ref('opt_color_black'), ref('opt_color_beige'), ref('opt_color_military'), ref('opt_color_white'),
+            ref('opt_wheel_standard'), ref('opt_wheel_offroad'), ref('opt_wheel_alloy'),
+            ref('opt_roof_solar'), ref('opt_roof_rack'),
+            ref('opt_light_led'), ref('opt_light_spot'),
+            ref('opt_side_awning'), ref('opt_side_kitchen'),
+            ref('opt_interior_basic'), ref('opt_interior_comfort'), ref('opt_interior_premium'),
+        ])]"/>
+    </record>
+    <record id="model_x1pro" model="caravan.model">
+        <field name="option_ids" eval="[(6, 0, [
+            ref('opt_color_black'), ref('opt_color_beige'), ref('opt_color_military'), ref('opt_color_white'),
+            ref('opt_wheel_standard'), ref('opt_wheel_offroad'), ref('opt_wheel_alloy'),
+            ref('opt_roof_solar'), ref('opt_roof_rack'),
+            ref('opt_light_led'), ref('opt_light_spot'),
+            ref('opt_side_awning'), ref('opt_side_kitchen'),
+            ref('opt_interior_basic'), ref('opt_interior_comfort'), ref('opt_interior_premium'),
+        ])]"/>
+    </record>
+</odoo>

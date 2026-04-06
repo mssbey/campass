@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ============================================================
+         FAQ / SSS PAGE — Accordion style
+         ============================================================ -->
+    <template id="camppass_faq" name="Camppass FAQ Page">
+        <t t-call="website.layout">
+            <t t-set="pageName" t-value="'faq'"/>
+            <t t-set="title">SSS — Camppass</t>
+            <t t-set="head">
+                <meta name="description" content="Camppass sıkça sorulan sorular. Garanti, enerji sistemi, ehliyet, teslimat ve daha fazlası."/>
+            </t>
+            <div id="wrap" class="oe_structure caravan-page">
+
+                <t t-call="theme_camppass.camppass_header"/>
+
+                <!-- Breadcrumb -->
+                <section class="cv-breadcrumb">
+                    <div class="cv-container">
+                        <div class="cv-breadcrumb-nav">
+                            <a href="/">Anasayfa</a>
+                            <span class="separator">›</span>
+                            <span>SSS</span>
+                        </div>
+                        <h1 class="cv-animate">Sıkça Sorulan Sorular</h1>
+                    </div>
+                </section>
+
+                <!-- FAQ List -->
+                <section class="cv-section">
+                    <div class="cv-container">
+                        <div class="cv-faq-list">
+
+                            <div class="cv-faq-item cv-animate">
+                                <button class="cv-faq-question" type="button">
+                                    <span>Camppass karavanlarının garanti süresi ne kadardır?</span>
+                                    <span class="cv-faq-icon">+</span>
+                                </button>
+                                <div class="cv-faq-answer">
+                                    <p>Tüm modellerimiz 3 yıl veya 50.000 km (hangisi önce dolarsa) garantiye sahiptir. Şasi ve yapısal bileşenler için 5 yıl garanti sunuyoruz. Detaylı garanti koşulları için Kurumsal sayfamızı ziyaret edebilirsiniz.</p>
+                                </div>
+                            </div>
+
+                            <div class="cv-faq-item cv-animate cv-animate-delay-1">
+                                <button class="cv-faq-question" type="button">
+                                    <span>Off-grid enerji sistemi nasıl çalışır?</span>
+                                    <span class="cv-faq-icon">+</span>
+                                </button>
+                                <div class="cv-faq-answer">
+                                    <p>Camppass karavanları güneş panelleri ve lityum iyon batarya sistemiyle donatılmıştır. Güneş enerjisi gün boyunca bataryaları şarj eder ve gece boyunca tüm elektrikli cihazlarınızı çalıştırabilirsiniz. WS1 modelinde 800W panel ile günde ortalama 4-5 kWh enerji üretimi sağlanır.</p>
+                                </div>
+                            </div>
+
+                            <div class="cv-faq-item cv-animate cv-animate-delay-2">
+                                <button class="cv-faq-question" type="button">
+                                    <span>Hangi ehliyet sınıfı ile çekebilirim?</span>
+                                    <span class="cv-faq-icon">+</span>
+                                </button>
+                                <div class="cv-faq-answer">
+                                    <p>S1 ve TS1 modelleri 750 kg altında olduğundan B sınıfı ehliyet ile çekilebilir. WS1, CR555, CR650 ve X1 PRO modelleri için BE sınıfı ehliyet gereklidir. Detaylı ağırlık bilgileri her modelin teknik özellikler sayfasında bulunmaktadır.</p>
+                                </div>
+                            </div>
+
+                            <div class="cv-faq-item cv-animate cv-animate-delay-3">
+                                <button class="cv-faq-question" type="button">
+                                    <span>Camppass karavanımı kişiselleştirebilir miyim?</span>
+                                    <span class="cv-faq-icon">+</span>
+                                </button>
+                                <div class="cv-faq-answer">
+                                    <p>Evet! Tüm modellerimizde iç mekan renkleri, malzeme seçenekleri, ek donanım paketleri ve aksesuar seçenekleri sunuyoruz. Configure sayfamız üzerinden karavanınızı tamamen kişiselleştirebilirsiniz. Özel talepleriniz için satış ekibimizle iletişime geçebilirsiniz.</p>
+                                </div>
+                            </div>
+
+                            <div class="cv-faq-item cv-animate cv-animate-delay-4">
+                                <button class="cv-faq-question" type="button">
+                                    <span>Teslimat süresi ne kadardır?</span>
+                                    <span class="cv-faq-icon">+</span>
+                                </button>
+                                <div class="cv-faq-answer">
+                                    <p>Stokta bulunan standart konfigürasyonlar 2-4 hafta içinde teslim edilir. Kişiselleştirilmiş siparişler için üretim süresi modele bağlı olarak 6-12 hafta arasında değişmektedir. Sipariş durumunuzu online panel üzerinden takip edebilirsiniz.</p>
+                                </div>
+                            </div>
+
+                            <div class="cv-faq-item cv-animate cv-animate-delay-5">
+                                <button class="cv-faq-question" type="button">
+                                    <span>Kiralama seçenekleri mevcut mu?</span>
+                                    <span class="cv-faq-icon">+</span>
+                                </button>
+                                <div class="cv-faq-answer">
+                                    <p>Evet, kısa ve uzun dönem kiralama seçenekleri sunuyoruz. Günlük, haftalık ve aylık kiralama paketlerimiz mevcuttur. Ayrıca "Satın Almadan Önce Dene" programımız ile 3 güne kadar ücretsiz deneme fırsatı sağlıyoruz. Detaylar için iletişim sayfamızdan bize ulaşabilirsiniz.</p>
+                                </div>
+                            </div>
+
+                            <div class="cv-faq-item cv-animate cv-animate-delay-6">
+                                <button class="cv-faq-question" type="button">
+                                    <span>Servis ağınız nerede bulunuyor?</span>
+                                    <span class="cv-faq-icon">+</span>
+                                </button>
+                                <div class="cv-faq-answer">
+                                    <p>İstanbul, Ankara, İzmir, Antalya, Bursa ve Trabzon'da yetkili servis noktalarımız bulunmaktadır. Ayrıca mobil servis ekibimiz Türkiye genelinde acil müdahale hizmeti sunmaktadır. Servis sayfamızdan en yakın noktayı bulabilirsiniz.</p>
+                                </div>
+                            </div>
+
+                            <div class="cv-faq-item cv-animate">
+                                <button class="cv-faq-question" type="button">
+                                    <span>Finansman seçenekleri var mı?</span>
+                                    <span class="cv-faq-icon">+</span>
+                                </button>
+                                <div class="cv-faq-answer">
+                                    <p>Anlaşmalı bankalarımız aracılığıyla 12, 24, 36 ve 48 aya varan taksit seçenekleri sunuyoruz. Ayrıca takas imkanı da mevcuttur. Finans danışmanlarımız size en uygun ödeme planını oluşturmanızda yardımcı olacaktır.</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+
+                <!-- CTA -->
+                <section class="cv-cta-banner">
+                    <div class="cv-container cv-animate">
+                        <h2>Başka Sorunuz mu Var?</h2>
+                        <p>Uzman ekibimiz tüm sorularınızı yanıtlamaya hazır.</p>
+                        <div class="cv-cta-buttons">
+                            <a href="/contact" class="cv-btn cv-btn-gold cv-btn-lg">Bize Ulaşın</a>
+                        </div>
+                    </div>
+                </section>
+
+                <t t-call="theme_camppass.camppass_footer"/>
+            </div>
+        </t>
+    </template>
+
+    <record id="camppass_faq_page" model="website.page">
+        <field name="name">SSS — Camppass</field>
+        <field name="url">/faq</field>
+        <field name="is_published">True</field>
+        <field name="view_id" ref="camppass_faq"/>
+        <field name="website_indexed">True</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ============================================================
+         FAQ PAGE — Accordion + CTA
+         ============================================================ -->
+    <template id="page_faq" name="Camppass FAQ">
+        <t t-call="caravan_theme.caravan_layout">
+
+            <!-- Breadcrumb -->
+            <section class="cv-breadcrumb">
+                <div class="cv-container">
+                    <div class="cv-breadcrumb-nav">
+                        <a href="/">Anasayfa</a>
+                        <span class="separator">&#x203A;</span>
+                        <span>SSS</span>
+                    </div>
+                    <h1 class="cv-animate">S&#x0131;k&#x00E7;a Sorulan Sorular</h1>
+                </div>
+            </section>
+
+            <!-- FAQ List -->
+            <section class="cv-section">
+                <div class="cv-container">
+                    <div class="cv-faq-list">
+                        <div class="cv-faq-item cv-animate">
+                            <button class="cv-faq-question" type="button">
+                                <span>Karavanlar&#x0131;n&#x0131;z&#x0131;n garanti s&#x00FC;resi ne kadard&#x0131;r?</span>
+                                <span class="cv-faq-icon">+</span>
+                            </button>
+                            <div class="cv-faq-answer"><p>T&#x00FC;m modellerimiz 3 y&#x0131;l veya 50.000 km garantiye sahiptir. &#x015E;asi ve yap&#x0131;sal bile&#x015F;enler i&#x00E7;in 5 y&#x0131;l garanti sunuyoruz.</p></div>
+                        </div>
+                        <div class="cv-faq-item cv-animate cv-animate-delay-1">
+                            <button class="cv-faq-question" type="button">
+                                <span>Off-grid enerji sistemi nas&#x0131;l &#x00E7;al&#x0131;&#x015F;&#x0131;r?</span>
+                                <span class="cv-faq-icon">+</span>
+                            </button>
+                            <div class="cv-faq-answer"><p>G&#x00FC;ne&#x015F; panelleri ve lityum iyon batarya sistemiyle donat&#x0131;lm&#x0131;&#x015F;t&#x0131;r. G&#x00FC;nde ortalama 4-5 kWh enerji &#x00FC;retimi sa&#x011F;lan&#x0131;r.</p></div>
+                        </div>
+                        <div class="cv-faq-item cv-animate cv-animate-delay-2">
+                            <button class="cv-faq-question" type="button">
+                                <span>Hangi ehliyet s&#x0131;n&#x0131;f&#x0131; ile &#x00E7;ekebilirim?</span>
+                                <span class="cv-faq-icon">+</span>
+                            </button>
+                            <div class="cv-faq-answer"><p>CR400 ve CR400 Journey modelleri B s&#x0131;n&#x0131;f&#x0131; ehliyet ile &#x00E7;ekilebilir. CR455, CR550, CR555, CR650 modelleri i&#x00E7;in BE s&#x0131;n&#x0131;f&#x0131; ehliyet gereklidir.</p></div>
+                        </div>
+                        <div class="cv-faq-item cv-animate cv-animate-delay-3">
+                            <button class="cv-faq-question" type="button">
+                                <span>Karavan&#x0131;m&#x0131; ki&#x015F;ile&#x015F;tirebilir miyim?</span>
+                                <span class="cv-faq-icon">+</span>
+                            </button>
+                            <div class="cv-faq-answer"><p>Evet! T&#x00FC;m modellerimizde i&#x00E7; mekan renkleri, malzeme se&#x00E7;enekleri ve ek donan&#x0131;m paketleri sunuyoruz.</p></div>
+                        </div>
+                        <div class="cv-faq-item cv-animate cv-animate-delay-4">
+                            <button class="cv-faq-question" type="button">
+                                <span>Teslimat s&#x00FC;resi ne kadard&#x0131;r?</span>
+                                <span class="cv-faq-icon">+</span>
+                            </button>
+                            <div class="cv-faq-answer"><p>Stokta bulunan standart konfig&#x00FC;rasyonlar 2-4 hafta i&#x00E7;inde teslim edilir. Ki&#x015F;ile&#x015F;tirilmi&#x015F; sipari&#x015F;ler i&#x00E7;in 6-12 hafta aras&#x0131;nda.</p></div>
+                        </div>
+                        <div class="cv-faq-item cv-animate cv-animate-delay-5">
+                            <button class="cv-faq-question" type="button">
+                                <span>Kiralama se&#x00E7;enekleri mevcut mu?</span>
+                                <span class="cv-faq-icon">+</span>
+                            </button>
+                            <div class="cv-faq-answer"><p>Evet, g&#x00FC;nl&#x00FC;k, haftal&#x0131;k ve ayl&#x0131;k kiralama paketlerimiz mevcuttur. "Sat&#x0131;n Almadan &#x00D6;nce Dene" program&#x0131;m&#x0131;z da bulunmaktad&#x0131;r.</p></div>
+                        </div>
+                        <div class="cv-faq-item cv-animate cv-animate-delay-6">
+                            <button class="cv-faq-question" type="button">
+                                <span>Servis a&#x011F;&#x0131;n&#x0131;z nerede bulunuyor?</span>
+                                <span class="cv-faq-icon">+</span>
+                            </button>
+                            <div class="cv-faq-answer"><p>&#x0130;stanbul, Ankara, &#x0130;zmir, Antalya, Bursa ve Trabzon'da yetkili servis noktalar&#x0131;m&#x0131;z bulunmaktad&#x0131;r.</p></div>
+                        </div>
+                        <div class="cv-faq-item cv-animate">
+                            <button class="cv-faq-question" type="button">
+                                <span>Finansman se&#x00E7;enekleri var m&#x0131;?</span>
+                                <span class="cv-faq-icon">+</span>
+                            </button>
+                            <div class="cv-faq-answer"><p>Anla&#x015F;mal&#x0131; bankalar&#x0131;m&#x0131;z arac&#x0131;l&#x0131;&#x011F;&#x0131;yla 12, 24, 36 ve 48 aya varan taksit se&#x00E7;enekleri sunuyoruz.</p></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA -->
+            <section class="cv-cta-banner">
+                <div class="cv-container cv-animate">
+                    <h2>Ba&#x015F;ka Sorunuz mu Var?</h2>
+                    <p>Uzman ekibimiz t&#x00FC;m sorular&#x0131;n&#x0131;z&#x0131; yan&#x0131;tlamaya haz&#x0131;r.</p>
+                    <div class="cv-cta-buttons">
+                        <a href="/iletisim" class="cv-btn cv-btn-gold cv-btn-lg">Bize Ula&#x015F;&#x0131;n</a>
+                    </div>
+                </div>
+            </section>
+
+        </t>
+    </template>
+
+</odoo>

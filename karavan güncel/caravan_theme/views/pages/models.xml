@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ============================================================
+         MODELS PAGE — Cinematic Scroll Experience
+         ============================================================ -->
+    <template id="page_models" name="Camppass Models">
+        <t t-call="caravan_theme.caravan_layout">
+
+            <!-- SECTION 1: IMMERSIVE ENTRY -->
+            <section class="mx-entry" id="mxEntry">
+                <canvas class="mx-particles" id="mxParticles"></canvas>
+                <div class="mx-entry-content">
+                    <div class="mx-entry-line mx-entry-l1">Bir Camppass karavan se&#x00E7;miyorsun.</div>
+                    <div class="mx-entry-line mx-entry-l2">Bir ya&#x015F;am tarz&#x0131; <span class="cv-accent-text">se&#x00E7;iyorsun.</span></div>
+                </div>
+                <div class="mx-scroll-hint" id="mxScrollHint">
+                    <span>Ke&#x015F;fet</span>
+                    <svg class="mx-scroll-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="mx-light-ray mx-ray-1"></div>
+                <div class="mx-light-ray mx-ray-2"></div>
+            </section>
+
+            <!-- SECTION 2: CINEMATIC MODEL SCENES -->
+            <section class="mx-scenes" id="mxScenes">
+                <div class="mx-model-counter" id="mxCounter"><span class="mx-counter-current">01</span> / <span class="mx-counter-total">07</span></div>
+                <div class="mx-progress"><div class="mx-progress-bar" id="mxProgressBar"></div></div>
+
+                <!-- Scene 1: CR400 Journey -->
+                <div class="mx-scene active" data-model="cr400j" data-bg="/caravan_theme/static/src/img/model-cr400j.png" data-detail-model="cr400j">
+                    <div class="mx-scene-bg"></div>
+                    <div class="mx-scene-inner">
+                        <div class="mx-scene-info">
+                            <span class="mx-scene-badge">Kompakt</span>
+                            <h2 class="mx-scene-name">CR400 Journey</h2>
+                            <div class="mx-scene-tagline">Kompakt, hafif, &#x00F6;zg&#x00FC;r ke&#x015F;if</div>
+                            <div class="mx-scene-price">12.900 &#x20AC;<span>'den ba&#x015F;layan</span></div>
+                            <div class="mx-scene-cta">
+                                <a href="/model/cr400j" class="cv-btn cv-btn-gold">Detaylar&#x0131; Ke&#x015F;fet</a>
+                                <a href="/iletisim" class="cv-btn cv-btn-outline">Teklif Al</a>
+                            </div>
+                        </div>
+                        <div class="mx-scene-visual">
+                            <div class="mx-scene-spotlight"></div>
+                            <img src="/caravan_theme/static/src/img/model-cr400j.png" alt="CR400 Journey" class="mx-scene-img"/>
+                            <div class="mx-scene-glow"></div>
+                        </div>
+                        <div class="mx-scene-specs">
+                            <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span class="mx-spec-val">~450 kg</span><span class="mx-spec-lbl">Bo&#x015F; A&#x011F;&#x0131;rl&#x0131;k</span></div>
+                            <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="22" height="12" rx="2" ry="2"/><line x1="23" y1="13" x2="23" y2="11"/></svg><span class="mx-spec-val">4 m&#x00B3;</span><span class="mx-spec-lbl">&#x0130;&#x00E7; Hacim</span></div>
+                            <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span class="mx-spec-val">2 Ki&#x015F;i</span><span class="mx-spec-lbl">Kapasite</span></div>
+                            <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span class="mx-spec-val">4.440 mm</span><span class="mx-spec-lbl">Uzunluk</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scene 2: CR400 -->
+                <div class="mx-scene" data-model="cr400" data-bg="/caravan_theme/static/src/img/model-cr400.png" data-detail-model="cr400">
+                    <div class="mx-scene-bg"></div>
+                    <div class="mx-scene-inner">
+                        <div class="mx-scene-info">
+                            <span class="mx-scene-badge">Ba&#x015F;lang&#x0131;&#x00E7;</span>
+                            <h2 class="mx-scene-name">CR400</h2>
+                            <div class="mx-scene-tagline">&#x00D6;zg&#x00FC;rl&#x00FC;&#x011F;&#x00FC;n anahtar&#x0131; &#x2013; macera burada ba&#x015F;l&#x0131;yor</div>
+                            <div class="mx-scene-price">14.900 &#x20AC;<span>'den ba&#x015F;layan</span></div>
+                            <div class="mx-scene-cta">
+                                <a href="/model/cr400" class="cv-btn cv-btn-gold">Detaylar&#x0131; Ke&#x015F;fet</a>
+                                <a href="/iletisim" class="cv-btn cv-btn-outline">Teklif Al</a>
+                            </div>
+                        </div>
+                        <div class="mx-scene-visual">
+                            <div class="mx-scene-spotlight"></div>
+                            <img src="/caravan_theme/static/src/img/model-cr400.png" alt="CR400" class="mx-scene-img"/>
+                            <div class="mx-scene-glow"></div>
+                        </div>
+                        <div class="mx-scene-specs">
+                            <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span class="mx-spec-val">450 kg</span><span class="mx-spec-lbl">Bo&#x015F; A&#x011F;&#x0131;rl&#x0131;k</span></div>
+                            <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="22" height="12" rx="2" ry="2"/><line x1="23" y1="13" x2="23" y2="11"/></svg><span class="mx-spec-val">4 m&#x00B3;</span><span class="mx-spec-lbl">&#x0130;&#x00E7; Hacim</span></div>
+                            <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span class="mx-spec-val">2 Ki&#x015F;i</span><span class="mx-spec-lbl">Kapasite</span></div>
+                            <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span class="mx-spec-val">750 kg</span><span class="mx-spec-lbl">Ta&#x015F;&#x0131;ma Kap.</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scene 3: CR455 -->
+                <div class="mx-scene" data-model="cr455" data-bg="/caravan_theme/static/src/img/model-cr455.webp" data-detail-model="cr455">
+                    <div class="mx-scene-bg"></div>
+                    <div class="mx-scene-inner">
+                        <div class="mx-scene-info">
+                            <span class="mx-scene-badge">Off-Road</span>
+                            <h2 class="mx-scene-name">CR455</h2>
+                            <div class="mx-scene-tagline">Her arazide &#x00F6;zg&#x00FC;rl&#x00FC;k ve konfor</div>
+                            <div class="mx-scene-price">34.800 &#x20AC;<span>'den ba&#x015F;layan</span></div>
+                            <div class="mx-scene-cta">
+                                <a href="/model/cr455" class="cv-btn cv-btn-gold">Detaylar&#x0131; Ke&#x015F;fet</a>
+                                <a href="/iletisim" class="cv-btn cv-btn-outline">Teklif Al</a>
+                            </div>
+                        </div>
+                        <div class="mx-scene-visual">
+                            <div class="mx-scene-spotlight"></div>
+                            <img src="/caravan_theme/static/src/img/model-cr455.webp" alt="CR455" class="mx-scene-img"/>
+                            <div class="mx-scene-glow"></div>
+                        </div>
+                        <div class="mx-scene-specs">
+                            <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span class="mx-spec-val">900 kg</span><span class="mx-spec-lbl">Bo&#x015F; A&#x011F;&#x0131;rl&#x0131;k</span></div>
+                            <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="22" height="12" rx="2" ry="2"/><line x1="23" y1="13" x2="23" y2="11"/></svg><span class="mx-spec-val">15 m&#x00B3;</span><span class="mx-spec-lbl">&#x0130;&#x00E7; Hacim</span></div>
+                            <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span class="mx-spec-val">4 Ki&#x015F;i</span><span class="mx-spec-lbl">Kapasite</span></div>
+                            <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span class="mx-spec-val">D&#x0131;&#x015F;+&#x0130;&#x00E7;</span><span class="mx-spec-lbl">Mutfak</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scene 4: CR550 -->
+                <div class="mx-scene" data-model="cr550" data-bg="/caravan_theme/static/src/img/model-cr550.webp" data-detail-model="cr550">
+                    <div class="mx-scene-bg"></div>
+                    <div class="mx-scene-inner">
+                        <div class="mx-scene-info">
+                            <span class="mx-scene-badge">Aile</span>
+                            <h2 class="mx-scene-name">CR550</h2>
+                            <div class="mx-scene-tagline">Macera, konfor ve g&#x00FC;venilirlik bir arada</div>
+                            <div class="mx-scene-price">33.980 &#x20AC;<span>'den ba&#x015F;layan</span></div>
+                            <div class="mx-scene-cta">
+                                <a href="/model/cr550" class="cv-btn cv-btn-gold">Detaylar&#x0131; Ke&#x015F;fet</a>
+                                <a href="/iletisim" class="cv-btn cv-btn-outline">Teklif Al</a>
+                            </div>
+                        </div>
+                        <div class="mx-scene-visual">
+                            <div class="mx-scene-spotlight"></div>
+                            <img src="/caravan_theme/static/src/img/model-cr550.webp" alt="CR550" class="mx-scene-img"/>
+                            <div class="mx-scene-glow"></div>
+                        </div>
+                        <div class="mx-scene-specs">
+                            <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span class="mx-spec-val">1.000 kg</span><span class="mx-spec-lbl">Bo&#x015F; A&#x011F;&#x0131;rl&#x0131;k</span></div>
+                            <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="22" height="12" rx="2" ry="2"/><line x1="23" y1="13" x2="23" y2="11"/></svg><span class="mx-spec-val">15 m&#x00B3;</span><span class="mx-spec-lbl">&#x0130;&#x00E7; Hacim</span></div>
+                            <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span class="mx-spec-val">4 Ki&#x015F;i</span><span class="mx-spec-lbl">Kapasite</span></div>
+                            <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span class="mx-spec-val">5.520 mm</span><span class="mx-spec-lbl">Uzunluk</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scene 5: CR550i -->
+                <div class="mx-scene" data-model="cr550i" data-bg="/caravan_theme/static/src/img/model-cr550i.png" data-detail-model="cr550i">
+                    <div class="mx-scene-bg"></div>
+                    <div class="mx-scene-inner">
+                        <div class="mx-scene-info">
+                            <span class="mx-scene-badge">&#x00C7;ift Ki&#x015F;ilik</span>
+                            <h2 class="mx-scene-name">CR550i</h2>
+                            <div class="mx-scene-tagline">Macera, konfor ve stil bir arada</div>
+                            <div class="mx-scene-price">33.980 &#x20AC;<span>'den ba&#x015F;layan</span></div>
+                            <div class="mx-scene-cta">
+                                <a href="/model/cr550i" class="cv-btn cv-btn-gold">Detaylar&#x0131; Ke&#x015F;fet</a>
+                                <a href="/iletisim" class="cv-btn cv-btn-outline">Teklif Al</a>
+                            </div>
+                        </div>
+                        <div class="mx-scene-visual">
+                            <div class="mx-scene-spotlight"></div>
+                            <img src="/caravan_theme/static/src/img/model-cr550i.png" alt="CR550i" class="mx-scene-img"/>
+                            <div class="mx-scene-glow"></div>
+                        </div>
+                        <div class="mx-scene-specs">
+                            <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span class="mx-spec-val">1.000 kg</span><span class="mx-spec-lbl">Bo&#x015F; A&#x011F;&#x0131;rl&#x0131;k</span></div>
+                            <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="22" height="12" rx="2" ry="2"/><line x1="23" y1="13" x2="23" y2="11"/></svg><span class="mx-spec-val">15 m&#x00B3;</span><span class="mx-spec-lbl">&#x0130;&#x00E7; Hacim</span></div>
+                            <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span class="mx-spec-val">2 Ki&#x015F;i</span><span class="mx-spec-lbl">Kapasite</span></div>
+                            <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span class="mx-spec-val">&#x0130;&#x00E7; Mutfak</span><span class="mx-spec-lbl">Donan&#x0131;m</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scene 6: CR555 -->
+                <div class="mx-scene" data-model="cr555" data-bg="/caravan_theme/static/src/img/model-cr555.png" data-detail-model="cr555">
+                    <div class="mx-scene-bg"></div>
+                    <div class="mx-scene-inner">
+                        <div class="mx-scene-info">
+                            <span class="mx-scene-badge">Pop&#x00FC;ler</span>
+                            <h2 class="mx-scene-name">CR555</h2>
+                            <div class="mx-scene-tagline">&#x00D6;zg&#x00FC;rl&#x00FC;k ve konfor, yol nereye giderse gitsin</div>
+                            <div class="mx-scene-price">38.900 &#x20AC;<span>'den ba&#x015F;layan</span></div>
+                            <div class="mx-scene-cta">
+                                <a href="/model/cr555" class="cv-btn cv-btn-gold">Detaylar&#x0131; Ke&#x015F;fet</a>
+                                <a href="/iletisim" class="cv-btn cv-btn-outline">Teklif Al</a>
+                            </div>
+                        </div>
+                        <div class="mx-scene-visual">
+                            <div class="mx-scene-spotlight"></div>
+                            <img src="/caravan_theme/static/src/img/model-cr555.png" alt="CR555" class="mx-scene-img"/>
+                            <div class="mx-scene-glow"></div>
+                        </div>
+                        <div class="mx-scene-specs">
+                            <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span class="mx-spec-val">1.100 kg</span><span class="mx-spec-lbl">Bo&#x015F; A&#x011F;&#x0131;rl&#x0131;k</span></div>
+                            <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="22" height="12" rx="2" ry="2"/><line x1="23" y1="13" x2="23" y2="11"/></svg><span class="mx-spec-val">20 m&#x00B3;</span><span class="mx-spec-lbl">&#x0130;&#x00E7; Hacim</span></div>
+                            <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span class="mx-spec-val">4 Ki&#x015F;i</span><span class="mx-spec-lbl">Kapasite</span></div>
+                            <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span class="mx-spec-val">5.750 mm</span><span class="mx-spec-lbl">Uzunluk</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scene 7: CR650 -->
+                <div class="mx-scene" data-model="cr650" data-bg="/caravan_theme/static/src/img/model-cr650.webp" data-detail-model="cr650">
+                    <div class="mx-scene-bg"></div>
+                    <div class="mx-scene-inner">
+                        <div class="mx-scene-info">
+                            <span class="mx-scene-badge">Premium</span>
+                            <h2 class="mx-scene-name">CR650</h2>
+                            <div class="mx-scene-tagline">L&#x00FC;ks ve konforun m&#x00FC;kemmel bulu&#x015F;mas&#x0131;</div>
+                            <div class="mx-scene-price">41.900 &#x20AC;<span>'den ba&#x015F;layan</span></div>
+                            <div class="mx-scene-cta">
+                                <a href="/model/cr650" class="cv-btn cv-btn-gold">Detaylar&#x0131; Ke&#x015F;fet</a>
+                                <a href="/iletisim" class="cv-btn cv-btn-outline">Teklif Al</a>
+                            </div>
+                        </div>
+                        <div class="mx-scene-visual">
+                            <div class="mx-scene-spotlight"></div>
+                            <img src="/caravan_theme/static/src/img/model-cr650.webp" alt="CR650" class="mx-scene-img"/>
+                            <div class="mx-scene-glow"></div>
+                        </div>
+                        <div class="mx-scene-specs">
+                            <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span class="mx-spec-val">1.150 kg</span><span class="mx-spec-lbl">Bo&#x015F; A&#x011F;&#x0131;rl&#x0131;k</span></div>
+                            <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="22" height="12" rx="2" ry="2"/><line x1="23" y1="13" x2="23" y2="11"/></svg><span class="mx-spec-val">17.5 m&#x00B3;</span><span class="mx-spec-lbl">&#x0130;&#x00E7; Hacim</span></div>
+                            <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span class="mx-spec-val">4 Ki&#x015F;i</span><span class="mx-spec-lbl">Kapasite</span></div>
+                            <div class="mx-spec"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span class="mx-spec-val">6.960 mm</span><span class="mx-spec-lbl">Uzunluk</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nav dots -->
+                <div class="mx-nav-dots" id="mxNavDots">
+                    <button class="mx-dot active" data-idx="0"><span>CR400 Journey</span></button>
+                    <button class="mx-dot" data-idx="1"><span>CR400</span></button>
+                    <button class="mx-dot" data-idx="2"><span>CR455</span></button>
+                    <button class="mx-dot" data-idx="3"><span>CR550</span></button>
+                    <button class="mx-dot" data-idx="4"><span>CR550i</span></button>
+                    <button class="mx-dot" data-idx="5"><span>CR555</span></button>
+                    <button class="mx-dot" data-idx="6"><span>CR650</span></button>
+                </div>
+            </section>
+
+            <!-- SECTION 3: FLEET FINALE -->
+            <section class="mx-fleet" id="mxFleet">
+                <canvas class="mx-particles mx-particles-fleet" id="mxParticles2"></canvas>
+                <div class="mx-fleet-inner">
+                    <h2 class="mx-fleet-title"><span class="cv-accent-text">Se&#x00E7;imini yap.</span><br/>Yol seni bekliyor.</h2>
+                    <div class="mx-fleet-grid" id="mxFleetGrid">
+                        <a href="/model/cr400j" class="mx-fleet-card"><img src="/caravan_theme/static/src/img/model-cr400j.png" alt="CR400 Journey"/><div class="mx-fleet-label"><strong>CR400 Journey</strong><span>12.900 &#x20AC;</span></div></a>
+                        <a href="/model/cr400" class="mx-fleet-card"><img src="/caravan_theme/static/src/img/model-cr400.png" alt="CR400"/><div class="mx-fleet-label"><strong>CR400</strong><span>14.900 &#x20AC;</span></div></a>
+                        <a href="/model/cr455" class="mx-fleet-card"><img src="/caravan_theme/static/src/img/model-cr455.webp" alt="CR455"/><div class="mx-fleet-label"><strong>CR455</strong><span>34.800 &#x20AC;</span></div></a>
+                        <a href="/model/cr550" class="mx-fleet-card"><img src="/caravan_theme/static/src/img/model-cr550.webp" alt="CR550"/><div class="mx-fleet-label"><strong>CR550</strong><span>33.980 &#x20AC;</span></div></a>
+                        <a href="/model/cr550i" class="mx-fleet-card"><img src="/caravan_theme/static/src/img/model-cr550i.png" alt="CR550i"/><div class="mx-fleet-label"><strong>CR550i</strong><span>33.980 &#x20AC;</span></div></a>
+                        <a href="/model/cr555" class="mx-fleet-card"><img src="/caravan_theme/static/src/img/model-cr555.png" alt="CR555"/><div class="mx-fleet-label"><strong>CR555</strong><span>38.900 &#x20AC;</span></div></a>
+                        <a href="/model/cr650" class="mx-fleet-card"><img src="/caravan_theme/static/src/img/model-cr650.webp" alt="CR650"/><div class="mx-fleet-label"><strong>CR650</strong><span>41.900 &#x20AC;</span></div></a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 4: AI MODEL SUGGESTION -->
+            <section class="mx-suggest" id="mxSuggest">
+                <div class="cv-container">
+                    <div class="mx-suggest-header">
+                        <hr class="cv-gold-line centered"/>
+                        <h2 class="cv-section-title" style="text-align:center;">Hangi karavan <span class="cv-accent-text">sana g&#x00F6;re?</span></h2>
+                        <p class="cv-section-subtitle centered">Birka&#x00E7; soruya cevap ver, sana en uygun modeli &#x00F6;nerelim.</p>
+                    </div>
+                    <div class="mx-suggest-wizard" id="mxWizard">
+                        <div class="mx-wiz-step active" data-step="1">
+                            <div class="mx-wiz-q">Ka&#x00E7; ki&#x015F;i seyahat edeceksiniz?</div>
+                            <div class="mx-wiz-options">
+                                <button class="mx-wiz-opt" data-key="people" data-val="2">1-2 Ki&#x015F;i</button>
+                                <button class="mx-wiz-opt" data-key="people" data-val="4">3-4 Ki&#x015F;i</button>
+                                <button class="mx-wiz-opt" data-key="people" data-val="6">5-6 Ki&#x015F;i</button>
+                            </div>
+                        </div>
+                        <div class="mx-wiz-step" data-step="2">
+                            <div class="mx-wiz-q">Kullan&#x0131;m tercihiniz?</div>
+                            <div class="mx-wiz-options">
+                                <button class="mx-wiz-opt" data-key="terrain" data-val="road">&#x015E;ehir &amp; Karayolu</button>
+                                <button class="mx-wiz-opt" data-key="terrain" data-val="mixed">Karma Kullan&#x0131;m</button>
+                                <button class="mx-wiz-opt" data-key="terrain" data-val="offroad">Off-Road &amp; Arazi</button>
+                            </div>
+                        </div>
+                        <div class="mx-wiz-step" data-step="3">
+                            <div class="mx-wiz-q">B&#x00FC;t&#x00E7;e aral&#x0131;&#x011F;&#x0131;n&#x0131;z?</div>
+                            <div class="mx-wiz-options">
+                                <button class="mx-wiz-opt" data-key="budget" data-val="low">15.000 &#x20AC; alt&#x0131;</button>
+                                <button class="mx-wiz-opt" data-key="budget" data-val="mid">15.000 &#x2013; 35.000 &#x20AC;</button>
+                                <button class="mx-wiz-opt" data-key="budget" data-val="high">35.000 &#x20AC; &#x00FC;zeri</button>
+                            </div>
+                        </div>
+                        <div class="mx-wiz-result" id="mxWizResult">
+                            <div class="mx-wiz-result-inner">
+                                <div class="mx-wiz-result-badge">Senin &#x0130;&#x00E7;in &#x00D6;neri</div>
+                                <h3 class="mx-wiz-result-name" id="mxResultName">&#x2014;</h3>
+                                <p class="mx-wiz-result-reason" id="mxResultReason"></p>
+                                <div class="mx-wiz-result-cta">
+                                    <a href="#" class="cv-btn cv-btn-gold" id="mxResultLink">Detaylar&#x0131; G&#x00F6;r</a>
+                                    <button class="cv-btn cv-btn-outline" id="mxWizReset">Tekrar Dene</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mx-wiz-progress" id="mxWizProgress">
+                        <div class="mx-wiz-pip active"></div>
+                        <div class="mx-wiz-pip"></div>
+                        <div class="mx-wiz-pip"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- COMPARE MODE OVERLAY -->
+            <div class="mx-compare-overlay" id="mxCompare">
+                <button class="mx-compare-close" id="mxCompareClose">&#x00D7;</button>
+                <h2 class="mx-compare-title">Model <span class="cv-accent-text">Kar&#x015F;&#x0131;la&#x015F;t&#x0131;r</span></h2>
+                <div class="mx-compare-selectors">
+                    <select id="mxCompLeft" class="mx-compare-sel"></select>
+                    <span class="mx-compare-vs">VS</span>
+                    <select id="mxCompRight" class="mx-compare-sel"></select>
+                </div>
+                <div class="mx-compare-grid" id="mxCompareGrid"></div>
+            </div>
+
+            <!-- Floating compare button -->
+            <button class="mx-compare-fab" id="mxCompareFab" title="Modelleri Kar&#x015F;&#x0131;la&#x015F;t&#x0131;r">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                <span>Kar&#x015F;&#x0131;la&#x015F;t&#x0131;r</span>
+            </button>
+
+        </t>
+    </template>
+
+</odoo>
